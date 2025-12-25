@@ -3,189 +3,216 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FDX Management | Solusi Manajemen Bisnis</title>
+<title>FDX Management | Talent & Influence Agency</title>
 
 <style>
-:root {
-    --primary: #0d6efd;
-    --secondary: #198754;
-    --dark: #1f2937;
-    --light: #f9fafb;
+:root{
+    --gold:#c9a24d;
+    --dark:#0f172a;
+    --gray:#64748b;
+    --light:#f8fafc;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: var(--light);
-    color: var(--dark);
-    line-height: 1.6;
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:var(--light);
+    color:var(--dark);
+}
+
+/* ===== NAV ===== */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:20px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(15,23,42,0.85);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+}
+
+nav h1{
+    color:white;
+    letter-spacing:2px;
+    font-size:1.2rem;
+}
+
+nav a{
+    color:#e5e7eb;
+    margin-left:30px;
+    text-decoration:none;
+    font-size:0.9rem;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:var(--gold);
 }
 
 /* ===== HERO ===== */
-header {
-    min-height: 100vh;
+header{
+    min-height:100vh;
     background:
-        linear-gradient(rgba(13,110,253,0.75), rgba(13,110,253,0.75)),
-        url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: white;
-    padding: 40px 20px;
+    linear-gradient(rgba(15,23,42,.75),rgba(15,23,42,.9)),
+    url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    padding:120px 60px 60px;
 }
 
-.hero {
-    max-width: 900px;
-    margin: auto;
-    animation: fadeUp 1.2s ease;
+.hero{
+    max-width:900px;
+    color:white;
+    animation:fadeUp 1.2s ease;
 }
 
-.hero h1 {
-    font-size: clamp(2.5rem, 5vw, 3.8rem);
-    margin-bottom: 15px;
+.hero h2{
+    color:var(--gold);
+    letter-spacing:3px;
+    font-size:.9rem;
 }
 
-.hero p {
-    font-size: 1.2rem;
-    opacity: 0.95;
+.hero h1{
+    font-size:clamp(2.8rem,5vw,4.2rem);
+    margin:15px 0;
+    line-height:1.2;
 }
 
-.cta {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 15px 35px;
-    background: var(--secondary);
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-    border-radius: 50px;
-    transition: 0.3s ease;
+.hero p{
+    max-width:600px;
+    color:#d1d5db;
+    font-size:1.1rem;
 }
 
-.cta:hover {
-    transform: translateY(-4px);
-    background: #157347;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+.btn{
+    display:inline-block;
+    margin-top:35px;
+    padding:15px 40px;
+    border:1px solid var(--gold);
+    color:var(--gold);
+    text-decoration:none;
+    border-radius:50px;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:var(--gold);
+    color:#111827;
 }
 
 /* ===== SECTION ===== */
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 80px 20px;
+section{
+    padding:100px 60px;
 }
 
-.section {
-    margin-bottom: 80px;
-    text-align: center;
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
 }
 
-.section h2 {
-    font-size: 2.3rem;
-    margin-bottom: 15px;
-    position: relative;
+.section-title h2{
+    font-size:2.4rem;
 }
 
-.section h2::after {
-    content: "";
-    width: 70px;
-    height: 4px;
-    background: var(--primary);
-    display: block;
-    margin: 15px auto;
-    border-radius: 2px;
+.section-title span{
+    color:var(--gold);
 }
 
-.section p {
-    max-width: 800px;
-    margin: auto;
-    font-size: 1.05rem;
-    color: #555;
+.section-title p{
+    margin-top:10px;
+    color:var(--gray);
+}
+
+/* ===== ABOUT ===== */
+.about{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+    font-size:1.05rem;
+    color:#475569;
 }
 
 /* ===== SERVICES ===== */
-.services {
-    margin-top: 50px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:35px;
+    margin-top:50px;
 }
 
-.service {
-    background: white;
-    padding: 35px 25px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    transition: 0.3s ease;
+.service{
+    background:white;
+    padding:45px 30px;
+    border-radius:18px;
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
+    transition:.4s;
 }
 
-.service:hover {
-    transform: translateY(-10px);
+.service:hover{
+    transform:translateY(-12px);
 }
 
-.service h3 {
-    margin-bottom: 10px;
-    color: var(--primary);
+.service h3{
+    color:var(--gold);
+    margin-bottom:15px;
 }
 
-.service p {
-    font-size: 0.95rem;
-    color: #666;
+.service p{
+    color:#475569;
+    font-size:.95rem;
 }
 
-/* ===== CONTACT ===== */
-.contact {
-    background: linear-gradient(135deg, #0d6efd, #0b5ed7);
-    color: white;
-    padding: 70px 20px;
-    text-align: center;
+/* ===== PREMIUM BANNER ===== */
+.premium{
+    background:linear-gradient(135deg,#020617,#0f172a);
+    color:white;
+    text-align:center;
 }
 
-.contact h2 {
-    font-size: 2.2rem;
+.premium h2{
+    font-size:2.6rem;
 }
 
-.contact p {
-    margin-top: 10px;
-    opacity: 0.9;
+.premium p{
+    max-width:700px;
+    margin:15px auto;
+    color:#cbd5f5;
 }
 
 /* ===== FOOTER ===== */
-footer {
-    background: #111827;
-    color: #9ca3af;
-    text-align: center;
-    padding: 25px;
-    font-size: 0.9rem;
+footer{
+    background:#020617;
+    color:#94a3b8;
+    text-align:center;
+    padding:30px;
+    font-size:.9rem;
 }
 
 /* ===== ANIMATION ===== */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(40px)}
+    to{opacity:1;transform:translateY(0)}
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 600px) {
-    .hero p {
-        font-size: 1rem;
+@media(max-width:768px){
+    nav{
+        padding:20px;
     }
-    .cta {
-        width: 100%;
+    header,section{
+        padding:100px 20px;
     }
 }
 </style>
@@ -193,55 +220,83 @@ footer {
 
 <body>
 
+<nav>
+    <h1>FDX MANAGEMENT</h1>
+    <div>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
 <header>
     <div class="hero">
-        <h1>FDX Management</h1>
-        <p>Solusi Manajemen Bisnis Profesional untuk Mendorong Pertumbuhan & Skalabilitas Usaha Anda</p>
-        <a href="https://www.instagram.com/fdx.management/" class="cta">Kunjungi Instagram</a>
+        <h2>PREMIUM TALENT & INFLUENCE AGENCY</h2>
+        <h1>Managing Influence.<br>Building Personal Brands.</h1>
+        <p>
+            FDX Management adalah agensi profesional yang mengelola KOL, Influencer,
+            KOC, Buzzer, Penbay, serta Talent Personal Branding untuk kampanye berdampak tinggi.
+        </p>
+        <a href="https://www.instagram.com/fdx.management/" class="btn">Explore Our Network</a>
     </div>
 </header>
 
-<div class="container">
+<section id="about">
+    <div class="section-title">
+        <h2>About <span>FDX</span></h2>
+        <p>Influence. Strategy. Reputation.</p>
+    </div>
+    <div class="about">
+        Kami membangun ekosistem influence marketing berbasis kredibilitas,
+        data, dan strategi. FDX Management menjadi penghubung antara brand
+        dan talent terbaik untuk menciptakan kampanye autentik dan terukur.
+    </div>
+</section>
 
-    <section class="section">
-        <h2>Tentang Kami</h2>
-        <p>
-            FDX Management adalah partner strategis bisnis yang berfokus pada peningkatan kinerja,
-            efisiensi, dan pertumbuhan berkelanjutan melalui pendekatan manajemen modern dan berbasis data.
-        </p>
-    </section>
+<section id="services">
+    <div class="section-title">
+        <h2>Our <span>Services</span></h2>
+        <p>End-to-end influence & talent management</p>
+    </div>
 
-    <section class="section">
-        <h2>Layanan Kami</h2>
-
-        <div class="services">
-            <div class="service">
-                <h3>Konsultasi Bisnis</h3>
-                <p>Analisis mendalam, perencanaan strategis, dan solusi berbasis kebutuhan bisnis Anda.</p>
-            </div>
-
-            <div class="service">
-                <h3>Manajemen Pemasaran</h3>
-                <p>Branding, strategi digital, dan optimasi pemasaran untuk meningkatkan market reach.</p>
-            </div>
-
-            <div class="service">
-                <h3>Pelatihan & SDM</h3>
-                <p>Pengembangan kompetensi tim agar lebih adaptif, produktif, dan berdaya saing.</p>
-            </div>
+    <div class="services">
+        <div class="service">
+            <h3>KOL & Influencer Management</h3>
+            <p>
+                Pengelolaan influencer profesional untuk brand collaboration,
+                campaign execution, dan reputasi jangka panjang.
+            </p>
         </div>
-    </section>
 
-</div>
+        <div class="service">
+            <h3>KOC, Buzzer & Penbay Network</h3>
+            <p>
+                Aktivasi mass audience melalui KOC, buzzer organik,
+                dan penbay tersegmentasi berbasis data.
+            </p>
+        </div>
 
-<section class="contact">
-    <h2>Siap Bertumbuh Bersama?</h2>
-    <p>Ikuti kami di Instagram untuk insight bisnis & konsultasi awal.</p>
-    <a href="https://www.instagram.com/fdx.management/" class="cta">Follow Instagram</a>
+        <div class="service">
+            <h3>Talent & Personal Agency</h3>
+            <p>
+                Personal branding, media handling, monetisasi,
+                serta manajemen karier talent & public figure.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="premium" id="contact">
+    <h2>Work With Premium Network</h2>
+    <p>
+        Bangun kampanye influence yang kredibel, elegan,
+        dan berdampak nyata bersama FDX Management.
+    </p>
+    <a href="https://www.instagram.com/fdx.management/" class="btn">Contact Us</a>
 </section>
 
 <footer>
-    <p>&copy; 2025 FDX Management. All Rights Reserved.</p>
+    &copy; 2025 FDX Management. Premium Talent & Influence Agency.
 </footer>
 
 </body>
