@@ -1,134 +1,248 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FDX Management - Solusi Manajemen Bisnis Anda</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background-color: #007bff;
-            color: white;
-            padding: 50px 20px;
-            text-align: center;
-            background-image: url('https://via.placeholder.com/1920x600/007bff/ffffff?text=FDX+Management'); /* Ganti dengan gambar header Anda */
-            background-size: cover;
-            background-position: center;
-        }
-        header h1 {
-            font-size: 3em;
-            margin: 0;
-        }
-        header p {
-            font-size: 1.2em;
-            margin: 10px 0;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .section {
-            margin: 40px 0;
-            text-align: center;
-        }
-        .section h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-        .services {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        .service {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            padding: 20px;
-            margin: 10px;
-            width: 300px;
-            transition: transform 0.3s;
-        }
-        .service:hover {
-            transform: translateY(-5px);
-        }
-        .cta {
-            background-color: #28a745;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2em;
-            display: inline-block;
-            margin-top: 20px;
-        }
-        .cta:hover {
-            background-color: #218838;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDX Management | Solusi Manajemen Bisnis</title>
+
+<style>
+:root {
+    --primary: #0d6efd;
+    --secondary: #198754;
+    --dark: #1f2937;
+    --light: #f9fafb;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+/* ===== HERO ===== */
+header {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(13,110,253,0.75), rgba(13,110,253,0.75)),
+        url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 40px 20px;
+}
+
+.hero {
+    max-width: 900px;
+    margin: auto;
+    animation: fadeUp 1.2s ease;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+}
+
+.cta {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 35px;
+    background: var(--secondary);
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: 0.3s ease;
+}
+
+.cta:hover {
+    transform: translateY(-4px);
+    background: #157347;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* ===== SECTION ===== */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 20px;
+}
+
+.section {
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.section h2::after {
+    content: "";
+    width: 70px;
+    height: 4px;
+    background: var(--primary);
+    display: block;
+    margin: 15px auto;
+    border-radius: 2px;
+}
+
+.section p {
+    max-width: 800px;
+    margin: auto;
+    font-size: 1.05rem;
+    color: #555;
+}
+
+/* ===== SERVICES ===== */
+.services {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.service {
+    background: white;
+    padding: 35px 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.service:hover {
+    transform: translateY(-10px);
+}
+
+.service h3 {
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.service p {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+/* ===== CONTACT ===== */
+.contact {
+    background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+    color: white;
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2.2rem;
+}
+
+.contact p {
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #111827;
+    color: #9ca3af;
+    text-align: center;
+    padding: 25px;
+    font-size: 0.9rem;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+    .hero p {
+        font-size: 1rem;
+    }
+    .cta {
+        width: 100%;
+    }
+}
+</style>
 </head>
+
 <body>
-    <header>
+
+<header>
+    <div class="hero">
         <h1>FDX Management</h1>
-        <p>Solusi Manajemen Bisnis Profesional untuk Pertumbuhan Anda</p>
-        <a href="https://www.instagram.com/fdx.management/" class="cta">Kunjungi Instagram Kami</a>
-    </header>
-    
-    <div class="container">
-        <section class="section">
-            <h2>Tentang Kami</h2>
-            <p>FDX Management adalah tim ahli yang siap membantu bisnis Anda mencapai potensi maksimal. Dari konsultasi strategis hingga operasional harian, kami hadir untuk mendukung kesuksesan Anda.</p>
-        </section>
-        
-        <section class="section">
-            <h2>Layanan Kami</h2>
-            <div class="services">
-                <div class="service">
-                    <h3>Konsultasi Bisnis</h3>
-                    <p>Analisis mendalam dan strategi untuk meningkatkan efisiensi operasional.</p>
-                </div>
-                <div class="service">
-                    <h3>Manajemen Pemasaran</h3>
-                    <p>Strategi digital dan branding yang efektif untuk menjangkau lebih banyak pelanggan.</p>
-                </div>
-                <div class="service">
-                    <h3>Pelatihan Tim</h3>
-                    <p>Program pelatihan untuk meningkatkan keterampilan dan produktivitas tim Anda.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="section">
-            <h2>Hubungi Kami</h2>
-            <p>Siap untuk memulai? Ikuti kami di Instagram untuk update terbaru dan konsultasi gratis.</p>
-            <a href="https://www.instagram.com/fdx.management/" class="cta">Ikuti di Instagram</a>
-        </section>
+        <p>Solusi Manajemen Bisnis Profesional untuk Mendorong Pertumbuhan & Skalabilitas Usaha Anda</p>
+        <a href="https://www.instagram.com/fdx.management/" class="cta">Kunjungi Instagram</a>
     </div>
-    
-    <footer>
-        <p>&copy; 2023 FDX Management. Semua hak dilindungi.</p>
-    </footer>
-    
-    <script>
-        // Tambahkan interaktivitas sederhana, misalnya alert saat klik CTA
-        document.querySelectorAll('.cta').forEach(btn => {
-            btn.addEventListener('click', () => {
-                alert('Terima kasih! Mengarahkan ke Instagram...');
-            });
-        });
-    </script>
+</header>
+
+<div class="container">
+
+    <section class="section">
+        <h2>Tentang Kami</h2>
+        <p>
+            FDX Management adalah partner strategis bisnis yang berfokus pada peningkatan kinerja,
+            efisiensi, dan pertumbuhan berkelanjutan melalui pendekatan manajemen modern dan berbasis data.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>Layanan Kami</h2>
+
+        <div class="services">
+            <div class="service">
+                <h3>Konsultasi Bisnis</h3>
+                <p>Analisis mendalam, perencanaan strategis, dan solusi berbasis kebutuhan bisnis Anda.</p>
+            </div>
+
+            <div class="service">
+                <h3>Manajemen Pemasaran</h3>
+                <p>Branding, strategi digital, dan optimasi pemasaran untuk meningkatkan market reach.</p>
+            </div>
+
+            <div class="service">
+                <h3>Pelatihan & SDM</h3>
+                <p>Pengembangan kompetensi tim agar lebih adaptif, produktif, dan berdaya saing.</p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<section class="contact">
+    <h2>Siap Bertumbuh Bersama?</h2>
+    <p>Ikuti kami di Instagram untuk insight bisnis & konsultasi awal.</p>
+    <a href="https://www.instagram.com/fdx.management/" class="cta">Follow Instagram</a>
+</section>
+
+<footer>
+    <p>&copy; 2025 FDX Management. All Rights Reserved.</p>
+</footer>
+
 </body>
 </html>
