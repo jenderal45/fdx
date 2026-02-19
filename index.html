@@ -342,54 +342,6 @@ section{
   }
 }
 
-/* ===== TALENT ===== */
-.talent-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-}
-
-.talent{
-    border-radius:22px;
-    overflow:hidden;
-    border:1px solid var(--border);
-    background:rgba(255,255,255,.02);
-    transition:.35s;
-}
-
-.talent:hover{
-    transform:translateY(-10px);
-    border-color:rgba(201,162,77,.25);
-}
-
-.talent .img{
-    height:260px;
-    background-size:cover;
-    background-position:center;
-    position:relative;
-}
-
-.talent .img::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to top, rgba(11,18,32,.95), transparent 60%);
-}
-
-.talent .info{
-    padding:18px 18px 22px;
-}
-
-.talent h4{
-    font-size:1.05rem;
-    margin-bottom:6px;
-}
-
-.talent p{
-    color:var(--gray);
-    font-size:.92rem;
-}
-
 /* ===== PORTFOLIO CARD ===== */
 /* PORTFOLIO */
 .portfolio-grid{
@@ -809,13 +761,11 @@ footer{
 <nav>
     <div class="brand">
         <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/logo-fdx-management.png" alt="FDX Logo" class="logo-img">
-        <!--<h1>FDX MANAGEMENT</h1>-->
     </div>
 
     <div class="links">
         <a href="#about">About</a>
         <a href="#services">Services</a>
-        <a href="#talent">Talent</a>
         <a href="#partners">Partners</a>
         <a href="#contact">Contact</a>
     </div>
@@ -925,64 +875,6 @@ footer{
     </div>
 </section>
 
-<!-- TALENT -->
-<section id="talent">
-    <div class="section-title">
-        <h2>Featured <span>Talent</span></h2>
-        <p>Contoh tampilan showcase. Bisa diganti foto & nama talent asli.</p>
-    </div>
-
-    <div class="talent-grid">
-        <div class="talent">
-            <div class="img" style="background-image:url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80')"></div>
-            <div class="info">
-                <h4>Talent A</h4>
-                <p>Beauty • Lifestyle • 250K+</p>
-            </div>
-        </div>
-
-        <div class="talent">
-            <div class="img" style="background-image:url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=80')"></div>
-            <div class="info">
-                <h4>Talent B</h4>
-                <p>Fashion • Luxury • 180K+</p>
-            </div>
-        </div>
-
-        <div class="talent">
-            <div class="img" style="background-image:url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=80')"></div>
-            <div class="info">
-                <h4>Talent C</h4>
-                <p>Business • Edu • 95K+</p>
-            </div>
-        </div>
-
-        <div class="talent">
-            <div class="img" style="background-image:url('https://images.unsplash.com/photo-1524503033411-f0ce7bf36f2b?auto=format&fit=crop&w=1200&q=80')"></div>
-            <div class="info">
-                <h4>Talent D</h4>
-                <p>Food • Travel • 310K+</p>
-            </div>
-        </div>
-
-        <div class="talent">
-            <div class="img" style="background-image:url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80')"></div>
-            <div class="info">
-                <h4>Talent E</h4>
-                <p>Tech • Review • 140K+</p>
-            </div>
-        </div>
-
-        <div class="talent">
-            <div class="img" style="background-image:url('https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?auto=format&fit=crop&w=1200&q=80')"></div>
-            <div class="info">
-                <h4>Talent F</h4>
-                <p>Fitness • Health • 210K+</p>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- PARTNERS -->
 <section id="brand-partners" class="section">
   <div class="section-title">
@@ -1004,6 +896,16 @@ footer{
       <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.47.jpeg" alt="Brand 8">
       <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.34.11.jpeg" alt="Brand 9">
       <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.34.47.jpeg" alt="Brand 10">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.35.27.jpeg" alt="Brand 11">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.36.04.jpeg" alt="Brand 12">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.38.24.jpeg" alt="Brand 13">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.39.33.jpeg" alt="Brand 14">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.40.15.jpeg" alt="Brand 15">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.41.23.jpeg" alt="Brand 16">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.43.38.jpeg" alt="Brand 17">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.45.08.jpeg" alt="Brand 18">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.45.31.jpeg" alt="Brand 19">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.46.45.jpeg" alt="Brand 20">
 
       <!-- Duplicate untuk infinite effect -->
       <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.26.jpeg" alt="Brand 1">
@@ -1016,6 +918,17 @@ footer{
       <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.47.jpeg" alt="Brand 8">
       <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.34.11.jpeg" alt="Brand 9">
       <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.34.47.jpeg" alt="Brand 10">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.35.27.jpeg" alt="Brand 11">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.36.04.jpeg" alt="Brand 12">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.38.24.jpeg" alt="Brand 13">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.39.33.jpeg" alt="Brand 14">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.40.15.jpeg" alt="Brand 15">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.41.23.jpeg" alt="Brand 16">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.43.38.jpeg" alt="Brand 17">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.45.08.jpeg" alt="Brand 18">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.45.31.jpeg" alt="Brand 19">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.46.45.jpeg" alt="Brand 20">
+
     </div>
   </div>
 </section>
