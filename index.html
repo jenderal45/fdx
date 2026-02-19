@@ -295,30 +295,51 @@ section{
 }
 
 /* ===== PARTNERS ===== */
-.partners{
-    max-width:1100px;
-    margin:0 auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-    gap:16px;
+.partners-slider {
+  overflow: hidden;
+  position: relative;
+  margin-top: 40px;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
-.partner{
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:18px;
-    text-align:center;
-    background:rgba(255,255,255,.02);
-    color:#cbd5e1;
-    font-weight:600;
-    letter-spacing:.5px;
-    transition:.25s;
+.partners-track {
+  display: flex;
+  width: max-content;
+  gap: 60px;
+  animation: scrollPartners 30s linear infinite;
+  align-items: center;
 }
 
-.partner:hover{
-    transform:translateY(-5px);
-    border-color:rgba(201,162,77,.25);
-    color:var(--gold);
+.partners-track img {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: .7;
+  transition: .3s ease;
+}
+
+.partners-track img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Infinite scroll animation */
+@keyframes scrollPartners {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Responsive */
+@media (max-width:768px){
+  .partners-track{
+    gap: 40px;
+  }
+
+  .partners-track img{
+    height: 55px;
+  }
 }
 
 /* ===== TALENT ===== */
@@ -963,20 +984,36 @@ footer{
 </section>
 
 <!-- PARTNERS -->
-<section id="partners">
-    <div class="section-title">
-        <h2>Brand <span>Partners</span></h2>
-        <p>Placeholder. Tinggal ganti nama brand sesuai kerja sama kamu.</p>
-    </div>
+<section id="brand-partners" class="section">
+  <div class="section-title">
+    <h2>Trusted <span>Brand Partners</span></h2>
+    <p>Brands that collaborated with FDX Management.</p>
+  </div>
 
-    <div class="partners">
-        <div class="partner">Brand One</div>
-        <div class="partner">Brand Two</div>
-        <div class="partner">Brand Three</div>
-        <div class="partner">Brand Four</div>
-        <div class="partner">Brand Five</div>
-        <div class="partner">Brand Six</div>
+  <div class="partners-slider">
+    <div class="partners-track">
+      
+      <!-- GANTI nama file sesuai folder kamu -->
+      <img src="Brand Partners/WhatsApp Image 2026-02-20 at 00.33.26.jpeg" alt="Brand 1">
+      <img src="Brand Partners/WhatsApp Image 2026-02-20 at 00.33.27 (1).jpeg" alt="Brand 2">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/3.jpeg" alt="Brand 3">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/4.jpeg" alt="Brand 4">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/5.jpeg" alt="Brand 5">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/6.jpeg" alt="Brand 6">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/7.jpeg" alt="Brand 7">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/8.jpeg" alt="Brand 8">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/9.jpeg" alt="Brand 9">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/10.jpeg" alt="Brand 10">
+
+      <!-- Duplicate untuk infinite effect -->
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/1.jpeg">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/2.jpeg">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/3.jpeg">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/4.jpeg">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/5.jpeg">
+
     </div>
+  </div>
 </section>
 
 <!-- PORTOFOLIO -->
