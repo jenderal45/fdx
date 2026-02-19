@@ -370,82 +370,191 @@ section{
 }
 
 /* ===== PORTFOLIO CARD ===== */
-.portfolio-card{
-    max-width:1100px;
-    margin:0 auto;
-    display:grid;
-    grid-template-columns: 1.2fr .8fr;
-    gap:28px;
-    padding:32px;
-    border-radius:26px;
-    background:rgba(255,255,255,.03);
-    border:1px solid var(--border);
-    transition:.35s;
-    cursor:pointer;
-    position:relative;
-    overflow:hidden;
+/* PORTFOLIO */
+.portfolio-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 28px;
 }
 
-.portfolio-card::before{
-    content:"";
-    position:absolute;
-    inset:-120px;
-    background:radial-gradient(circle, rgba(201,162,77,.16), transparent 55%);
-    opacity:0;
-    transition:.35s;
+.portfolio-card{
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .25s ease;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
 }
 
 .portfolio-card:hover{
-    transform:translateY(-10px);
-    border-color:rgba(201,162,77,.25);
+  transform: translateY(-6px);
+  border-color: rgba(255,255,255,.16);
 }
 
-.portfolio-card:hover::before{
-    opacity:1;
+.portfolio-thumb{
+  height: 220px;
+  position: relative;
+  background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
 }
 
-.portfolio-left{
-    position:relative;
+.pdf-badge{
+  position:absolute;
+  top: 14px;
+  left: 14px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .6px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.12);
 }
 
-.portfolio-badge{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    width:54px;
-    height:34px;
-    border-radius:999px;
-    font-weight:700;
-    font-size:.85rem;
-    letter-spacing:1px;
-    color:#0b1220;
-    background:linear-gradient(135deg,var(--gold),#ffe9b0);
-    margin-bottom:14px;
+.portfolio-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding: 18px;
+  background: linear-gradient(to top, rgba(0,0,0,.55), transparent);
 }
 
-.portfolio-left h3{
-    font-size:1.7rem;
-    margin-bottom:10px;
+.overlay-title{
+  font-weight: 800;
+  font-size: 16px;
 }
 
-.portfolio-left p{
-    color:#cbd5e1;
-    max-width:620px;
+.overlay-sub{
+  opacity: .8;
+  margin-top: 4px;
+  font-size: 13px;
 }
 
-.portfolio-actions{
-    margin-top:20px;
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
+.portfolio-info{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap: 14px;
+  padding: 16px 16px;
 }
 
-.portfolio-right{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
+.portfolio-info h3{
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
 }
+
+.portfolio-info p{
+  margin: 6px 0 0;
+  font-size: 13px;
+  opacity: .8;
+}
+
+/* MODAL */
+.modal{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  z-index: 9999;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width: min(1100px, 100%);
+  background: rgba(15,15,15,.92);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 30px 90px rgba(0,0,0,.55);
+}
+
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.modal-header h3{
+  margin:0;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.modal-header p{
+  margin: 6px 0 0;
+  font-size: 13px;
+  opacity: .75;
+}
+
+.modal-close{
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: .2s;
+}
+
+.modal-close:hover{
+  background: rgba(255,255,255,.12);
+}
+
+.modal-frame{
+  width: 100%;
+  height: 70vh;
+  border: 0;
+  background: #111;
+}
+
+.modal-footer{
+  display:flex;
+  justify-content:flex-end;
+  gap: 12px;
+  padding: 14px 18px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+/* RESPONSIVE */
+@media (max-width: 980px){
+  .portfolio-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px){
+  .portfolio-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-thumb{
+    height: 200px;
+  }
+
+  .modal-frame{
+    height: 62vh;
+  }
+
+  .portfolio-info{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 
 /* PDF mock */
 .pdf-mock{
@@ -871,42 +980,36 @@ footer{
 </section>
 
 <!-- PORTOFOLIO -->
-<section id="portfolio">
+<section id="portfolio" class="section">
   <div class="section-title">
-    <h2>Our <span>Portfolio</span></h2>
-    <p>Dokumen resmi portofolio FDX Management untuk brand & partnership.</p>
+    <h2>FDX <span>Portfolio</span></h2>
+    <p>Official deck untuk brand partnership & campaign.</p>
   </div>
 
-  <div class="portfolio-card" id="openPortfolio">
-    <div class="portfolio-left">
-      <div class="portfolio-badge">PDF</div>
-      <h3>FDX Management Portfolio</h3>
-      <p>
-        Lihat profil agency, layanan, network talent, dan pendekatan campaign.
-        Format profesional untuk brand collaboration.
-      </p>
-
-      <div class="portfolio-actions">
-        <a class="btn btn-primary" href="https://raw.githubusercontent.com/jenderal45/fdx/main/1000348370%20(1).pdf" target="_blank">
-          Download PDF
-        </a>
-        <button class="btn btn-outline" type="button">
-          Preview
-        </button>
-      </div>
-    </div>
-
-    <div class="portfolio-right">
-      <div class="pdf-mock">
-        <div class="pdf-top"></div>
-        <div class="pdf-lines">
-          <span></span><span></span><span></span><span></span><span></span>
+  <div class="portfolio-grid">
+    <div class="portfolio-card" onclick="openPortfolio()">
+      <div class="portfolio-thumb">
+        <div class="pdf-badge">PDF</div>
+        <div class="portfolio-overlay">
+          <div class="overlay-title">FDX Management Deck</div>
+          <div class="overlay-sub">Klik untuk preview</div>
         </div>
+      </div>
+
+      <div class="portfolio-info">
+        <div>
+          <h3>FDX MG — Company Profile</h3>
+          <p>Talent • Influencer • KOL Campaign</p>
+        </div>
+
+        <button class="btn btn-primary" type="button">
+          View Portfolio
+        </button>
       </div>
     </div>
   </div>
 </section>
-
+    
 <!-- CONTACT -->
 <section class="cta-strip" id="contact">
     <div class="section-title">
@@ -951,29 +1054,55 @@ menuBtn.addEventListener("click", () => {
 });
 </script>
 
-<div class="modal" id="portfolioModal" aria-hidden="true">
-  <div class="modal-backdrop" id="closePortfolio"></div>
+<script>
+  function openPortfolio(){
+    document.getElementById("portfolioModal").classList.add("show");
+    document.body.style.overflow = "hidden";
+  }
 
-  <div class="modal-content">
-    <div class="modal-head">
+  function closePortfolio(){
+    document.getElementById("portfolioModal").classList.remove("show");
+    document.body.style.overflow = "";
+  }
+
+  // close when click outside box
+  document.getElementById("portfolioModal").addEventListener("click", function(e){
+    if(e.target === this) closePortfolio();
+  });
+
+  // close with ESC
+  window.addEventListener("keydown", function(e){
+    if(e.key === "Escape") closePortfolio();
+  });
+</script>
+
+<div id="portfolioModal" class="modal">
+  <div class="modal-box">
+    <div class="modal-header">
       <div>
-        <div class="modal-title">FDX Management Portfolio</div>
-        <div class="modal-sub">Preview PDF • Fullscreen</div>
+        <h3>FDX Portfolio</h3>
+        <p>Preview PDF (no auto download)</p>
       </div>
 
-      <div class="modal-actions">
-        <a class="btn btn-primary" href="https://raw.githubusercontent.com/jenderal45/fdx/main/1000348370%20(1).pdf" target="_blank">
-          Download
-        </a>
-        <button class="btn btn-outline" id="closeBtn" type="button">Close</button>
-      </div>
+      <button class="modal-close" onclick="closePortfolio()">✕</button>
     </div>
 
     <iframe
       class="modal-frame"
-      src="https://raw.githubusercontent.com/jenderal45/fdx/main/1000348370%20(1).pdf"
-      title="FDX Portfolio PDF"
+      src="https://drive.google.com/file/d/1kTw0O-ULGiwWByxaXEON0YkKgAp7vnGc/preview"
+      allow="autoplay"
     ></iframe>
+
+    <div class="modal-footer">
+      <a
+        class="btn btn-outline"
+        href="https://drive.google.com/file/d/1kTw0O-ULGiwWByxaXEON0YkKgAp7vnGc/view?usp=sharing"
+        target="_blank"
+      >
+        Open in Drive
+      </a>
+      <button class="btn btn-primary" onclick="closePortfolio()">Done</button>
+    </div>
   </div>
 </div>
     
