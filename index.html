@@ -369,6 +369,209 @@ section{
     font-size:.92rem;
 }
 
+/* ===== PORTFOLIO CARD ===== */
+.portfolio-card{
+    max-width:1100px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap:28px;
+    padding:32px;
+    border-radius:26px;
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border);
+    transition:.35s;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+}
+
+.portfolio-card::before{
+    content:"";
+    position:absolute;
+    inset:-120px;
+    background:radial-gradient(circle, rgba(201,162,77,.16), transparent 55%);
+    opacity:0;
+    transition:.35s;
+}
+
+.portfolio-card:hover{
+    transform:translateY(-10px);
+    border-color:rgba(201,162,77,.25);
+}
+
+.portfolio-card:hover::before{
+    opacity:1;
+}
+
+.portfolio-left{
+    position:relative;
+}
+
+.portfolio-badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:54px;
+    height:34px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:.85rem;
+    letter-spacing:1px;
+    color:#0b1220;
+    background:linear-gradient(135deg,var(--gold),#ffe9b0);
+    margin-bottom:14px;
+}
+
+.portfolio-left h3{
+    font-size:1.7rem;
+    margin-bottom:10px;
+}
+
+.portfolio-left p{
+    color:#cbd5e1;
+    max-width:620px;
+}
+
+.portfolio-actions{
+    margin-top:20px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.portfolio-right{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+/* PDF mock */
+.pdf-mock{
+    width:100%;
+    max-width:320px;
+    height:260px;
+    border-radius:18px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.02);
+    position:relative;
+    overflow:hidden;
+    transform:rotate(2deg);
+    box-shadow:0 30px 60px rgba(0,0,0,.25);
+}
+
+.pdf-top{
+    height:54px;
+    background:linear-gradient(135deg, rgba(201,162,77,.25), rgba(255,233,176,.06));
+    border-bottom:1px solid var(--border);
+}
+
+.pdf-lines{
+    padding:18px;
+    display:grid;
+    gap:12px;
+}
+
+.pdf-lines span{
+    height:10px;
+    border-radius:999px;
+    background:rgba(255,255,255,.07);
+}
+.pdf-lines span:nth-child(2){ width:82%; }
+.pdf-lines span:nth-child(3){ width:64%; }
+.pdf-lines span:nth-child(4){ width:90%; }
+.pdf-lines span:nth-child(5){ width:58%; }
+
+/* Responsive portfolio */
+@media(max-width:900px){
+    .portfolio-card{
+        grid-template-columns:1fr;
+        padding:26px;
+    }
+    .pdf-mock{
+        max-width:420px;
+        height:240px;
+        transform:rotate(0deg);
+    }
+}
+
+    
+/* ===== MODAL PDF ===== */
+.modal{
+    position:fixed;
+    inset:0;
+    display:none;
+    z-index:99999;
+}
+
+.modal.show{
+    display:block;
+}
+
+.modal-backdrop{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(10px);
+}
+
+.modal-content{
+    position:relative;
+    max-width:1200px;
+    margin:70px auto;
+    width:calc(100% - 28px);
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.10);
+    background:#050a14;
+    box-shadow:0 40px 100px rgba(0,0,0,.55);
+}
+
+.modal-head{
+    padding:18px 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.03);
+}
+
+.modal-title{
+    font-weight:800;
+    letter-spacing:.3px;
+}
+
+.modal-sub{
+    color:#94a3b8;
+    font-size:.9rem;
+    margin-top:2px;
+}
+
+.modal-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.modal-frame{
+    width:100%;
+    height:78vh;
+    border:0;
+    background:#0b1220;
+}
+
+@media(max-width:700px){
+    .modal-content{
+        margin:55px auto;
+    }
+    .modal-frame{
+        height:72vh;
+    }
+}
+
+    
 /* ===== CTA STRIP ===== */
 .cta-strip{
     background:linear-gradient(135deg,#020617,#0b1220);
@@ -669,29 +872,40 @@ footer{
 
 <!-- PORTOFOLIO -->
 <section id="portfolio">
-    <div class="section-title">
-        <h2>Our <span>Portofolio</span></h2>
-        <p>Dokumen resmi portofolio FDX Management.</p>
+  <div class="section-title">
+    <h2>Our <span>Portfolio</span></h2>
+    <p>Dokumen resmi portofolio FDX Management untuk brand & partnership.</p>
+  </div>
+
+  <div class="portfolio-card" id="openPortfolio">
+    <div class="portfolio-left">
+      <div class="portfolio-badge">PDF</div>
+      <h3>FDX Management Portfolio</h3>
+      <p>
+        Lihat profil agency, layanan, network talent, dan pendekatan campaign.
+        Format profesional untuk brand collaboration.
+      </p>
+
+      <div class="portfolio-actions">
+        <a class="btn btn-primary" href="https://raw.githubusercontent.com/jenderal45/fdx/main/1000348370%20(1).pdf" target="_blank">
+          Download PDF
+        </a>
+        <button class="btn btn-outline" type="button">
+          Preview
+        </button>
+      </div>
     </div>
 
-    <div class="portfolio-wrap">
-        <iframe 
-            src="https://raw.githubusercontent.com/jenderal45/fdx/main/1000348370%20(1).pdf"
-            width="100%"
-            height="700"
-            style="border-radius:18px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03);"
-        ></iframe>
-
-        <div style="text-align:center; margin-top:22px;">
-            <a class="btn btn-primary" 
-               href="https://raw.githubusercontent.com/jenderal45/fdx/main/1000348370%20(1).pdf" 
-               target="_blank">
-               Download Portfolio PDF
-            </a>
+    <div class="portfolio-right">
+      <div class="pdf-mock">
+        <div class="pdf-top"></div>
+        <div class="pdf-lines">
+          <span></span><span></span><span></span><span></span><span></span>
         </div>
+      </div>
     </div>
+  </div>
 </section>
-
 
 <!-- CONTACT -->
 <section class="cta-strip" id="contact">
@@ -737,5 +951,31 @@ menuBtn.addEventListener("click", () => {
 });
 </script>
 
+<div class="modal" id="portfolioModal" aria-hidden="true">
+  <div class="modal-backdrop" id="closePortfolio"></div>
+
+  <div class="modal-content">
+    <div class="modal-head">
+      <div>
+        <div class="modal-title">FDX Management Portfolio</div>
+        <div class="modal-sub">Preview PDF • Fullscreen</div>
+      </div>
+
+      <div class="modal-actions">
+        <a class="btn btn-primary" href="https://raw.githubusercontent.com/jenderal45/fdx/main/1000348370%20(1).pdf" target="_blank">
+          Download
+        </a>
+        <button class="btn btn-outline" id="closeBtn" type="button">Close</button>
+      </div>
+    </div>
+
+    <iframe
+      class="modal-frame"
+      src="https://raw.githubusercontent.com/jenderal45/fdx/main/1000348370%20(1).pdf"
+      title="FDX Portfolio PDF"
+    ></iframe>
+  </div>
+</div>
+    
 </body>
 </html>
