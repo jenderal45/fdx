@@ -295,53 +295,83 @@ section{
 }
 
 /* ===== PARTNERS ===== */
-.partners-slider {
-  overflow: hidden;
-  position: relative;
+.partners-grid{
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
   margin-top: 40px;
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
-.partners-track {
-  display: flex;
-  width: max-content;
-  gap: 60px;
-  animation: scrollPartners 30s linear infinite;
-  align-items: center;
+.partner-item{
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 25px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.3s ease;
+  position:relative;
+  overflow:hidden;
 }
 
-.partners-track img {
-  height: 70px;
-  width: auto;
-  object-fit: contain;
+.partner-item::before{
+  content:"";
+  position:absolute;
+  inset:-60px;
+  background: radial-gradient(circle, rgba(201,162,77,.15), transparent 60%);
+  opacity:0;
+  transition:.3s;
+}
+
+.partner-item:hover{
+  transform: translateY(-6px);
+  border-color: rgba(201,162,77,.3);
+}
+
+.partner-item:hover::before{
+  opacity:1;
+}
+
+.partner-item img{
+  max-height:60px;
+  width:auto;
+  object-fit:contain;
   filter: grayscale(100%);
-  opacity: .7;
-  transition: .3s ease;
+  opacity:.7;
+  transition:.3s ease;
 }
 
-.partners-track img:hover {
+.partner-item:hover img{
   filter: grayscale(0%);
-  opacity: 1;
-  transform: scale(1.1);
+  opacity:1;
+  transform: scale(1.08);
 }
 
-/* Infinite scroll animation */
-@keyframes scrollPartners {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* Responsive */
-@media (max-width:768px){
-  .partners-track{
-    gap: 40px;
-  }
-
-  .partners-track img{
-    height: 55px;
+/* Tablet */
+@media(max-width:1024px){
+  .partners-grid{
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
+/* Mobile */
+@media(max-width:640px){
+  .partners-grid{
+    grid-template-columns: repeat(2, 1fr);
+    gap:20px;
+  }
+
+  .partner-item{
+    padding:18px;
+  }
+
+  .partner-item img{
+    max-height:50px;
+  }
+}
+
+    
 /* ===== PORTFOLIO CARD ===== */
 /* PORTFOLIO */
 .portfolio-grid{
@@ -879,60 +909,96 @@ footer{
 <section id="brand-partners" class="section">
   <div class="section-title">
     <h2>Trusted <span>Brand Partners</span></h2>
-    <p>Brands that collaborated with FDX Management.</p>
+    <p>Brands that have collaborated with FDX Management.</p>
   </div>
 
-  <div class="partners-slider">
-    <div class="partners-track">
-      
-      <!-- GANTI nama file sesuai folder kamu -->
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.26.jpeg" alt="Brand 1">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.27 (1).jpeg" alt="Brand 2">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.27 (2).jpeg" alt="Brand 3">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.27.jpeg" alt="Brand 4">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.28 (1).jpeg" alt="Brand 5">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.28 (2).jpeg" alt="Brand 6">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.28.jpeg" alt="Brand 7">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.47.jpeg" alt="Brand 8">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.34.11.jpeg" alt="Brand 9">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.34.47.jpeg" alt="Brand 10">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.35.27.jpeg" alt="Brand 11">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.36.04.jpeg" alt="Brand 12">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.38.24.jpeg" alt="Brand 13">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.39.33.jpeg" alt="Brand 14">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.40.15.jpeg" alt="Brand 15">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.41.23.jpeg" alt="Brand 16">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.43.38.jpeg" alt="Brand 17">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.45.08.jpeg" alt="Brand 18">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.45.31.jpeg" alt="Brand 19">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.46.45.jpeg" alt="Brand 20">
+  <div class="partners-grid">
 
-      <!-- Duplicate untuk infinite effect -->
+    <!-- GANTI nama file sesuai folder kamu -->
+    <div class="partner-item">
       <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.26.jpeg" alt="Brand 1">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.27 (1).jpeg" alt="Brand 2">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.27 (2).jpeg" alt="Brand 3">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.27.jpeg" alt="Brand 4">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.28 (1).jpeg" alt="Brand 5">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.28 (2).jpeg" alt="Brand 6">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.28.jpeg" alt="Brand 7">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.47.jpeg" alt="Brand 8">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.34.11.jpeg" alt="Brand 9">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.34.47.jpeg" alt="Brand 10">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.35.27.jpeg" alt="Brand 11">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.36.04.jpeg" alt="Brand 12">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.38.24.jpeg" alt="Brand 13">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.39.33.jpeg" alt="Brand 14">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.40.15.jpeg" alt="Brand 15">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.41.23.jpeg" alt="Brand 16">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.43.38.jpeg" alt="Brand 17">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.45.08.jpeg" alt="Brand 18">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.45.31.jpeg" alt="Brand 19">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.46.45.jpeg" alt="Brand 20">
-
     </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.27 (1).jpeg" alt="Brand 2">
+    </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.27 (2).jpeg" alt="Brand 3">
+    </div>
+
+    <div class="partner-item">
+       <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.27.jpeg" alt="Brand 4">
+    </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.28 (1).jpeg" alt="Brand 5">
+    </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.28 (2).jpeg" alt="Brand 6">
+    </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.28.jpeg" alt="Brand 7">
+    </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.47.jpeg" alt="Brand 8">
+    </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.34.11.jpeg" alt="Brand 9">
+    </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.34.47.jpeg" alt="Brand 10">
+    </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.35.27.jpeg" alt="Brand 11">
+    </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.36.04.jpeg" alt="Brand 12">
+    </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.38.24.jpeg" alt="Brand 13">
+    </div>
+
+    <div class="partner-item">
+       <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.39.33.jpeg" alt="Brand 14">
+    </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.40.15.jpeg" alt="Brand 15">
+    </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.41.23.jpeg" alt="Brand 16">
+    </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.43.38.jpeg" alt="Brand 17">
+    </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.45.08.jpeg" alt="Brand 18">
+    </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.45.31.jpeg" alt="Brand 19">
+    </div>
+
+    <div class="partner-item">
+      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.46.45.jpeg" alt="Brand 20">
+    </div>
+
   </div>
 </section>
 
+    
 <!-- PORTOFOLIO -->
 <section id="portfolio" class="section">
   <div class="section-title">
