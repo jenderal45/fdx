@@ -3,14 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FDX Management | Talent & Influence Agency</title>
+<title>FDX Management | Premium Talent & Influence Agency</title>
 
 <style>
 :root{
     --gold:#c9a24d;
-    --dark:#0f172a;
-    --gray:#64748b;
+    --dark:#0b1220;
+    --dark2:#0f172a;
+    --gray:#94a3b8;
+    --text:#e5e7eb;
     --light:#f8fafc;
+    --card:#0b1326;
+    --border:rgba(255,255,255,.08);
 }
 
 *{
@@ -22,8 +26,9 @@
 
 body{
     font-family:'Segoe UI',sans-serif;
-    background:var(--light);
-    color:var(--dark);
+    background:var(--dark);
+    color:var(--text);
+    line-height:1.6;
 }
 
 /* ===== NAV ===== */
@@ -31,102 +36,160 @@ nav{
     position:fixed;
     top:0;
     width:100%;
-    padding:20px 60px;
+    padding:18px 60px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(15,23,42,0.85);
-    backdrop-filter:blur(10px);
+    background:rgba(11,18,32,0.72);
+    border-bottom:1px solid var(--border);
+    backdrop-filter:blur(14px);
     z-index:1000;
+}
+
+nav .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo{
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    background:linear-gradient(135deg,var(--gold),#ffe9b0);
+    box-shadow:0 10px 30px rgba(201,162,77,.35);
 }
 
 nav h1{
     color:white;
     letter-spacing:2px;
-    font-size:1.2rem;
+    font-size:1.05rem;
+    font-weight:700;
 }
 
 nav a{
-    color:#e5e7eb;
-    margin-left:30px;
+    color:#cbd5e1;
+    margin-left:26px;
     text-decoration:none;
     font-size:0.9rem;
-    transition:.3s;
+    transition:.25s;
 }
 
 nav a:hover{
     color:var(--gold);
 }
 
+/* Mobile menu button */
+.menu-btn{
+    display:none;
+    border:1px solid var(--border);
+    background:transparent;
+    color:#e5e7eb;
+    padding:10px 12px;
+    border-radius:12px;
+    cursor:pointer;
+}
+
 /* ===== HERO ===== */
 header{
     min-height:100vh;
     background:
-    linear-gradient(rgba(15,23,42,.75),rgba(15,23,42,.9)),
-    url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');
+        radial-gradient(circle at 20% 20%, rgba(201,162,77,.15), transparent 40%),
+        radial-gradient(circle at 80% 10%, rgba(13,110,253,.15), transparent 35%),
+        linear-gradient(rgba(11,18,32,.75), rgba(11,18,32,.95)),
+        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=2000&q=80');
     background-size:cover;
     background-position:center;
     display:flex;
     align-items:center;
-    padding:120px 60px 60px;
+    padding:130px 60px 60px;
 }
 
 .hero{
-    max-width:900px;
-    color:white;
+    max-width:980px;
     animation:fadeUp 1.2s ease;
 }
 
-.hero h2{
-    color:var(--gold);
-    letter-spacing:3px;
-    font-size:.9rem;
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    border:1px solid var(--border);
+    padding:10px 16px;
+    border-radius:999px;
+    color:#f8fafc;
+    background:rgba(255,255,255,.03);
+    letter-spacing:2px;
+    font-size:.78rem;
+    margin-bottom:18px;
 }
 
 .hero h1{
-    font-size:clamp(2.8rem,5vw,4.2rem);
-    margin:15px 0;
-    line-height:1.2;
+    font-size:clamp(2.6rem,5vw,4.4rem);
+    margin:12px 0 14px;
+    line-height:1.12;
 }
 
 .hero p{
-    max-width:600px;
-    color:#d1d5db;
-    font-size:1.1rem;
+    max-width:720px;
+    color:#cbd5e1;
+    font-size:1.08rem;
+}
+
+.hero-actions{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:32px;
 }
 
 .btn{
     display:inline-block;
-    margin-top:35px;
-    padding:15px 40px;
-    border:1px solid var(--gold);
-    color:var(--gold);
+    padding:15px 38px;
+    border-radius:999px;
     text-decoration:none;
-    border-radius:50px;
-    letter-spacing:1px;
-    transition:.3s;
+    font-weight:600;
+    letter-spacing:.6px;
+    transition:.25s;
 }
 
-.btn:hover{
-    background:var(--gold);
-    color:#111827;
+.btn-primary{
+    background:linear-gradient(135deg,var(--gold),#ffe9b0);
+    color:#0b1220;
+    border:1px solid rgba(201,162,77,.5);
+    box-shadow:0 18px 45px rgba(201,162,77,.22);
 }
 
-/* ===== SECTION ===== */
+.btn-primary:hover{
+    transform:translateY(-3px);
+}
+
+.btn-outline{
+    border:1px solid var(--border);
+    color:#e5e7eb;
+    background:rgba(255,255,255,.03);
+}
+
+.btn-outline:hover{
+    border-color:rgba(201,162,77,.35);
+    color:var(--gold);
+}
+
+/* ===== SECTIONS ===== */
 section{
-    padding:100px 60px;
+    padding:95px 60px;
 }
 
 .section-title{
     text-align:center;
-    margin-bottom:60px;
+    margin-bottom:55px;
 }
 
 .section-title h2{
     font-size:2.4rem;
 }
 
-.section-title span{
+.section-title h2 span{
     color:var(--gold);
 }
 
@@ -137,167 +200,506 @@ section{
 
 /* ===== ABOUT ===== */
 .about{
-    max-width:900px;
+    max-width:980px;
     margin:auto;
     text-align:center;
-    font-size:1.05rem;
-    color:#475569;
+    color:#cbd5e1;
+    font-size:1.03rem;
 }
 
 /* ===== SERVICES ===== */
-.services{
+.grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:35px;
-    margin-top:50px;
+    gap:22px;
 }
 
-.service{
-    background:white;
-    padding:45px 30px;
-    border-radius:18px;
-    box-shadow:0 20px 40px rgba(0,0,0,.08);
-    transition:.4s;
+.card{
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:34px 26px;
+    transition:.35s;
+    position:relative;
+    overflow:hidden;
 }
 
-.service:hover{
-    transform:translateY(-12px);
+.card::before{
+    content:"";
+    position:absolute;
+    inset:-80px;
+    background:radial-gradient(circle, rgba(201,162,77,.12), transparent 60%);
+    opacity:0;
+    transition:.35s;
 }
 
-.service h3{
+.card:hover{
+    transform:translateY(-10px);
+    border-color:rgba(201,162,77,.25);
+}
+
+.card:hover::before{
+    opacity:1;
+}
+
+.card h3{
     color:var(--gold);
-    margin-bottom:15px;
+    margin-bottom:12px;
+    font-size:1.2rem;
+    position:relative;
 }
 
-.service p{
-    color:#475569;
+.card p{
+    color:#cbd5e1;
     font-size:.95rem;
+    position:relative;
 }
 
-/* ===== PREMIUM BANNER ===== */
-.premium{
-    background:linear-gradient(135deg,#020617,#0f172a);
-    color:white;
+/* ===== STATS ===== */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+    max-width:1100px;
+    margin:0 auto;
+}
+
+.stat{
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:30px 22px;
     text-align:center;
 }
 
-.premium h2{
-    font-size:2.6rem;
+.stat h3{
+    font-size:2.2rem;
+    color:var(--gold);
 }
 
-.premium p{
-    max-width:700px;
-    margin:15px auto;
-    color:#cbd5f5;
+.stat p{
+    color:#cbd5e1;
+    margin-top:6px;
+    font-size:.95rem;
+}
+
+/* ===== PARTNERS ===== */
+.partners{
+    max-width:1100px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:16px;
+}
+
+.partner{
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:18px;
+    text-align:center;
+    background:rgba(255,255,255,.02);
+    color:#cbd5e1;
+    font-weight:600;
+    letter-spacing:.5px;
+    transition:.25s;
+}
+
+.partner:hover{
+    transform:translateY(-5px);
+    border-color:rgba(201,162,77,.25);
+    color:var(--gold);
+}
+
+/* ===== TALENT ===== */
+.talent-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.talent{
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.02);
+    transition:.35s;
+}
+
+.talent:hover{
+    transform:translateY(-10px);
+    border-color:rgba(201,162,77,.25);
+}
+
+.talent .img{
+    height:260px;
+    background-size:cover;
+    background-position:center;
+    position:relative;
+}
+
+.talent .img::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top, rgba(11,18,32,.95), transparent 60%);
+}
+
+.talent .info{
+    padding:18px 18px 22px;
+}
+
+.talent h4{
+    font-size:1.05rem;
+    margin-bottom:6px;
+}
+
+.talent p{
+    color:var(--gray);
+    font-size:.92rem;
+}
+
+/* ===== CTA STRIP ===== */
+.cta-strip{
+    background:linear-gradient(135deg,#020617,#0b1220);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    text-align:center;
+}
+
+.cta-strip h2{
+    font-size:2.5rem;
+}
+
+.cta-strip p{
+    max-width:760px;
+    margin:14px auto 0;
+    color:#cbd5e1;
 }
 
 /* ===== FOOTER ===== */
 footer{
-    background:#020617;
-    color:#94a3b8;
+    padding:35px 20px;
     text-align:center;
-    padding:30px;
+    color:#94a3b8;
+    background:#020617;
+}
+
+/* ===== WHATSAPP FLOATING ===== */
+.wa-float{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+}
+
+.wa-pill{
+    background:rgba(255,255,255,.06);
+    border:1px solid var(--border);
+    backdrop-filter:blur(12px);
+    color:#e5e7eb;
+    padding:12px 14px;
+    border-radius:999px;
     font-size:.9rem;
+    display:none;
+}
+
+.wa-btn{
+    width:58px;
+    height:58px;
+    border-radius:18px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,#25D366,#0ea05a);
+    box-shadow:0 20px 40px rgba(37,211,102,.25);
+    border:1px solid rgba(255,255,255,.15);
+    transition:.25s;
+}
+
+.wa-btn:hover{
+    transform:translateY(-4px);
+}
+
+/* WA icon */
+.wa-btn svg{
+    width:28px;
+    height:28px;
+    fill:white;
+}
+
+/* Show pill on desktop */
+@media(min-width:900px){
+    .wa-pill{ display:block; }
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:860px){
+    nav{
+        padding:16px 18px;
+    }
+    nav .links{
+        display:none;
+    }
+    .menu-btn{
+        display:block;
+    }
+    header, section{
+        padding:110px 18px 70px;
+    }
 }
 
 /* ===== ANIMATION ===== */
 @keyframes fadeUp{
-    from{opacity:0;transform:translateY(40px)}
+    from{opacity:0;transform:translateY(35px)}
     to{opacity:1;transform:translateY(0)}
-}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:768px){
-    nav{
-        padding:20px;
-    }
-    header,section{
-        padding:100px 20px;
-    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
-    <h1>FDX MANAGEMENT</h1>
-    <div>
+    <div class="brand">
+        <div class="logo"></div>
+        <img src="img/logo-fdx-management.png" alt="NeulinkNews Logo">
+        <h1>FDX MANAGEMENT</h1>
+    </div>
+
+    <div class="links">
         <a href="#about">About</a>
         <a href="#services">Services</a>
+        <a href="#talent">Talent</a>
+        <a href="#partners">Partners</a>
         <a href="#contact">Contact</a>
     </div>
+
+    <button class="menu-btn" id="menuBtn">Menu</button>
 </nav>
 
+<!-- HERO -->
 <header>
     <div class="hero">
-        <h2>PREMIUM TALENT & INFLUENCE AGENCY</h2>
-        <h1>Managing Influence.<br>Building Personal Brands.</h1>
+        <div class="badge">PREMIUM TALENT & INFLUENCE AGENCY</div>
+
+        <h1>Managing Influence.<br>Building Reputation.</h1>
+
         <p>
-            FDX Management adalah agensi profesional yang mengelola KOL, Influencer,
-            KOC, Buzzer, Penbay, serta Talent Personal Branding untuk kampanye berdampak tinggi.
+            FDX Management adalah agensi yang mengelola KOL, Influencer, KOC, Buzzer,
+            Penbay, serta Talent Personal Branding untuk campaign premium, terukur, dan berdampak.
         </p>
-        <a href="https://www.instagram.com/fdx.management/" class="btn">Explore Our Network</a>
+
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="#talent">Explore Talent</a>
+            <a class="btn btn-outline" href="https://www.instagram.com/fdx.management/" target="_blank">Instagram</a>
+        </div>
     </div>
 </header>
 
+<!-- ABOUT -->
 <section id="about">
     <div class="section-title">
         <h2>About <span>FDX</span></h2>
-        <p>Influence. Strategy. Reputation.</p>
+        <p>Influence marketing yang elegan, kredibel, dan berbasis strategi.</p>
     </div>
+
     <div class="about">
-        Kami membangun ekosistem influence marketing berbasis kredibilitas,
-        data, dan strategi. FDX Management menjadi penghubung antara brand
-        dan talent terbaik untuk menciptakan kampanye autentik dan terukur.
+        Kami menghubungkan brand dengan talent terbaik untuk membangun kampanye yang autentik.
+        Dengan sistem kurasi talent, perencanaan konten, dan eksekusi yang disiplin,
+        FDX Management fokus pada hasil: awareness, trust, dan conversion.
     </div>
 </section>
 
+<!-- SERVICES -->
 <section id="services">
     <div class="section-title">
         <h2>Our <span>Services</span></h2>
-        <p>End-to-end influence & talent management</p>
+        <p>End-to-end talent management & campaign execution</p>
     </div>
 
-    <div class="services">
-        <div class="service">
+    <div class="grid">
+        <div class="card">
             <h3>KOL & Influencer Management</h3>
             <p>
-                Pengelolaan influencer profesional untuk brand collaboration,
-                campaign execution, dan reputasi jangka panjang.
+                Pengelolaan influencer untuk brand collaboration, campaign strategy,
+                content direction, dan reputasi jangka panjang.
             </p>
         </div>
 
-        <div class="service">
-            <h3>KOC, Buzzer & Penbay Network</h3>
+        <div class="card">
+            <h3>KOC, Buzzer & Penbay Activation</h3>
             <p>
-                Aktivasi mass audience melalui KOC, buzzer organik,
-                dan penbay tersegmentasi berbasis data.
+                Aktivasi mass audience dengan segmentasi yang jelas,
+                eksekusi cepat, serta kontrol kualitas dan reporting.
             </p>
         </div>
 
-        <div class="service">
+        <div class="card">
             <h3>Talent & Personal Agency</h3>
             <p>
                 Personal branding, media handling, monetisasi,
-                serta manajemen karier talent & public figure.
+                manajemen karier, dan long-term positioning.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Campaign Strategy & Reporting</h3>
+            <p>
+                Konsep campaign, brief, timeline, monitoring performa,
+                hingga report profesional untuk brand.
             </p>
         </div>
     </div>
 </section>
 
-<section class="premium" id="contact">
-    <h2>Work With Premium Network</h2>
-    <p>
-        Bangun kampanye influence yang kredibel, elegan,
-        dan berdampak nyata bersama FDX Management.
-    </p>
-    <a href="https://www.instagram.com/fdx.management/" class="btn">Contact Us</a>
+<!-- STATS -->
+<section id="stats">
+    <div class="section-title">
+        <h2>Campaign <span>Performance</span></h2>
+        <p>Statistik dapat kamu sesuaikan sesuai portofolio FDX.</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat">
+            <h3>250+</h3>
+            <p>Talent & KOL Network</p>
+        </div>
+        <div class="stat">
+            <h3>120+</h3>
+            <p>Campaign Executed</p>
+        </div>
+        <div class="stat">
+            <h3>30+</h3>
+            <p>Brand Partners</p>
+        </div>
+        <div class="stat">
+            <h3>98%</h3>
+            <p>Client Satisfaction Rate</p>
+        </div>
+    </div>
+</section>
+
+<!-- TALENT -->
+<section id="talent">
+    <div class="section-title">
+        <h2>Featured <span>Talent</span></h2>
+        <p>Contoh tampilan showcase. Bisa diganti foto & nama talent asli.</p>
+    </div>
+
+    <div class="talent-grid">
+        <div class="talent">
+            <div class="img" style="background-image:url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80')"></div>
+            <div class="info">
+                <h4>Talent A</h4>
+                <p>Beauty • Lifestyle • 250K+</p>
+            </div>
+        </div>
+
+        <div class="talent">
+            <div class="img" style="background-image:url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=80')"></div>
+            <div class="info">
+                <h4>Talent B</h4>
+                <p>Fashion • Luxury • 180K+</p>
+            </div>
+        </div>
+
+        <div class="talent">
+            <div class="img" style="background-image:url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=80')"></div>
+            <div class="info">
+                <h4>Talent C</h4>
+                <p>Business • Edu • 95K+</p>
+            </div>
+        </div>
+
+        <div class="talent">
+            <div class="img" style="background-image:url('https://images.unsplash.com/photo-1524503033411-f0ce7bf36f2b?auto=format&fit=crop&w=1200&q=80')"></div>
+            <div class="info">
+                <h4>Talent D</h4>
+                <p>Food • Travel • 310K+</p>
+            </div>
+        </div>
+
+        <div class="talent">
+            <div class="img" style="background-image:url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80')"></div>
+            <div class="info">
+                <h4>Talent E</h4>
+                <p>Tech • Review • 140K+</p>
+            </div>
+        </div>
+
+        <div class="talent">
+            <div class="img" style="background-image:url('https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?auto=format&fit=crop&w=1200&q=80')"></div>
+            <div class="info">
+                <h4>Talent F</h4>
+                <p>Fitness • Health • 210K+</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PARTNERS -->
+<section id="partners">
+    <div class="section-title">
+        <h2>Brand <span>Partners</span></h2>
+        <p>Placeholder. Tinggal ganti nama brand sesuai kerja sama kamu.</p>
+    </div>
+
+    <div class="partners">
+        <div class="partner">Brand One</div>
+        <div class="partner">Brand Two</div>
+        <div class="partner">Brand Three</div>
+        <div class="partner">Brand Four</div>
+        <div class="partner">Brand Five</div>
+        <div class="partner">Brand Six</div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="cta-strip" id="contact">
+    <div class="section-title">
+        <h2>Let’s Build <span>Influence</span></h2>
+        <p>
+            Untuk kerja sama brand, endorsement, atau talent representation,
+            hubungi FDX Management melalui Instagram atau WhatsApp.
+        </p>
+    </div>
+
+    <div style="text-align:center;">
+        <a class="btn btn-primary" href="https://www.instagram.com/fdx.agency/" target="_blank">Instagram</a>
+        <a class="btn btn-outline" href="https://wa.me/6289513408945" target="_blank">WhatsApp</a>
+    </div>
 </section>
 
 <footer>
-    &copy; 2025 FDX Management. Premium Talent & Influence Agency.
+    <p • Premium Talent & Influence Agency </p>
+    &copy; 2025 FDX Management | Member of Astria Group 
 </footer>
+
+<!-- WhatsApp Floating Button -->
+<a class="wa-float" href="https://wa.me/6289513408945" target="_blank" aria-label="Chat WhatsApp">
+    <div class="wa-pill">Chat WhatsApp</div>
+    <div class="wa-btn">
+        <svg viewBox="0 0 32 32">
+            <path d="M19.11 17.53c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.18-1.34-.81-.72-1.36-1.6-1.52-1.87-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27 0 1.34.97 2.63 1.11 2.81.14.18 1.91 2.92 4.62 4.09.65.28 1.16.45 1.56.58.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32zM16.03 27.5c-1.99 0-3.93-.54-5.62-1.56l-3.9 1.25 1.27-3.8c-1.07-1.73-1.64-3.72-1.64-5.76 0-6.06 4.93-11 11-11 2.94 0 5.7 1.14 7.78 3.22 2.08 2.08 3.22 4.84 3.22 7.78 0 6.06-4.93 11-11 11zm9.35-20.35C23.01 4.78 19.66 3.5 16.03 3.5 8.83 3.5 3 9.33 3 16.53c0 2.29.6 4.53 1.75 6.5L3 29l6.12-1.96c1.9 1.04 4.03 1.59 6.2 1.59 7.2 0 13.03-5.83 13.03-13.03 0-3.63-1.28-6.98-3.65-9.35z"/>
+        </svg>
+    </div>
+</a>
+
+<script>
+/* Mobile Menu Simple (scroll to section) */
+const menuBtn = document.getElementById("menuBtn");
+
+menuBtn.addEventListener("click", () => {
+    const target = prompt("Ketik: about / services / talent / partners / contact");
+    if(!target) return;
+    const el = document.getElementById(target.toLowerCase());
+    if(el) el.scrollIntoView({behavior:"smooth"});
+    else alert("Section tidak ditemukan. Coba: about, services, talent, partners, contact");
+});
+</script>
 
 </body>
 </html>
