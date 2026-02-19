@@ -109,6 +109,70 @@ nav a:hover{
     cursor:pointer;
 }
 
+/* MOBILE SIDEBAR */
+.mobile-sidebar{
+    position:fixed;
+    top:0;
+    left:-300px;
+    width:280px;
+    height:100vh;
+    background:var(--dark);
+    border-right:1px solid var(--border);
+    z-index:10000;
+    transition:.3s ease;
+    overflow-y:auto;
+}
+
+.mobile-sidebar.show{
+    left:0;
+}
+
+.sidebar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+    border-bottom:1px solid var(--border);
+}
+
+.sidebar-logo{
+    width:40px;
+    height:40px;
+    object-fit:contain;
+    border-radius:8px;
+}
+
+.sidebar-close{
+    background:transparent;
+    border:1px solid var(--border);
+    color:#e5e7eb;
+    width:40px;
+    height:40px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.sidebar-links{
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.sidebar-links a{
+    color:#cbd5e1;
+    text-decoration:none;
+    font-size:1rem;
+    padding:12px 0;
+    border-bottom:1px solid rgba(255,255,255,.05);
+    transition:.25s;
+}
+
+.sidebar-links a:hover{
+    color:var(--gold);
+}
+
 /* ===== HERO ===== */
 header{
     min-height:100vh;
@@ -896,8 +960,23 @@ body.dark-mode footer{
         <a href="#contact">Contact</a>
     </div>
 
-    <button class="menu-btn" id="menuBtn">Menu</button>
+    <button class="menu-btn" id="menuBtn">☰</button>
 </nav>
+
+<!-- MOBILE SIDEBAR -->
+<div class="mobile-sidebar" id="mobileSidebar">
+    <div class="sidebar-header">
+        <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/logo-fdx-management.png" alt="FDX Logo" class="sidebar-logo">
+        <button class="sidebar-close" id="sidebarClose">✕</button>
+    </div>
+    <div class="sidebar-links">
+        <a href="#about" onclick="closeSidebar()">About</a>
+        <a href="#services" onclick="closeSidebar()">Services</a>
+        <a href="#brand-partners" onclick="closeSidebar()">Brand Partners</a>
+        <a href="#portofolio" onclick="closeSidebar()">Portofolio</a>
+        <a href="#contact" onclick="closeSidebar()">Contact</a>
+    </div>
+</div>
 
 <!-- HERO -->
 <header>
@@ -1159,15 +1238,31 @@ body.dark-mode footer{
 </div>
 
 <script>
-/* Mobile Menu Simple (scroll to section) */
+/* Mobile Menu Toggle */
 const menuBtn = document.getElementById("menuBtn");
+const mobileSidebar = document.getElementById("mobileSidebar");
+const sidebarClose = document.getElementById("sidebarClose");
 
 menuBtn.addEventListener("click", () => {
-    const target = prompt("Ketik: about / services / talent / brand-partners / portofolio / contact");
-    if(!target) return;
-    const el = document.getElementById(target.toLowerCase());
-    if(el) el.scrollIntoView({behavior:"smooth"});
-    else alert("Section tidak ditemukan. Coba: about, services, talent, brand-partners, porfolio, contact");
+    mobileSidebar.classList.add("show");
+    document.body.style.overflow = "hidden";
+});
+
+sidebarClose.addEventListener("click", closeSidebar);
+
+function closeSidebar(){
+    mobileSidebar.classList.remove("show");
+    document.body.style.overflow = "";
+}
+
+// Close sidebar when clicking outside
+mobileSidebar.addEventListener("click", (e) => {
+    if(e.target === mobileSidebar) closeSidebar();
+});
+
+// Close with ESC
+window.addEventListener("keydown", (e) => {
+    if(e.key === "Escape") closeSidebar();
 });
 
 /* DARK MODE TOGGLE */
@@ -1179,15 +1274,151 @@ darkBtn.addEventListener("click", () => {
 
 /* LANGUAGE SWITCHER */
 const langBtn = document.getElementById("langBtn");
+const languages = ['ID', 'EN', 'CN'];
+let currentLangIndex = 0;
+
+langBtn.textContent = "ID";
+switchLanguage("ID");
+
 langBtn.addEventListener("click", () => {
-    if(langBtn.textContent==="EN"){
-        langBtn.textContent="ID";
-        alert("Bahasa diubah ke Inggris (demo)");
-    }else{
-        langBtn.textContent="EN";
-        alert("Bahasa diubah ke Indonesia (demo)");
-    }
+    currentLangIndex = (currentLangIndex + 1) % languages.length;
+    const lang = languages[currentLangIndex];
+    langBtn.textContent = lang;
+    switchLanguage(lang);
 });
+
+function switchLanguage(lang) {
+    const translations = {
+        ID: {
+            badge: "PREMIUM TALENT & INFLUENCE AGENCY",
+            h1: "Managing Influence.<br>Building Reputation.",
+            heroP: "FDX Management adalah agensi yang mengelola KOL, Influencer, KOC, Buzzer, Penbay, serta Talent Personal Branding untuk campaign premium, terukur, dan berdampak.",
+            exploreTalent: "Explore Talent",
+            instagram: "Instagram",
+            aboutTitle: "About <span>FDX</span>",
+            aboutDesc: "Influence marketing yang elegan, kredibel, dan berbasis strategi.",
+            aboutText: "Kami menghubungkan brand dengan talent terbaik untuk membangun kampanye yang autentik. Dengan sistem kurasi talent, perencanaan konten, dan eksekusi yang disiplin, FDX Management fokus pada hasil: awareness, trust, dan conversion.",
+            servicesTitle: "Our <span>Services</span>",
+            servicesDesc: "End-to-end talent management & campaign execution",
+            service1: "KOL & Influencer Management",
+            service1Desc: "Pengelolaan influencer untuk brand collaboration, campaign strategy, content direction, dan reputasi jangka panjang.",
+            service2: "KOC, Buzzer & Penbay Activation",
+            service2Desc: "Aktivasi mass audience dengan segmentasi yang jelas, eksekusi cepat, serta kontrol kualitas dan reporting.",
+            service3: "Talent & Personal Agency",
+            service3Desc: "Personal branding, media handling, monetisasi, manajemen karier, dan long-term positioning.",
+            service4: "Campaign Strategy & Reporting",
+            service4Desc: "Konsep campaign, brief, timeline, monitoring performa, hingga report profesional untuk brand.",
+            statsTitle: "Campaign <span>Performance</span>",
+            statsDesc: "Statistik dapat kamu sesuaikan sesuai portofolio FDX.",
+            partnersTitle: "Trusted <span>Brand Partners</span>",
+            partnersDesc: "Brands that have collaborated with FDX Management.",
+            portofolioTitle: "FDX <span>Portofolio</span>",
+            portofolioDesc: "Official deck untuk brand partnership & campaign.",
+            contactTitle: "Let’s Build <span>Influence</span>",
+            contactDesc: "Untuk kerja sama brand, endorsement, atau talent representation, hubungi FDX Management melalui Instagram atau WhatsApp.",
+            footerPremium: "Premium Talent & Influence Agency",
+            footerCopy: "&copy; 2025 FDX Management | Member of Astria Group"
+        },
+        EN: {
+            badge: "PREMIUM TALENT & INFLUENCE AGENCY",
+            h1: "Managing Influence.<br>Building Reputation.",
+            heroP: "FDX Management is an agency that manages KOL, Influencers, KOC, Buzzers, Penbay, and Talent Personal Branding for premium, measurable, and impactful campaigns.",
+            exploreTalent: "Explore Talent",
+            instagram: "Instagram",
+            aboutTitle: "About <span>FDX</span>",
+            aboutDesc: "Elegant, credible, and strategy-based influence marketing.",
+            aboutText: "We connect brands with the best talents to build authentic campaigns. With a disciplined talent curation system, content planning, and execution, FDX Management focuses on results: awareness, trust, and conversion.",
+            servicesTitle: "Our <span>Services</span>",
+            servicesDesc: "End-to-end talent management & campaign execution",
+            service1: "KOL & Influencer Management",
+            service1Desc: "Influencer management for brand collaboration, campaign strategy, content direction, and long-term reputation.",
+            service2: "KOC, Buzzer & Penbay Activation",
+            service2Desc: "Mass audience activation with clear segmentation, fast execution, quality control, and reporting.",
+            service3: "Talent & Personal Agency",
+            service3Desc: "Personal branding, media handling, monetization, career management, and long-term positioning.",
+            service4: "Campaign Strategy & Reporting",
+            service4Desc: "Campaign concept, brief, timeline, performance monitoring, to professional reports for brands.",
+            statsTitle: "Campaign <span>Performance</span>",
+            statsDesc: "Statistics can be adjusted according to FDX portfolio.",
+            partnersTitle: "Trusted <span>Brand Partners</span>",
+            partnersDesc: "Brands that have collaborated with FDX Management.",
+            portofolioTitle: "FDX <span>Portofolio</span>",
+            portofolioDesc: "Official deck for brand partnership & campaign.",
+            contactTitle: "Let’s Build <span>Influence</span>",
+            contactDesc: "For brand collaboration, endorsement, or talent representation, contact FDX Management via Instagram or WhatsApp.",
+            footerPremium: "Premium Talent & Influence Agency",
+            footerCopy: "&copy; 2025 FDX Management | Member of Astria Group"
+        },
+        CN: {
+            badge: "高级人才与影响力代理",
+            h1: "管理影响力。<br>建立声誉。",
+            heroP: "FDX Management 是一家代理机构，管理 KOL、Influencer、KOC、Buzzer、Penbay 以及人才个人品牌，为高级、可衡量且有影响力的活动。",
+            exploreTalent: "探索人才",
+            instagram: "Instagram",
+            aboutTitle: "关于 <span>FDX</span>",
+            aboutDesc: "优雅、可信赖且基于策略的影响力营销。",
+            aboutText: "我们将品牌与最佳人才连接，以构建真实的活动。通过纪律性的才人才培养系统、内容规划和执行，FDX Management 专注于结果：知名度、信任和转化。",
+            servicesTitle: "我们的 <span>服务</span>",
+            servicesDesc: "端到端人才管理和活动执行",
+            service1: "KOL 与 Influencer 管理",
+            service1Desc: "为品牌合作、活动策略、内容指导和长期声誉管理 Influencer。",
+            service2: "KOC、Buzzer 与 Penbay 激活",
+            service2Desc: "通过清晰的细分、快速执行、质量控制和报告激活大众受众。",
+            service3: "人才与个人代理",
+            service3Desc: "个人品牌、媒体处理、货币化、职业管理和长期定位。",
+            service4: "活动策略与报告",
+            service4Desc: "活动概念、简报、时间表、绩效监控，到为品牌提供的专业报告。",
+            statsTitle: "活动 <span>绩效</span>",
+            statsDesc: "统计数据可根据 FDX 投资组合进行调整。",
+            partnersTitle: "值得信赖的 <span>品牌合作伙伴</span>",
+            partnersDesc: "与 FDX Management 合作的品牌。",
+            portofolioTitle: "FDX <span>投资组合</span>",
+            portofolioDesc: "品牌合作与活动的官方演示。",
+            contactTitle: "让我们建立 <span>影响力</span>",
+            contactDesc: "对于品牌合作、代言或人才代表，通过 Instagram 或 WhatsApp 联系 FDX Management。",
+            footerPremium: "高级人才与影响力代理",
+            footerCopy: "&copy; 2025 FDX Management | Astria Group 成员"
+        }
+    };
+
+    const t = translations[lang];
+
+    document.querySelector('.badge').innerHTML = t.badge;
+    document.querySelector('.hero h1').innerHTML = t.h1;
+    document.querySelector('.hero p').innerHTML = t.heroP;
+    document.querySelector('.hero-actions a:first-child').innerHTML = t.exploreTalent;
+    document.querySelector('.hero-actions a:last-child').innerHTML = t.instagram;
+
+    document.querySelector('#about .section-title h2').innerHTML = t.aboutTitle;
+    document.querySelector('#about .section-title p').innerHTML = t.aboutDesc;
+    document.querySelector('#about .about').innerHTML = t.aboutText;
+
+    document.querySelector('#services .section-title h2').innerHTML = t.servicesTitle;
+    document.querySelector('#services .section-title p').innerHTML = t.servicesDesc;
+    document.querySelector('#services .card:nth-child(1) h3').innerHTML = t.service1;
+    document.querySelector('#services .card:nth-child(1) p').innerHTML = t.service1Desc;
+    document.querySelector('#services .card:nth-child(2) h3').innerHTML = t.service2;
+    document.querySelector('#services .card:nth-child(2) p').innerHTML = t.service2Desc;
+    document.querySelector('#services .card:nth-child(3) h3').innerHTML = t.service3;
+    document.querySelector('#services .card:nth-child(3) p').innerHTML = t.service3Desc;
+    document.querySelector('#services .card:nth-child(4) h3').innerHTML = t.service4;
+    document.querySelector('#services .card:nth-child(4) p').innerHTML = t.service4Desc;
+
+    document.querySelector('#stats .section-title h2').innerHTML = t.statsTitle;
+    document.querySelector('#stats .section-title p').innerHTML = t.statsDesc;
+
+    document.querySelector('#brand-partners .section-title h2').innerHTML = t.partnersTitle;
+    document.querySelector('#brand-partners .section-title p').innerHTML = t.partnersDesc;
+
+    document.querySelector('#portofolio .section-title h2').innerHTML = t.portofolioTitle;
+    document.querySelector('#portofolio .section-title p').innerHTML = t.portofolioDesc;
+
+    document.querySelector('#contact .section-title h2').innerHTML = t.contactTitle;
+    document.querySelector('#contact .section-title p').innerHTML = t.contactDesc;
+
+    document.querySelector('footer .footer-premium').innerHTML = t.footerPremium;
+    document.querySelector('footer .footer-copy').innerHTML = t.footerCopy;
+}
 </script>
 
 <script>
