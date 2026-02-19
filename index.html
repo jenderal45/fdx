@@ -142,13 +142,13 @@ header{
     margin-top:32px;
 }
 
-.portfolio-wrap{
+.portofolio-wrap{
     max-width:1100px;
     margin:0 auto;
 }
 
 @media(max-width:768px){
-    #portfolio iframe{
+    #portofolio iframe{
         height:520px;
     }
 }
@@ -372,16 +372,16 @@ section{
 }
 
     
-/* ===== PORTFOLIO CARD ===== */
-/* PORTFOLIO */
-.portfolio-grid{
+/* ===== PORTOFOLIO CARD ===== */
+/* PORTOFOLIO */
+.portofolio-grid{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
   margin-top: 28px;
 }
 
-.portfolio-card{
+.portofolio-card{
   background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.08);
   border-radius: 18px;
@@ -391,12 +391,12 @@ section{
   box-shadow: 0 12px 30px rgba(0,0,0,.18);
 }
 
-.portfolio-card:hover{
+.portofolio-card:hover{
   transform: translateY(-6px);
   border-color: rgba(255,255,255,.16);
 }
 
-.portfolio-thumb{
+.portofolio-thumb{
   height: 220px;
   position: relative;
   background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
@@ -415,7 +415,7 @@ section{
   border: 1px solid rgba(255,255,255,.12);
 }
 
-.portfolio-overlay{
+.portofolio-overlay{
   position:absolute;
   inset:0;
   display:flex;
@@ -436,7 +436,7 @@ section{
   font-size: 13px;
 }
 
-.portfolio-info{
+.portofolio-info{
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -444,13 +444,13 @@ section{
   padding: 16px 16px;
 }
 
-.portfolio-info h3{
+.portofolio-info h3{
   margin: 0;
   font-size: 15px;
   font-weight: 800;
 }
 
-.portfolio-info p{
+.portofolio-info p{
   margin: 6px 0 0;
   font-size: 13px;
   opacity: .8;
@@ -534,17 +534,17 @@ section{
 
 /* RESPONSIVE */
 @media (max-width: 980px){
-  .portfolio-grid{
+  .portofolio-grid{
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 640px){
-  .portfolio-grid{
+  .portofolio-grid{
     grid-template-columns: 1fr;
   }
 
-  .portfolio-thumb{
+  .portofolio-thumb{
     height: 200px;
   }
 
@@ -552,7 +552,7 @@ section{
     height: 62vh;
   }
 
-  .portfolio-info{
+  .portofolio-info{
     flex-direction: column;
     align-items: flex-start;
   }
@@ -595,9 +595,9 @@ section{
 .pdf-lines span:nth-child(4){ width:90%; }
 .pdf-lines span:nth-child(5){ width:58%; }
 
-/* Responsive portfolio */
+/* Responsive portofolio */
 @media(max-width:900px){
-    .portfolio-card{
+    .portofolio-card{
         grid-template-columns:1fr;
         padding:26px;
     }
@@ -796,7 +796,8 @@ footer{
     <div class="links">
         <a href="#about">About</a>
         <a href="#services">Services</a>
-        <a href="#partners">Partners</a>
+        <a href="#brand-partners">Brand Partners</a>
+        <a href="#portofolio">Portofolio</a>
         <a href="#contact">Contact</a>
     </div>
 
@@ -1000,30 +1001,30 @@ footer{
 
     
 <!-- PORTOFOLIO -->
-<section id="portfolio" class="section">
+<section id="portofolio" class="section">
   <div class="section-title">
-    <h2>FDX <span>Portfolio</span></h2>
+    <h2>FDX <span>Portofolio</span></h2>
     <p>Official deck untuk brand partnership & campaign.</p>
   </div>
 
-  <div class="portfolio-grid">
-    <div class="portfolio-card" onclick="openPortfolio()">
-      <div class="portfolio-thumb">
+  <div class="portofolio-grid">
+    <div class="portofolio-card" onclick="openPortofolio()">
+      <div class="portofolio-thumb">
         <div class="pdf-badge">PDF</div>
-        <div class="portfolio-overlay">
+        <div class="portofolio-overlay">
           <div class="overlay-title">FDX Management Deck</div>
           <div class="overlay-sub">Klik untuk preview</div>
         </div>
       </div>
 
-      <div class="portfolio-info">
+      <div class="portofolio-info">
         <div>
           <h3>FDX MG — Company Profile</h3>
           <p>Talent • Influencer • KOL Campaign</p>
         </div>
 
         <button class="btn btn-primary" type="button">
-          View Portfolio
+          View Portofolio
         </button>
       </div>
     </div>
@@ -1066,7 +1067,7 @@ footer{
 const menuBtn = document.getElementById("menuBtn");
 
 menuBtn.addEventListener("click", () => {
-    const target = prompt("Ketik: about / services / talent / brand-partners / portfolio / contact");
+    const target = prompt("Ketik: about / services / talent / brand-partners / portofolio / contact");
     if(!target) return;
     const el = document.getElementById(target.toLowerCase());
     if(el) el.scrollIntoView({behavior:"smooth"});
@@ -1075,36 +1076,36 @@ menuBtn.addEventListener("click", () => {
 </script>
 
 <script>
-  function openPortfolio(){
-    document.getElementById("portfolioModal").classList.add("show");
+  function openPortofolio(){
+    document.getElementById("portofolioModal").classList.add("show");
     document.body.style.overflow = "hidden";
   }
 
-  function closePortfolio(){
-    document.getElementById("portfolioModal").classList.remove("show");
+  function closePortofolio(){
+    document.getElementById("portofolioModal").classList.remove("show");
     document.body.style.overflow = "";
   }
 
   // close when click outside box
-  document.getElementById("portfolioModal").addEventListener("click", function(e){
-    if(e.target === this) closePortfolio();
+  document.getElementById("portofolioModal").addEventListener("click", function(e){
+    if(e.target === this) closePortofolio();
   });
 
   // close with ESC
   window.addEventListener("keydown", function(e){
-    if(e.key === "Escape") closePortfolio();
+    if(e.key === "Escape") closePortofolio();
   });
 </script>
 
-<div id="portfolioModal" class="modal">
+<div id="portofolioModal" class="modal">
   <div class="modal-box">
     <div class="modal-header">
       <div>
-        <h3>FDX Portfolio</h3>
+        <h3>FDX Portofolio</h3>
         <p>Preview PDF (no auto download)</p>
       </div>
 
-      <button class="modal-close" onclick="closePortfolio()">✕</button>
+      <button class="modal-close" onclick="closePortofolio()">✕</button>
     </div>
 
     <iframe
@@ -1121,7 +1122,7 @@ menuBtn.addEventListener("click", () => {
       >
         Open in Drive
       </a>
-      <button class="btn btn-primary" onclick="closePortfolio()">Done</button>
+      <button class="btn btn-primary" onclick="closePortofolio()">Done</button>
     </div>
   </div>
 </div>
