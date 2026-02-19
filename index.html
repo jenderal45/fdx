@@ -142,6 +142,18 @@ header{
     margin-top:32px;
 }
 
+.portfolio-wrap{
+    max-width:1100px;
+    margin:0 auto;
+}
+
+@media(max-width:768px){
+    #portfolio iframe{
+        height:520px;
+    }
+}
+
+
 .btn{
     display:inline-block;
     padding:15px 38px;
@@ -654,6 +666,32 @@ footer{
         <div class="partner">Brand Six</div>
     </div>
 </section>
+
+<!-- PORTOFOLIO -->
+<section id="portfolio">
+    <div class="section-title">
+        <h2>Our <span>Portofolio</span></h2>
+        <p>Dokumen resmi portofolio FDX Management.</p>
+    </div>
+
+    <div class="portfolio-wrap">
+        <iframe 
+            src="https://raw.githubusercontent.com/jenderal45/fdx/main/1000348370%20(1).pdf"
+            width="100%"
+            height="700"
+            style="border-radius:18px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03);"
+        ></iframe>
+
+        <div style="text-align:center; margin-top:22px;">
+            <a class="btn btn-primary" 
+               href="https://raw.githubusercontent.com/jenderal45/fdx/main/1000348370%20(1).pdf" 
+               target="_blank">
+               Download Portfolio PDF
+            </a>
+        </div>
+    </div>
+</section>
+
 
 <!-- CONTACT -->
 <section class="cta-strip" id="contact">
