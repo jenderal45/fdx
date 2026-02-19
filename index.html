@@ -1066,11 +1066,11 @@ footer{
 const menuBtn = document.getElementById("menuBtn");
 
 menuBtn.addEventListener("click", () => {
-    const target = prompt("Ketik: about / services / talent / partners / contact");
+    const target = prompt("Ketik: about / services / talent / brand-partners / portfolio / contact");
     if(!target) return;
     const el = document.getElementById(target.toLowerCase());
     if(el) el.scrollIntoView({behavior:"smooth"});
-    else alert("Section tidak ditemukan. Coba: about, services, talent, partners, contact");
+    else alert("Section tidak ditemukan. Coba: about, services, talent, brand-partners, porfolio, contact");
 });
 </script>
 
