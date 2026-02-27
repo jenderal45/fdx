@@ -806,11 +806,33 @@ footer{
     background:#020617;
 }
 
+footer {
+    pointer-events: auto !important;
+}
+    
 body.dark-mode footer{
     background:#f8fafc;
     color:var(--dark2);
 }
 
+.footer-copy {
+    position: relative;
+    z-index: 10;
+}
+
+.footer-link {
+    color: #c9a24d; /* gold premium */
+    text-decoration: none;
+    pointer-events: auto;
+    cursor: pointer;
+    position: relative;
+    z-index: 11;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+    
 /* ===== FLOATING BUTTONS ===== */
 .floating-tools{
     position:fixed;
@@ -942,23 +964,6 @@ body.dark-mode footer{
     to{opacity:1;transform:translateY(0)}
 }
 
-    .footer-copy {
-    position: relative;
-    z-index: 10;
-}
-
-.footer-link {
-    color: #c9a24d; /* gold premium */
-    text-decoration: none;
-    pointer-events: auto;
-    cursor: pointer;
-    position: relative;
-    z-index: 11;
-}
-
-.footer-link:hover {
-    text-decoration: underline;
-}
 </style>
 </head>
 
