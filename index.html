@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FDX Management | Premium Talent & Influence Agency</title>
-    
+
     <!-- Favicon Astria Group -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/jenderal45/fdx/main/logo-fdx-management.png">
     <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/jenderal45/fdx/main/logo-fdx-management.png">
@@ -1515,7 +1515,7 @@ body.dark-mode ::-webkit-scrollbar-track{
         </p>
 
         <div class="hero-actions">
-            <a class="btn btn-primary" href="#talent">Explore Talent</a>
+            <a class="btn btn-primary" href="#services">Explore Talent</a>
             <a class="btn btn-outline" href="https://www.instagram.com/fdx.management/" target="_blank">Instagram</a>
         </div>
     </div>
@@ -2158,6 +2158,26 @@ const revealObserver = new IntersectionObserver((entries) => {
 });
 
 revealElements.forEach(el => revealObserver.observe(el));
+
+/* ========== SMOOTH SCROLL WITH NAVBAR OFFSET ========== */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+            const navHeight = document.getElementById('mainNav').offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+            // Update URL hash without jumping
+            history.pushState(null, null, targetId);
+        }
+    });
+});
+
 </script>
 
 </body>
