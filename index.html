@@ -6,27 +6,40 @@
 <title>FDX Management | Premium Talent & Influence Agency</title>
 
 <style>
+/* ========== PREMIUM DESIGN SYSTEM ========== */
 :root{
     --gold:#c9a24d;
-    --dark:#0b1220;
-    --dark2:#0f172a;
+    --gold-light:#e8c97a;
+    --gold-dark:#9a7a3a;
+    --gold-glow:rgba(201,162,77,0.15);
+    --dark:#060b14;
+    --dark2:#0a0f1a;
+    --dark3:#0e1524;
     --gray:#94a3b8;
-    --text:#e5e7eb;
+    --text:#e8e8e8;
     --light:#f8fafc;
-    --card:#0b1326;
-    --border:rgba(255,255,255,.08);
+    --card:#0a1120;
+    --card-hover:#0d1525;
+    --border:rgba(201,162,77,0.12);
+    --border-hover:rgba(201,162,77,0.25);
     --bg:var(--dark);
     --color-text:var(--text);
 }
 
-/* DARK MODE VARIATION */
 body.dark-mode{
-    --bg:#f8fafc;
-    --color-text:#0b1220;
+    --bg:#f5f7fa;
+    --color-text:#0a0f1a;
     --card:#ffffff;
-    --border:rgba(0,0,0,.08);
+    --card-hover:#fafbfc;
+    --border:rgba(201,162,77,0.15);
+    --border-hover:rgba(201,162,77,0.3);
     --gold:#b18f3f;
+    --gold-light:#d4b56a;
+    --gold-dark:#8a6f2e;
     --gray:#6b7280;
+    --dark:#f5f7fa;
+    --dark2:#e8ecf1;
+    --dark3:#ffffff;
 }
 
 *{
@@ -37,109 +50,214 @@ body.dark-mode{
 }
 
 body{
-    font-family:'Segoe UI',sans-serif;
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
     background:var(--bg);
     color:var(--color-text);
     line-height:1.6;
+    overflow-x:hidden;
 }
 
-/* ===== NAV ===== */
+/* ========== ANIMATED BACKGROUND ========== */
+.bg-animated{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+.bg-animated::before{
+    content:'';
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle, rgba(201,162,77,0.08), transparent 70%);
+    top:-200px;
+    left:-200px;
+    animation:float 20s ease-in-out infinite;
+}
+.bg-animated::after{
+    content:'';
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle, rgba(13,110,253,0.06), transparent 70%);
+    bottom:-150px;
+    right:-150px;
+    animation:float 25s ease-in-out infinite reverse;
+}
+@keyframes float{
+    0%,100%{transform:translate(0,0) scale(1);}
+    25%{transform:translate(50px,-30px) scale(1.1);}
+    50%{transform:translate(-30px,50px) scale(0.9);}
+    75%{transform:translate(30px,30px) scale(1.05);}
+}
+
+/* ========== NAV ========== */
 nav{
     position:fixed;
     top:0;
     width:100%;
-    padding:18px 60px;
+    padding:16px 60px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(11,18,32,0.72);
+    background:rgba(6,11,20,0.85);
     border-bottom:1px solid var(--border);
-    backdrop-filter:blur(14px);
+    backdrop-filter:blur(20px) saturate(1.8);
     z-index:1000;
+    transition:all 0.3s ease;
 }
 
 body.dark-mode nav{
-    background:rgba(248,250,252,0.72);
+    background:rgba(245,247,250,0.85);
+}
+
+nav.scrolled{
+    padding:12px 60px;
+    box-shadow:0 4px 30px rgba(0,0,0,0.15);
 }
 
 nav .brand{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:14px;
 }
 
 .logo-img{
-    width:44px;
-    height:44px;
+    width:46px;
+    height:46px;
     object-fit:contain;
-    border-radius:12px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    transition:all 0.3s ease;
+}
+
+.logo-img:hover{
+    transform:scale(1.05);
+    border-color:var(--gold);
+    box-shadow:0 0 20px rgba(201,162,77,0.2);
 }
 
 nav h1{
-    color:white;
-    letter-spacing:2px;
-    font-size:1.05rem;
+    color:var(--text);
+    letter-spacing:3px;
+    font-size:1.1rem;
     font-weight:700;
+    text-transform:uppercase;
+}
+
+body.dark-mode nav h1{
+    color:var(--color-text);
+}
+
+nav .links{
+    display:flex;
+    align-items:center;
+    gap:8px;
 }
 
 nav a{
     color:#cbd5e1;
-    margin-left:26px;
+    padding:8px 16px;
     text-decoration:none;
-    font-size:0.9rem;
-    transition:.25s;
+    font-size:0.88rem;
+    font-weight:500;
+    transition:all 0.25s ease;
+    border-radius:10px;
+    position:relative;
 }
 
 body.dark-mode nav a{
-    color:#334155;
+    color:#475569;
 }
 
 nav a:hover{
     color:var(--gold);
+    background:rgba(201,162,77,0.08);
 }
 
-/* Mobile menu button */
+nav a::after{
+    content:'';
+    position:absolute;
+    bottom:4px;
+    left:50%;
+    width:0;
+    height:2px;
+    background:linear-gradient(90deg, var(--gold), var(--gold-light));
+    transition:all 0.3s ease;
+    transform:translateX(-50%);
+    border-radius:2px;
+}
+
+nav a:hover::after{
+    width:60%;
+}
+
 .menu-btn{
     display:none;
     border:1px solid var(--border);
     background:transparent;
     color:#e5e7eb;
-    padding:10px 12px;
+    padding:10px 14px;
     border-radius:12px;
     cursor:pointer;
+    font-size:1.1rem;
+    transition:all 0.25s ease;
 }
 
-/* MOBILE SIDEBAR */
+.menu-btn:hover{
+    border-color:var(--gold);
+    color:var(--gold);
+}
+
+/* ========== MOBILE SIDEBAR ========== */
 .mobile-sidebar{
     position:fixed;
     top:0;
-    left:-300px;
-    width:280px;
+    left:-320px;
+    width:300px;
     height:100vh;
-    background:var(--dark);
+    background:var(--dark2);
     border-right:1px solid var(--border);
     z-index:10000;
-    transition:.3s ease;
+    transition:0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow-y:auto;
+    box-shadow:20px 0 60px rgba(0,0,0,0.3);
 }
 
 .mobile-sidebar.show{
     left:0;
 }
 
+.sidebar-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(4px);
+    z-index:9999;
+    opacity:0;
+    visibility:hidden;
+    transition:all 0.3s ease;
+}
+
+.sidebar-overlay.show{
+    opacity:1;
+    visibility:visible;
+}
+
 .sidebar-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:20px;
+    padding:24px 20px;
     border-bottom:1px solid var(--border);
 }
 
 .sidebar-logo{
-    width:40px;
-    height:40px;
+    width:42px;
+    height:42px;
     object-fit:contain;
-    border-radius:8px;
+    border-radius:10px;
 }
 
 .sidebar-close{
@@ -148,57 +266,99 @@ nav a:hover{
     color:#e5e7eb;
     width:40px;
     height:40px;
-    border-radius:8px;
+    border-radius:10px;
     cursor:pointer;
     font-size:16px;
+    transition:all 0.25s ease;
+}
+
+.sidebar-close:hover{
+    border-color:var(--gold);
+    color:var(--gold);
+    transform:rotate(90deg);
 }
 
 .sidebar-links{
     padding:20px;
     display:flex;
     flex-direction:column;
-    gap:16px;
+    gap:4px;
 }
 
 .sidebar-links a{
     color:#cbd5e1;
     text-decoration:none;
     font-size:1rem;
-    padding:12px 0;
-    border-bottom:1px solid rgba(255,255,255,.05);
-    transition:.25s;
+    padding:14px 16px;
+    border-radius:12px;
+    transition:all 0.25s ease;
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
 .sidebar-links a:hover{
     color:var(--gold);
+    background:rgba(201,162,77,0.08);
+    padding-left:24px;
 }
 
-/* ===== HERO ===== */
+.sidebar-divider{
+    height:1px;
+    background:var(--border);
+    margin:12px 16px;
+}
+
+.sidebar-footer{
+    padding:20px;
+    color:var(--gray);
+    font-size:0.85rem;
+    text-align:center;
+}
+
+/* ========== HERO ========== */
 header{
     min-height:100vh;
     background:
-        radial-gradient(circle at 20% 20%, rgba(201,162,77,.15), transparent 40%),
-        radial-gradient(circle at 80% 10%, rgba(13,110,253,.15), transparent 35%),
-        linear-gradient(rgba(11,18,32,.75), rgba(11,18,32,.95)),
+        radial-gradient(circle at 25% 25%, rgba(201,162,77,0.12), transparent 50%),
+        radial-gradient(circle at 75% 15%, rgba(13,110,253,0.08), transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(201,162,77,0.06), transparent 40%),
+        linear-gradient(rgba(6,11,20,0.82), rgba(6,11,20,0.96)),
         url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=2000&q=80');
     background-size:cover;
     background-position:center;
     display:flex;
     align-items:center;
-    padding:130px 60px 60px;
+    padding:140px 60px 80px;
+    position:relative;
+    overflow:hidden;
 }
 
 body.dark-mode header{
     background:
-        radial-gradient(circle at 20% 20%, rgba(177,143,63,.15), transparent 40%),
-        radial-gradient(circle at 80% 10%, rgba(13,110,253,.15), transparent 35%),
-        linear-gradient(rgba(248,250,252,.75), rgba(248,250,252,.95)),
+        radial-gradient(circle at 25% 25%, rgba(177,143,63,0.1), transparent 50%),
+        radial-gradient(circle at 75% 15%, rgba(13,110,253,0.06), transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(177,143,63,0.05), transparent 40%),
+        linear-gradient(rgba(245,247,250,0.85), rgba(245,247,250,0.98)),
         url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=2000&q=80');
 }
 
+header::before{
+    content:'';
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    height:200px;
+    background:linear-gradient(to top, var(--bg), transparent);
+    z-index:1;
+}
+
 .hero{
-    max-width:980px;
+    max-width:1000px;
     animation:fadeUp 1.2s ease;
+    position:relative;
+    z-index:2;
 }
 
 .badge{
@@ -206,638 +366,882 @@ body.dark-mode header{
     align-items:center;
     gap:10px;
     border:1px solid var(--border);
-    padding:10px 16px;
+    padding:10px 20px;
     border-radius:999px;
-    color:var(--color-text);
-    background:rgba(255,255,255,.03);
-    letter-spacing:2px;
-    font-size:.78rem;
-    margin-bottom:18px;
+    color:var(--gold);
+    background:rgba(201,162,77,0.06);
+    letter-spacing:3px;
+    font-size:.75rem;
+    font-weight:600;
+    margin-bottom:24px;
+    text-transform:uppercase;
+    backdrop-filter:blur(10px);
+}
+
+.badge::before{
+    content:'';
+    width:8px;
+    height:8px;
+    background:var(--gold);
+    border-radius:50%;
+    animation:pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse{
+    0%,100%{opacity:1; transform:scale(1);}
+    50%{opacity:0.5; transform:scale(1.3);}
 }
 
 .hero h1{
-    font-size:clamp(2.6rem,5vw,4.4rem);
-    margin:12px 0 14px;
-    line-height:1.12;
+    font-size:clamp(2.8rem,5.5vw,4.8rem);
+    margin:16px 0 20px;
+    line-height:1.08;
+    font-weight:800;
+    letter-spacing:-1px;
+}
+
+.hero h1 span{
+    background:linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
 }
 
 .hero p{
-    max-width:720px;
-    color:#cbd5e1;
-    font-size:1.08rem;
+    max-width:680px;
+    color:#a0aec0;
+    font-size:1.15rem;
+    line-height:1.7;
+    margin-bottom:8px;
+}
+
+body.dark-mode .hero p{
+    color:#64748b;
 }
 
 .hero-actions{
     display:flex;
-    gap:14px;
+    gap:16px;
     flex-wrap:wrap;
-    margin-top:32px;
+    margin-top:40px;
 }
 
-.portofolio-wrap{
-    max-width:1100px;
-    margin:0 auto;
-}
-
-@media(max-width:768px){
-    #portofolio iframe{
-        height:520px;
-    }
-}
-
-
+/* ========== BUTTONS ========== */
 .btn{
-    display:inline-block;
-    padding:15px 38px;
-    border-radius:999px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 36px;
+    border-radius:14px;
     text-decoration:none;
     font-weight:600;
-    letter-spacing:.6px;
-    transition:.25s;
-}
-
-.btn-primary{
-    background:linear-gradient(135deg,var(--gold),#ffe9b0);
-    color:#0b1220;
-    border:1px solid rgba(201,162,77,.5);
-    box-shadow:0 18px 45px rgba(201,162,77,.22);
-}
-
-.btn-primary:hover{
-    transform:translateY(-3px);
-}
-
-.btn-outline{
-    border:1px solid var(--border);
-    color:#e5e7eb;
-    background:rgba(255,255,255,.03);
-}
-
-.btn-outline:hover{
-    border-color:rgba(201,162,77,.35);
-    color:var(--gold);
-}
-
-/* ===== SECTIONS ===== */
-section{
-    padding:95px 60px;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:55px;
-}
-
-.section-title h2{
-    font-size:2.4rem;
-}
-
-.section-title h2 span{
-    color:var(--gold);
-}
-
-.section-title p{
-    margin-top:10px;
-    color:var(--gray);
-}
-
-/* ===== ABOUT ===== */
-.about{
-    max-width:980px;
-    margin:auto;
-    text-align:center;
-    color:#cbd5e1;
-    font-size:1.03rem;
-}
-
-/* ===== SERVICES ===== */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:22px;
-}
-
-.card{
-    background:rgba(255,255,255,.03);
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:34px 26px;
-    transition:.35s;
+    letter-spacing:0.5px;
+    transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size:0.95rem;
+    cursor:pointer;
+    border:none;
     position:relative;
     overflow:hidden;
 }
 
-.card::before{
-    content:"";
+.btn-primary{
+    background:linear-gradient(135deg, var(--gold), var(--gold-light));
+    color:#0a0f1a;
+    box-shadow:0 8px 30px rgba(201,162,77,0.3), 0 2px 8px rgba(201,162,77,0.2);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 40px rgba(201,162,77,0.4), 0 4px 12px rgba(201,162,77,0.25);
+}
+
+.btn-primary::after{
+    content:'';
     position:absolute;
-    inset:-80px;
-    background:radial-gradient(circle, rgba(201,162,77,.12), transparent 60%);
+    inset:0;
+    background:linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform:translateX(-100%);
+    transition:transform 0.6s ease;
+}
+
+.btn-primary:hover::after{
+    transform:translateX(100%);
+}
+
+.btn-outline{
+    border:1.5px solid var(--border);
+    color:#e5e7eb;
+    background:rgba(255,255,255,0.03);
+    backdrop-filter:blur(10px);
+}
+
+body.dark-mode .btn-outline{
+    color:#475569;
+    background:rgba(0,0,0,0.03);
+}
+
+.btn-outline:hover{
+    border-color:var(--gold);
+    color:var(--gold);
+    background:rgba(201,162,77,0.06);
+    transform:translateY(-3px);
+}
+
+/* ========== SECTIONS ========== */
+section{
+    padding:110px 60px;
+    position:relative;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-size:2.6rem;
+    font-weight:800;
+    letter-spacing:-0.5px;
+    margin-bottom:12px;
+}
+
+.section-title h2 span{
+    background:linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+}
+
+.section-title p{
+    color:var(--gray);
+    font-size:1.05rem;
+    max-width:600px;
+    margin:0 auto;
+}
+
+.section-label{
+    display:inline-block;
+    color:var(--gold);
+    font-size:0.8rem;
+    font-weight:600;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
+
+/* ========== ABOUT ========== */
+.about{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+    color:#a0aec0;
+    font-size:1.1rem;
+    line-height:1.8;
+}
+
+body.dark-mode .about{
+    color:#64748b;
+}
+
+.about-features{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:30px;
+    max-width:900px;
+    margin:50px auto 0;
+}
+
+.about-feature{
+    text-align:center;
+    padding:30px 20px;
+    border-radius:16px;
+    background:rgba(255,255,255,0.02);
+    border:1px solid var(--border);
+    transition:all 0.3s ease;
+}
+
+.about-feature:hover{
+    transform:translateY(-6px);
+    border-color:var(--border-hover);
+    background:rgba(201,162,77,0.04);
+}
+
+.about-feature-icon{
+    width:56px;
+    height:56px;
+    border-radius:16px;
+    background:linear-gradient(135deg, rgba(201,162,77,0.15), rgba(201,162,77,0.05));
+    display:grid;
+    place-items:center;
+    margin:0 auto 16px;
+    font-size:1.4rem;
+    border:1px solid var(--border);
+}
+
+.about-feature h4{
+    font-size:1.1rem;
+    margin-bottom:8px;
+    color:var(--text);
+}
+
+body.dark-mode .about-feature h4{
+    color:var(--color-text);
+}
+
+.about-feature p{
+    font-size:0.9rem;
+    color:var(--gray);
+    line-height:1.6;
+}
+
+/* ========== SERVICES ========== */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:24px;
+    max-width:1200px;
+    margin:0 auto;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:40px 30px;
+    transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg, rgba(201,162,77,0.05), transparent 60%);
     opacity:0;
-    transition:.35s;
+    transition:opacity 0.4s ease;
+}
+
+.card::after{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:3px;
+    background:linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    background-size:200% 100%;
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform 0.4s ease;
+    animation:shimmer 3s linear infinite;
+}
+
+@keyframes shimmer{
+    0%{background-position:200% 0;}
+    100%{background-position:-200% 0;}
 }
 
 .card:hover{
-    transform:translateY(-10px);
-    border-color:rgba(201,162,77,.25);
+    transform:translateY(-8px);
+    border-color:var(--border-hover);
+    box-shadow:0 20px 60px rgba(0,0,0,0.2), 0 0 40px rgba(201,162,77,0.08);
 }
 
 .card:hover::before{
     opacity:1;
 }
 
+.card:hover::after{
+    transform:scaleX(1);
+}
+
+.card-icon{
+    width:60px;
+    height:60px;
+    border-radius:16px;
+    background:linear-gradient(135deg, rgba(201,162,77,0.12), rgba(201,162,77,0.04));
+    border:1px solid var(--border);
+    display:grid;
+    place-items:center;
+    font-size:1.6rem;
+    margin-bottom:24px;
+    position:relative;
+    z-index:1;
+    transition:all 0.3s ease;
+}
+
+.card:hover .card-icon{
+    transform:scale(1.1) rotate(-5deg);
+    border-color:var(--gold);
+    box-shadow:0 8px 25px rgba(201,162,77,0.2);
+}
+
 .card h3{
     color:var(--gold);
-    margin-bottom:12px;
-    font-size:1.2rem;
+    margin-bottom:14px;
+    font-size:1.25rem;
     position:relative;
+    z-index:1;
 }
 
 .card p{
-    color:#cbd5e1;
+    color:#a0aec0;
     font-size:.95rem;
+    line-height:1.7;
     position:relative;
+    z-index:1;
 }
 
-/* ===== STATS ===== */
+body.dark-mode .card p{
+    color:#64748b;
+}
+
+/* ========== SUB-SERVICES (FDX Management divisions) ========== */
+.sub-services-section{
+    background:var(--dark2);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+}
+
+body.dark-mode .sub-services-section{
+    background:var(--dark2);
+}
+
+.sub-services-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:20px;
+    max-width:1200px;
+    margin:0 auto;
+}
+
+.sub-service-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:32px 24px;
+    text-align:center;
+    transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.sub-service-card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(201,162,77,0.06), transparent 70%);
+    opacity:0;
+    transition:opacity 0.4s ease;
+}
+
+.sub-service-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--border-hover);
+    box-shadow:0 16px 50px rgba(0,0,0,0.15);
+}
+
+.sub-service-card:hover::before{
+    opacity:1;
+}
+
+.sub-service-card .sub-icon{
+    width:52px;
+    height:52px;
+    border-radius:14px;
+    background:linear-gradient(135deg, rgba(201,162,77,0.15), rgba(201,162,77,0.05));
+    border:1px solid var(--border);
+    display:grid;
+    place-items:center;
+    font-size:1.4rem;
+    margin:0 auto 18px;
+    transition:all 0.3s ease;
+    position:relative;
+    z-index:1;
+}
+
+.sub-service-card:hover .sub-icon{
+    transform:scale(1.15);
+    border-color:var(--gold);
+    box-shadow:0 6px 20px rgba(201,162,77,0.2);
+}
+
+.sub-service-card h4{
+    font-size:1.05rem;
+    color:var(--text);
+    margin-bottom:8px;
+    position:relative;
+    z-index:1;
+}
+
+body.dark-mode .sub-service-card h4{
+    color:var(--color-text);
+}
+
+.sub-service-card p{
+    font-size:0.85rem;
+    color:var(--gray);
+    line-height:1.6;
+    position:relative;
+    z-index:1;
+}
+
+.sub-service-card .sub-tag{
+    display:inline-block;
+    margin-top:14px;
+    padding:4px 12px;
+    border-radius:999px;
+    font-size:0.75rem;
+    font-weight:600;
+    color:var(--gold);
+    background:rgba(201,162,77,0.08);
+    border:1px solid var(--border);
+    position:relative;
+    z-index:1;
+}
+
+/* ========== STATS ========== */
 .stats{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:18px;
+    grid-template-columns:repeat(4, 1fr);
+    gap:24px;
     max-width:1100px;
     margin:0 auto;
 }
 
 .stat{
-    background:rgba(255,255,255,.03);
+    background:var(--card);
     border:1px solid var(--border);
     border-radius:20px;
-    padding:30px 22px;
+    padding:40px 24px;
     text-align:center;
+    transition:all 0.3s ease;
+    position:relative;
+    overflow:hidden;
 }
 
-.stat h3{
-    font-size:2.2rem;
-    color:var(--gold);
+.stat::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:3px;
+    background:linear-gradient(90deg, var(--gold), var(--gold-light));
+    transform:scaleX(0);
+    transition:transform 0.3s ease;
+}
+
+.stat:hover{
+    transform:translateY(-6px);
+    border-color:var(--border-hover);
+    box-shadow:0 16px 40px rgba(0,0,0,0.15);
+}
+
+.stat:hover::before{
+    transform:scaleX(1);
+}
+
+.stat-number{
+    font-size:2.8rem;
+    font-weight:800;
+    background:linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    line-height:1;
+    margin-bottom:8px;
 }
 
 .stat p{
-    color:#cbd5e1;
-    margin-top:6px;
-    font-size:.95rem;
+    color:var(--gray);
+    font-size:0.95rem;
+    font-weight:500;
 }
 
-/* ===== PARTNERS ===== */
+/* ========== PARTNERS ========== */
 .partners-grid{
-  display:grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 30px;
-  margin-top: 40px;
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap:24px;
+    max-width:1200px;
+    margin:0 auto;
 }
 
 .partner-item{
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 18px;
-  padding: 25px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:.3s ease;
-  position:relative;
-  overflow:hidden;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:all 0.4s ease;
+    position:relative;
+    overflow:hidden;
+    aspect-ratio:1.6;
 }
 
 .partner-item::before{
-  content:"";
-  position:absolute;
-  inset:-60px;
-  background: radial-gradient(circle, rgba(201,162,77,.15), transparent 60%);
-  opacity:0;
-  transition:.3s;
+    content:'';
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at center, rgba(201,162,77,0.1), transparent 70%);
+    opacity:0;
+    transition:opacity 0.4s ease;
 }
 
 .partner-item:hover{
-  transform: translateY(-6px);
-  border-color: rgba(201,162,77,.3);
+    transform:translateY(-6px);
+    border-color:var(--border-hover);
+    box-shadow:0 16px 40px rgba(0,0,0,0.15);
 }
 
 .partner-item:hover::before{
-  opacity:1;
+    opacity:1;
 }
 
 .partner-item img{
-  max-height:60px;
-  width:auto;
-  object-fit:contain;
-  filter: grayscale(100%);
-  opacity:.7;
-  transition:.3s ease;
+    max-height:55px;
+    width:auto;
+    object-fit:contain;
+    filter:grayscale(100%) brightness(0.8);
+    opacity:0.6;
+    transition:all 0.4s ease;
+    position:relative;
+    z-index:1;
 }
 
 .partner-item:hover img{
-  filter: grayscale(0%);
-  opacity:1;
-  transform: scale(1.08);
+    filter:grayscale(0%) brightness(1);
+    opacity:1;
+    transform:scale(1.1);
 }
 
-/* Tablet */
-@media(max-width:1024px){
-  .partners-grid{
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Mobile */
-@media(max-width:640px){
-  .partners-grid{
-    grid-template-columns: repeat(2, 1fr);
-    gap:20px;
-  }
-
-  .partner-item{
-    padding:18px;
-  }
-
-  .partner-item img{
-    max-height:50px;
-  }
-}
-
-    
-/* ===== PORTOFOLIO CARD ===== */
-/* PORTOFOLIO */
+/* ========== PORTOFOLIO ========== */
 .portofolio-grid{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin-top: 28px;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:24px;
+    max-width:1200px;
+    margin:0 auto;
 }
 
 .portofolio-card{
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 18px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: .25s ease;
-  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:0 8px 30px rgba(0,0,0,0.12);
 }
 
 .portofolio-card:hover{
-  transform: translateY(-6px);
-  border-color: rgba(255,255,255,.16);
+    transform:translateY(-8px);
+    border-color:var(--border-hover);
+    box-shadow:0 20px 60px rgba(0,0,0,0.2), 0 0 40px rgba(201,162,77,0.06);
 }
 
 .portofolio-thumb{
-  height: 220px;
-  position: relative;
-  background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+    height:240px;
+    position:relative;
+    background:linear-gradient(135deg, var(--dark3), var(--dark2));
+    overflow:hidden;
+}
+
+.portofolio-thumb::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg, rgba(201,162,77,0.1), transparent 60%);
+    opacity:0;
+    transition:opacity 0.4s ease;
+}
+
+.portofolio-card:hover .portofolio-thumb::after{
+    opacity:1;
 }
 
 .pdf-badge{
-  position:absolute;
-  top: 14px;
-  left: 14px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .6px;
-  background: rgba(255,255,255,.12);
-  border: 1px solid rgba(255,255,255,.12);
+    position:absolute;
+    top:16px;
+    left:16px;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    background:rgba(201,162,77,0.15);
+    border:1px solid rgba(201,162,77,0.25);
+    color:var(--gold);
+    backdrop-filter:blur(10px);
+    z-index:2;
 }
 
 .portofolio-overlay{
-  position:absolute;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  padding: 18px;
-  background: linear-gradient(to top, rgba(0,0,0,.55), transparent);
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:24px;
+    background:linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+    z-index:1;
 }
 
 .overlay-title{
-  font-weight: 800;
-  font-size: 16px;
+    font-weight:800;
+    font-size:1.1rem;
+    color:white;
 }
 
 .overlay-sub{
-  opacity: .8;
-  margin-top: 4px;
-  font-size: 13px;
+    opacity:0.8;
+    margin-top:6px;
+    font-size:0.9rem;
+    color:#cbd5e1;
 }
 
 .portofolio-info{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap: 14px;
-  padding: 16px 16px;
-}
-
-.portofolio-info h3{
-  margin: 0;
-  font-size: 15px;
-  font-weight: 800;
-}
-
-.portofolio-info p{
-  margin: 6px 0 0;
-  font-size: 13px;
-  opacity: .8;
-}
-
-/* MODAL */
-.modal{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.65);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  padding: 18px;
-  z-index: 9999;
-}
-
-.modal.show{
-  display:flex;
-}
-
-.modal-box{
-  width: min(1100px, 100%);
-  background: rgba(15,15,15,.92);
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 30px 90px rgba(0,0,0,.55);
-}
-
-.modal-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding: 16px 18px;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-}
-
-.modal-header h3{
-  margin:0;
-  font-size: 16px;
-  font-weight: 900;
-}
-
-.modal-header p{
-  margin: 6px 0 0;
-  font-size: 13px;
-  opacity: .75;
-}
-
-.modal-close{
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.12);
-  color: #fff;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 18px;
-  transition: .2s;
-}
-
-.modal-close:hover{
-  background: rgba(255,255,255,.12);
-}
-
-.modal-frame{
-  width: 100%;
-  height: 70vh;
-  border: 0;
-  background: #111;
-}
-
-.modal-footer{
-  display:flex;
-  justify-content:flex-end;
-  gap: 12px;
-  padding: 14px 18px;
-  border-top: 1px solid rgba(255,255,255,.08);
-}
-
-/* RESPONSIVE */
-@media (max-width: 980px){
-  .portofolio-grid{
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px){
-  .portofolio-grid{
-    grid-template-columns: 1fr;
-  }
-
-  .portofolio-thumb{
-    height: 200px;
-  }
-
-  .modal-frame{
-    height: 62vh;
-  }
-
-  .portofolio-info{
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-
-/* PDF mock */
-.pdf-mock{
-    width:100%;
-    max-width:320px;
-    height:260px;
-    border-radius:18px;
-    border:1px solid var(--border);
-    background:rgba(255,255,255,.02);
-    position:relative;
-    overflow:hidden;
-    transform:rotate(2deg);
-    box-shadow:0 30px 60px rgba(0,0,0,.25);
-}
-
-.pdf-top{
-    height:54px;
-    background:linear-gradient(135deg, rgba(201,162,77,.25), rgba(255,233,176,.06));
-    border-bottom:1px solid var(--border);
-}
-
-.pdf-lines{
-    padding:18px;
-    display:grid;
-    gap:12px;
-}
-
-.pdf-lines span{
-    height:10px;
-    border-radius:999px;
-    background:rgba(255,255,255,.07);
-}
-.pdf-lines span:nth-child(2){ width:82%; }
-.pdf-lines span:nth-child(3){ width:64%; }
-.pdf-lines span:nth-child(4){ width:90%; }
-.pdf-lines span:nth-child(5){ width:58%; }
-
-/* Responsive portofolio */
-@media(max-width:900px){
-    .portofolio-card{
-        grid-template-columns:1fr;
-        padding:26px;
-    }
-    .pdf-mock{
-        max-width:420px;
-        height:240px;
-        transform:rotate(0deg);
-    }
-}
-
-    
-/* ===== MODAL PDF ===== */
-.modal{
-    position:fixed;
-    inset:0;
-    display:none;
-    z-index:99999;
-}
-
-.modal.show{
-    display:block;
-}
-
-.modal-backdrop{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.72);
-    backdrop-filter:blur(10px);
-}
-
-.modal-content{
-    position:relative;
-    max-width:1200px;
-    margin:70px auto;
-    width:calc(100% - 28px);
-    border-radius:22px;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,.10);
-    background:#050a14;
-    box-shadow:0 40px 100px rgba(0,0,0,.55);
-}
-
-.modal-head{
-    padding:18px 18px;
     display:flex;
     justify-content:space-between;
     align-items:center;
     gap:16px;
-    border-bottom:1px solid rgba(255,255,255,.08);
-    background:rgba(255,255,255,.03);
+    padding:24px;
 }
 
-.modal-title{
+.portofolio-info h3{
+    margin:0;
+    font-size:1.05rem;
     font-weight:800;
-    letter-spacing:.3px;
+    color:var(--text);
 }
 
-.modal-sub{
-    color:#94a3b8;
-    font-size:.9rem;
-    margin-top:2px;
+body.dark-mode .portofolio-info h3{
+    color:var(--color-text);
 }
 
-.modal-actions{
+.portofolio-info p{
+    margin:8px 0 0;
+    font-size:0.9rem;
+    color:var(--gray);
+}
+
+.portofolio-info .btn{
+    padding:12px 24px;
+    font-size:0.85rem;
+    white-space:nowrap;
+}
+
+/* ========== MODAL ========== */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.75);
+    backdrop-filter:blur(8px);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    z-index:9999;
+    opacity:0;
+    transition:opacity 0.3s ease;
+}
+
+.modal.show{
     display:flex;
-    gap:10px;
-    flex-wrap:wrap;
+    opacity:1;
+}
+
+.modal-box{
+    width:min(1100px, 100%);
+    background:var(--dark2);
+    border:1px solid var(--border);
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 40px 100px rgba(0,0,0,0.5);
+    transform:scale(0.95);
+    transition:transform 0.3s ease;
+}
+
+.modal.show .modal-box{
+    transform:scale(1);
+}
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 24px;
+    border-bottom:1px solid var(--border);
+    background:var(--dark3);
+}
+
+.modal-header h3{
+    margin:0;
+    font-size:1.1rem;
+    font-weight:800;
+    color:var(--text);
+}
+
+body.dark-mode .modal-header h3{
+    color:var(--color-text);
+}
+
+.modal-header p{
+    margin:6px 0 0;
+    font-size:0.85rem;
+    color:var(--gray);
+}
+
+.modal-close{
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--border);
+    color:#fff;
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:18px;
+    transition:all 0.25s ease;
+    display:grid;
+    place-items:center;
+}
+
+.modal-close:hover{
+    background:rgba(255,255,255,0.12);
+    border-color:var(--gold);
+    color:var(--gold);
+    transform:rotate(90deg);
 }
 
 .modal-frame{
     width:100%;
-    height:78vh;
+    height:70vh;
     border:0;
-    background:#0b1220;
+    background:var(--dark);
 }
 
-@media(max-width:700px){
-    .modal-content{
-        margin:55px auto;
-    }
-    .modal-frame{
-        height:72vh;
-    }
+.modal-footer{
+    display:flex;
+    justify-content:flex-end;
+    gap:12px;
+    padding:16px 24px;
+    border-top:1px solid var(--border);
+    background:var(--dark3);
 }
 
-    
-/* ===== CTA STRIP ===== */
+/* ========== CTA STRIP ========== */
 .cta-strip{
-    background:linear-gradient(135deg,#020617,#0b1220);
+    background:linear-gradient(135deg, var(--dark2), var(--dark3));
     border-top:1px solid var(--border);
     border-bottom:1px solid var(--border);
     text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.cta-strip::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 50% 50%, rgba(201,162,77,0.06), transparent 60%);
+    pointer-events:none;
 }
 
 body.dark-mode .cta-strip{
-    background:linear-gradient(135deg,#f8fafc,#e5e7eb);
+    background:linear-gradient(135deg, var(--dark2), var(--dark3));
 }
 
 .cta-strip h2{
-    font-size:2.5rem;
+    font-size:2.6rem;
+    font-weight:800;
+    position:relative;
+    z-index:1;
 }
 
 .cta-strip p{
-    max-width:760px;
-    margin:14px auto 0;
-    color:#cbd5e1;
+    max-width:700px;
+    margin:16px auto 0;
+    color:var(--gray);
+    font-size:1.05rem;
+    position:relative;
+    z-index:1;
 }
 
-/* ===== FOOTER ===== */
+.cta-buttons{
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:36px;
+    position:relative;
+    z-index:1;
+}
+
+/* ========== FOOTER ========== */
 footer{
-    padding:35px 20px;
+    padding:50px 20px 30px;
     text-align:center;
-    color:#94a3b8;
-    background:#020617;
+    background:var(--dark2);
+    border-top:1px solid var(--border);
 }
 
-footer {
-    pointer-events: auto !important;
-}
-    
 body.dark-mode footer{
-    background:#f8fafc;
-    color:var(--dark2);
+    background:var(--dark2);
 }
 
-.footer-copy {
-    position: relative;
-    z-index: 10;
+.footer-premium{
+    color:var(--gold);
+    font-size:0.85rem;
+    font-weight:600;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:12px;
 }
 
-.footer-link {
-    color: #c9a24d; /* gold premium */
-    text-decoration: none;
-    pointer-events: auto;
-    cursor: pointer;
-    position: relative;
-    z-index: 11;
+.footer-copy{
+    color:var(--gray);
+    font-size:0.9rem;
 }
 
-.footer-link:hover {
-    text-decoration: underline;
+.footer-link{
+    color:var(--gold);
+    text-decoration:none;
+    font-weight:600;
+    transition:all 0.25s ease;
+    position:relative;
 }
-    
-/* ===== FLOATING BUTTONS ===== */
+
+.footer-link:hover{
+    text-decoration:none;
+    color:var(--gold-light);
+}
+
+.footer-link::after{
+    content:'';
+    position:absolute;
+    bottom:-2px;
+    left:0;
+    width:0;
+    height:1px;
+    background:var(--gold);
+    transition:width 0.3s ease;
+}
+
+.footer-link:hover::after{
+    width:100%;
+}
+
+/* ========== FLOATING BUTTONS ========== */
 .floating-tools{
     position:fixed;
-    right:18px;
-    bottom:18px;
+    right:20px;
+    bottom:20px;
     z-index:9999;
     display:flex;
     flex-direction:column;
@@ -845,96 +1249,113 @@ body.dark-mode footer{
 }
 
 .floating-btn{
-    width:58px;
-    height:58px;
-    border-radius:18px;
+    width:56px;
+    height:56px;
+    border-radius:16px;
     display:grid;
     place-items:center;
-    box-shadow:0 20px 40px rgba(0,0,0,.25);
-    border:1px solid rgba(255,255,255,.15);
+    box-shadow:0 8px 30px rgba(0,0,0,0.2);
+    border:1px solid rgba(255,255,255,0.15);
     cursor:pointer;
-    transition:.25s;
+    transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     background:linear-gradient(135deg,#25D366,#0ea05a);
+    position:relative;
+    overflow:hidden;
 }
 
 .floating-btn:hover{
-    transform:translateY(-4px);
+    transform:translateY(-4px) scale(1.05);
+    box-shadow:0 12px 40px rgba(37,211,102,0.3);
 }
 
-/* LANGUAGE & DARK MODE */
+.floating-btn::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg, transparent, rgba(255,255,255,0.15), transparent);
+    transform:translateX(-100%);
+    transition:transform 0.6s ease;
+}
+
+.floating-btn:hover::after{
+    transform:translateX(100%);
+}
+
 .lang-btn, .dark-btn{
-    width:auto;
-    padding:8px 12px;
-    border-radius:12px;
-    font-size:.85rem;
-    background:rgba(255,255,255,.08);
+    width:56px;
+    height:56px;
+    border-radius:16px;
+    font-size:0.85rem;
+    font-weight:700;
+    background:var(--card);
     color:var(--color-text);
     border:1px solid var(--border);
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    transition:all 0.3s ease;
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 30px rgba(0,0,0,0.15);
 }
 
 .lang-btn:hover, .dark-btn:hover{
     background:var(--gold);
-    color:#0b1220;
-}
-
-/* ===== WHATSAPP FLOATING ===== */
-.wa-float{
-    position:fixed;
-    right:18px;
-    bottom:18px;
-    z-index:9999;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    text-decoration:none;
-}
-
-.wa-pill{
-    background:rgba(255,255,255,.06);
-    border:1px solid var(--border);
-    backdrop-filter:blur(12px);
-    color:#e5e7eb;
-    padding:12px 14px;
-    border-radius:999px;
-    font-size:.9rem;
-    display:none;
-}
-
-.wa-btn{
-    width:58px;
-    height:58px;
-    border-radius:18px;
-    display:grid;
-    place-items:center;
-    background:linear-gradient(135deg,#25D366,#0ea05a);
-    box-shadow:0 20px 40px rgba(37,211,102,.25);
-    border:1px solid rgba(255,255,255,.15);
-    transition:.25s;
-}
-
-.wa-btn:hover{
+    color:#0a0f1a;
+    border-color:var(--gold);
     transform:translateY(-4px);
+    box-shadow:0 12px 30px rgba(201,162,77,0.25);
 }
 
-/* WA icon */
-.wa-btn svg{
-    width:28px;
-    height:28px;
-    fill:white;
+/* ========== SCROLL REVEAL ========== */
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Show pill on desktop */
-@media(min-width:900px){
-    .wa-pill{ display:block; }
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
 }
 
-/* ===== MOBILE ===== */
+.reveal-delay-1{transition-delay:0.1s;}
+.reveal-delay-2{transition-delay:0.2s;}
+.reveal-delay-3{transition-delay:0.3s;}
+.reveal-delay-4{transition-delay:0.4s;}
+.reveal-delay-5{transition-delay:0.5s;}
+.reveal-delay-6{transition-delay:0.6s;}
+.reveal-delay-7{transition-delay:0.7s;}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(40px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes fadeIn{
+    from{opacity:0}
+    to{opacity:1}
+}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:1024px){
+    .partners-grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .sub-services-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .stats{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .about-features{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media(max-width:860px){
     nav{
-        padding:16px 18px;
+        padding:14px 20px;
     }
     nav .links{
         display:none;
@@ -943,42 +1364,111 @@ body.dark-mode footer{
         display:block;
     }
     header, section{
-        padding:110px 18px 70px;
+        padding:100px 20px 60px;
     }
     .floating-tools{
-        right:12px;
-        bottom:12px;
-        gap:8px;
+        right:14px;
+        bottom:14px;
+        gap:10px;
     }
     .floating-btn, .lang-btn, .dark-btn{
         width:50px;
         height:50px;
-        font-size:.75rem;
-        padding:6px 8px;
+    }
+    .section-title h2{
+        font-size:2rem;
+    }
+    .hero h1{
+        font-size:2.4rem;
+    }
+    .sub-services-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .stats{
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* ===== ANIMATION ===== */
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(35px)}
-    to{opacity:1;transform:translateY(0)}
+@media(max-width:640px){
+    .partners-grid{
+        grid-template-columns: repeat(2, 1fr);
+        gap:16px;
+    }
+    .partner-item{
+        padding:20px;
+    }
+    .partner-item img{
+        max-height:45px;
+    }
+    .portofolio-grid{
+        grid-template-columns: 1fr;
+    }
+    .portofolio-thumb{
+        height:200px;
+    }
+    .modal-frame{
+        height:62vh;
+    }
+    .portofolio-info{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .sub-services-grid{
+        grid-template-columns: 1fr;
+    }
+    .stats{
+        grid-template-columns: 1fr;
+    }
+    .about-features{
+        grid-template-columns: 1fr;
+    }
+    .grid{
+        grid-template-columns: 1fr;
+    }
+    .cta-strip h2{
+        font-size:2rem;
+    }
 }
 
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar{
+    width:8px;
+}
+::-webkit-scrollbar-track{
+    background:var(--dark);
+}
+::-webkit-scrollbar-thumb{
+    background:var(--border);
+    border-radius:4px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background:var(--gold);
+}
+
+body.dark-mode ::-webkit-scrollbar-track{
+    background:var(--dark2);
+}
 </style>
+<base target="_blank">
 </head>
 
 <body>
 
+<!-- ANIMATED BACKGROUND -->
+<div class="bg-animated"></div>
+
 <!-- NAV -->
-<nav>
+<nav id="mainNav">
     <div class="brand">
         <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/logo-fdx-management.png" alt="FDX Logo" class="logo-img">
+        <h1>FDX Management</h1>
     </div>
 
     <div class="links">
         <a href="#about">About</a>
         <a href="#services">Services</a>
-        <a href="#brand-partners">Brand Partners</a>
+        <a href="#sub-services">Divisions</a>
+        <a href="#brand-partners">Partners</a>
         <a href="#portofolio">Portofolio</a>
         <a href="#contact">Contact</a>
     </div>
@@ -987,6 +1477,7 @@ body.dark-mode footer{
 </nav>
 
 <!-- MOBILE SIDEBAR -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
 <div class="mobile-sidebar" id="mobileSidebar">
     <div class="sidebar-header">
         <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/logo-fdx-management.png" alt="FDX Logo" class="sidebar-logo">
@@ -995,18 +1486,23 @@ body.dark-mode footer{
     <div class="sidebar-links">
         <a href="#about" onclick="closeSidebar()">About</a>
         <a href="#services" onclick="closeSidebar()">Services</a>
+        <a href="#sub-services" onclick="closeSidebar()">Divisions</a>
         <a href="#brand-partners" onclick="closeSidebar()">Brand Partners</a>
         <a href="#portofolio" onclick="closeSidebar()">Portofolio</a>
         <a href="#contact" onclick="closeSidebar()">Contact</a>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-footer">
+        Premium Talent & Influence Agency
     </div>
 </div>
 
 <!-- HERO -->
 <header>
     <div class="hero">
-        <div class="badge">PREMIUM TALENT & INFLUENCE AGENCY</div>
+        <div class="badge">Premium Talent & Influence Agency</div>
 
-        <h1>Managing Influence.<br>Building Reputation.</h1>
+        <h1>Managing <span>Influence</span>.<br>Building <span>Reputation</span>.</h1>
 
         <p>
             FDX Management adalah agensi yang mengelola KOL, Influencer, KOC, Buzzer,
@@ -1022,27 +1518,48 @@ body.dark-mode footer{
 
 <!-- ABOUT -->
 <section id="about">
-    <div class="section-title">
+    <div class="section-title reveal">
+        <div class="section-label">Tentang Kami</div>
         <h2>About <span>FDX</span></h2>
         <p>Influence marketing yang elegan, kredibel, dan berbasis strategi.</p>
     </div>
 
-    <div class="about">
+    <div class="about reveal reveal-delay-1">
         Kami menghubungkan brand dengan talent terbaik untuk membangun kampanye yang autentik.
         Dengan sistem kurasi talent, perencanaan konten, dan eksekusi yang disiplin,
         FDX Management fokus pada hasil: awareness, trust, dan conversion.
+    </div>
+
+    <div class="about-features">
+        <div class="about-feature reveal reveal-delay-2">
+            <div class="about-feature-icon">✦</div>
+            <h4>Kurasi Premium</h4>
+            <p>Seleksi talent berkualitas dengan standar tinggi</p>
+        </div>
+        <div class="about-feature reveal reveal-delay-3">
+            <div class="about-feature-icon">◈</div>
+            <h4>Strategi Data-Driven</h4>
+            <p>Campaign berbasis analisis dan insight market</p>
+        </div>
+        <div class="about-feature reveal reveal-delay-4">
+            <div class="about-feature-icon">✧</div>
+            <h4>Eksekusi Profesional</h4>
+            <p>Tim berpengalaman dengan hasil terukur</p>
+        </div>
     </div>
 </section>
 
 <!-- SERVICES -->
 <section id="services">
-    <div class="section-title">
+    <div class="section-title reveal">
+        <div class="section-label">Layanan Utama</div>
         <h2>Our <span>Services</span></h2>
         <p>End-to-end talent management & campaign execution</p>
     </div>
 
     <div class="grid">
-        <div class="card">
+        <div class="card reveal reveal-delay-1">
+            <div class="card-icon">👥</div>
             <h3>KOL & Influencer Management</h3>
             <p>
                 Pengelolaan influencer untuk brand collaboration, campaign strategy,
@@ -1050,7 +1567,8 @@ body.dark-mode footer{
             </p>
         </div>
 
-        <div class="card">
+        <div class="card reveal reveal-delay-2">
+            <div class="card-icon">📢</div>
             <h3>KOC, Buzzer & Penbay Activation</h3>
             <p>
                 Aktivasi mass audience dengan segmentasi yang jelas,
@@ -1058,7 +1576,8 @@ body.dark-mode footer{
             </p>
         </div>
 
-        <div class="card">
+        <div class="card reveal reveal-delay-3">
+            <div class="card-icon">⭐</div>
             <h3>Talent & Personal Agency</h3>
             <p>
                 Personal branding, media handling, monetisasi,
@@ -1066,7 +1585,8 @@ body.dark-mode footer{
             </p>
         </div>
 
-        <div class="card">
+        <div class="card reveal reveal-delay-4">
+            <div class="card-icon">📊</div>
             <h3>Campaign Strategy & Reporting</h3>
             <p>
                 Konsep campaign, brief, timeline, monitoring performa,
@@ -1076,28 +1596,96 @@ body.dark-mode footer{
     </div>
 </section>
 
+<!-- SUB SERVICES / DIVISIONS -->
+<section id="sub-services" class="sub-services-section">
+    <div class="section-title reveal">
+        <div class="section-label">Divisi Layanan</div>
+        <h2>FDX Management <span>Divisions</span></h2>
+        <p>7 divisi spesialis yang bekerja secara terintegrasi untuk hasil maksimal</p>
+    </div>
+
+    <div class="sub-services-grid">
+        <div class="sub-service-card reveal reveal-delay-1">
+            <div class="sub-icon">🎨</div>
+            <h4>Branding</h4>
+            <p>Brand identity, visual strategy, dan brand positioning untuk talent & corporate</p>
+            <span class="sub-tag">Identity</span>
+        </div>
+
+        <div class="sub-service-card reveal reveal-delay-2">
+            <div class="sub-icon">✨</div>
+            <h4>Creative</h4>
+            <p>Content creation, creative direction, dan visual storytelling yang menarik</p>
+            <span class="sub-tag">Content</span>
+        </div>
+
+        <div class="sub-service-card reveal reveal-delay-3">
+            <div class="sub-icon">📱</div>
+            <h4>Digital Marketing</h4>
+            <p>Social media marketing, paid ads, dan digital campaign untuk reach maksimal</p>
+            <span class="sub-tag">Growth</span>
+        </div>
+
+        <div class="sub-service-card reveal reveal-delay-4">
+            <div class="sub-icon">🔍</div>
+            <h4>SEO</h4>
+            <p>Search engine optimization, content strategy, dan organic traffic growth</p>
+            <span class="sub-tag">Organic</span>
+        </div>
+
+        <div class="sub-service-card reveal reveal-delay-5">
+            <div class="sub-icon">🤝</div>
+            <h4>Talent Management</h4>
+            <p>Kurasi, negosiasi, dan manajemen talent KOL, influencer, dan personal brand</p>
+            <span class="sub-tag">Talent</span>
+        </div>
+
+        <div class="sub-service-card reveal reveal-delay-6">
+            <div class="sub-icon">🏢</div>
+            <h4>Workforce Solutions</h4>
+            <p>HR solutions, staffing, dan workforce management untuk kebutuhan operasional</p>
+            <span class="sub-tag">HR</span>
+        </div>
+
+        <div class="sub-service-card reveal reveal-delay-7">
+            <div class="sub-icon">🌐</div>
+            <h4>Freelancer Network</h4>
+            <p>Jaringan freelancer profesional untuk proyek kreatif dan digital skala besar</p>
+            <span class="sub-tag">Network</span>
+        </div>
+
+        <div class="sub-service-card reveal reveal-delay-1">
+            <div class="sub-icon">🎯</div>
+            <h4>Integrated Campaign</h4>
+            <p>Cross-division collaboration untuk campaign yang komprehensif dan berdampak</p>
+            <span class="sub-tag">All-in-One</span>
+        </div>
+    </div>
+</section>
+
 <!-- STATS -->
 <section id="stats">
-    <div class="section-title">
+    <div class="section-title reveal">
+        <div class="section-label">Performa</div>
         <h2>Campaign <span>Performance</span></h2>
         <p>Statistik dapat kamu sesuaikan sesuai portofolio FDX.</p>
     </div>
 
     <div class="stats">
-        <div class="stat">
-            <h3>250+</h3>
+        <div class="stat reveal reveal-delay-1">
+            <div class="stat-number">250+</div>
             <p>Talent & KOL Network</p>
         </div>
-        <div class="stat">
-            <h3>120+</h3>
+        <div class="stat reveal reveal-delay-2">
+            <div class="stat-number">120+</div>
             <p>Campaign Executed</p>
         </div>
-        <div class="stat">
-            <h3>30+</h3>
+        <div class="stat reveal reveal-delay-3">
+            <div class="stat-number">30+</div>
             <p>Brand Partners</p>
         </div>
-        <div class="stat">
-            <h3>98%</h3>
+        <div class="stat reveal reveal-delay-4">
+            <div class="stat-number">98%</div>
             <p>Client Satisfaction Rate</p>
         </div>
     </div>
@@ -1105,218 +1693,206 @@ body.dark-mode footer{
 
 <!-- PARTNERS -->
 <section id="brand-partners" class="section">
-  <div class="section-title">
-    <h2>Trusted <span>Brand Partners</span></h2>
-    <p>Brands that have collaborated with FDX Management.</p>
-  </div>
-
-  <div class="partners-grid">
-
-    <!-- GANTI nama file sesuai folder kamu -->
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.26.jpeg" alt="Brand 1">
+    <div class="section-title reveal">
+        <div class="section-label">Kolaborasi</div>
+        <h2>Trusted <span>Brand Partners</span></h2>
+        <p>Brands that have collaborated with FDX Management.</p>
     </div>
 
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.27 (1).jpeg" alt="Brand 2">
+    <div class="partners-grid">
+        <div class="partner-item reveal reveal-delay-1">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.26.jpeg" alt="Brand 1">
+        </div>
+        <div class="partner-item reveal reveal-delay-2">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.27%20(1).jpeg" alt="Brand 2">
+        </div>
+        <div class="partner-item reveal reveal-delay-3">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.27%20(2).jpeg" alt="Brand 3">
+        </div>
+        <div class="partner-item reveal reveal-delay-4">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.27.jpeg" alt="Brand 4">
+        </div>
+        <div class="partner-item reveal reveal-delay-5">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.28%20(1).jpeg" alt="Brand 5">
+        </div>
+        <div class="partner-item reveal reveal-delay-6">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.28%20(2).jpeg" alt="Brand 6">
+        </div>
+        <div class="partner-item reveal reveal-delay-1">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.28.jpeg" alt="Brand 7">
+        </div>
+        <div class="partner-item reveal reveal-delay-2">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.47.jpeg" alt="Brand 8">
+        </div>
+        <div class="partner-item reveal reveal-delay-3">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.34.11.jpeg" alt="Brand 9">
+        </div>
+        <div class="partner-item reveal reveal-delay-4">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.34.47.jpeg" alt="Brand 10">
+        </div>
+        <div class="partner-item reveal reveal-delay-5">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.35.27.jpeg" alt="Brand 11">
+        </div>
+        <div class="partner-item reveal reveal-delay-6">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.36.04.jpeg" alt="Brand 12">
+        </div>
+        <div class="partner-item reveal reveal-delay-1">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.38.24.jpeg" alt="Brand 13">
+        </div>
+        <div class="partner-item reveal reveal-delay-2">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.39.33.jpeg" alt="Brand 14">
+        </div>
+        <div class="partner-item reveal reveal-delay-3">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.40.15.jpeg" alt="Brand 15">
+        </div>
+        <div class="partner-item reveal reveal-delay-4">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.41.23.jpeg" alt="Brand 16">
+        </div>
+        <div class="partner-item reveal reveal-delay-5">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.43.38.jpeg" alt="Brand 17">
+        </div>
+        <div class="partner-item reveal reveal-delay-6">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.45.08.jpeg" alt="Brand 18">
+        </div>
+        <div class="partner-item reveal reveal-delay-1">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.45.31.jpeg" alt="Brand 19">
+        </div>
+        <div class="partner-item reveal reveal-delay-2">
+            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.46.45.jpeg" alt="Brand 20">
+        </div>
     </div>
-
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.27 (2).jpeg" alt="Brand 3">
-    </div>
-
-    <div class="partner-item">
-       <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.27.jpeg" alt="Brand 4">
-    </div>
-
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.28 (1).jpeg" alt="Brand 5">
-    </div>
-
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.28 (2).jpeg" alt="Brand 6">
-    </div>
-
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.28.jpeg" alt="Brand 7">
-    </div>
-
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.33.47.jpeg" alt="Brand 8">
-    </div>
-
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.34.11.jpeg" alt="Brand 9">
-    </div>
-
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.34.47.jpeg" alt="Brand 10">
-    </div>
-
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.35.27.jpeg" alt="Brand 11">
-    </div>
-
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.36.04.jpeg" alt="Brand 12">
-    </div>
-
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.38.24.jpeg" alt="Brand 13">
-    </div>
-
-    <div class="partner-item">
-       <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.39.33.jpeg" alt="Brand 14">
-    </div>
-
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.40.15.jpeg" alt="Brand 15">
-    </div>
-
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.41.23.jpeg" alt="Brand 16">
-    </div>
-
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.43.38.jpeg" alt="Brand 17">
-    </div>
-
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.45.08.jpeg" alt="Brand 18">
-    </div>
-
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.45.31.jpeg" alt="Brand 19">
-    </div>
-
-    <div class="partner-item">
-      <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp Image 2026-02-20 at 00.46.45.jpeg" alt="Brand 20">
-    </div>
-
-  </div>
 </section>
 
-    
 <!-- PORTOFOLIO -->
 <section id="portofolio" class="section">
-  <div class="section-title">
-    <h2>FDX <span>Portofolio</span></h2>
-    <p>Official deck untuk brand partnership & campaign.</p>
-  </div>
-
-  <div class="portofolio-grid">
-    <div class="portofolio-card" onclick="openPortofolio()">
-      <div class="portofolio-thumb">
-        <div class="pdf-badge">PDF</div>
-        <div class="portofolio-overlay">
-          <div class="overlay-title">FDX Management Deck</div>
-          <div class="overlay-sub">Klik untuk preview</div>
-        </div>
-      </div>
-
-      <div class="portofolio-info">
-        <div>
-          <h3>FDX MG — Company Profile</h3>
-          <p>Talent • Influencer • KOL Campaign</p>
-        </div>
-
-        <button class="btn btn-primary" type="button">
-          View Portofolio
-        </button>
-      </div>
+    <div class="section-title reveal">
+        <div class="section-label">Portofolio</div>
+        <h2>FDX <span>Portofolio</span></h2>
+        <p>Official deck untuk brand partnership & campaign.</p>
     </div>
-  </div>
+
+    <div class="portofolio-grid">
+        <div class="portofolio-card reveal reveal-delay-1" onclick="openPortofolio()">
+            <div class="portofolio-thumb">
+                <div class="pdf-badge">PDF</div>
+                <div class="portofolio-overlay">
+                    <div class="overlay-title">FDX Management Deck</div>
+                    <div class="overlay-sub">Klik untuk preview</div>
+                </div>
+            </div>
+
+            <div class="portofolio-info">
+                <div>
+                    <h3>FDX MG — Company Profile</h3>
+                    <p>Talent • Influencer • KOL Campaign</p>
+                </div>
+                <button class="btn btn-primary" type="button">View</button>
+            </div>
+        </div>
+    </div>
 </section>
-    
+
 <!-- CONTACT -->
 <section class="cta-strip" id="contact">
-    <div class="section-title">
-        <h2>Let’s Build <span>Influence</span></h2>
+    <div class="section-title reveal">
+        <div class="section-label">Kontak</div>
+        <h2>Let's Build <span>Influence</span></h2>
         <p>
             Untuk kerja sama brand, endorsement, atau talent representation,
             hubungi FDX Management melalui Instagram atau WhatsApp.
         </p>
     </div>
 
-    <div style="text-align:center;">
+    <div class="cta-buttons reveal reveal-delay-1">
         <a class="btn btn-primary" href="https://www.instagram.com/fdx.agency/" target="_blank">Instagram</a>
         <a class="btn btn-outline" href="https://wa.me/6289513408945" target="_blank">WhatsApp</a>
     </div>
 </section>
 
-<!--<footer>
-    <p class="footer-premium">Premium Talent & Influence Agency</p>
-    <p class="footer-copy">
-        &copy; 2025 FDX Management | 
-        <a href="https://astria-group.com" target="_blank" class="footer-link"> 
-            Member of Astria Group
-        </a>
-        <a href="https://astria-group.com" target="_blank" style="color:inherit; text-decoration:none;">
-            Member of Astria Group
-        </a>
-    </p>
-</footer>-->
-    
+<!-- FOOTER -->
 <footer>
     <p class="footer-premium">Premium Talent & Influence Agency</p>
     <p class="footer-copy">
         &copy; 2025 FDX Management | 
-        <a href="https://astria-group.com" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="footer-link">
-           Member of Astria Group
+        <a href="https://astria-group.com" target="_blank" rel="noopener noreferrer" class="footer-link">
+            Member of Astria Group
         </a>
     </p>
 </footer>
 
 <!-- FLOATING BUTTONS -->
 <div class="floating-tools">
-    <div class="lang-btn" id="langBtn">EN</div>
+    <div class="lang-btn" id="langBtn">ID</div>
     <div class="dark-btn" id="darkBtn">🌙</div>
     <a class="floating-btn" href="https://wa.me/6289513408945" target="_blank" aria-label="Chat WhatsApp">
-        <svg viewBox="0 0 32 32" width="28" height="28" fill="white">
+        <svg viewBox="0 0 32 32" width="26" height="26" fill="white">
             <path d="M19.11 17.53c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.18-1.34-.81-.72-1.36-1.6-1.52-1.87-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27 0 1.34.97 2.63 1.11 2.81.14.18 1.91 2.92 4.62 4.09.65.28 1.16.45 1.56.58.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32zM16.03 27.5c-1.99 0-3.93-.54-5.62-1.56l-3.9 1.25 1.27-3.8c-1.07-1.73-1.64-3.72-1.64-5.76 0-6.06 4.93-11 11-11 2.94 0 5.7 1.14 7.78 3.22 2.08 2.08 3.22 4.84 3.22 7.78 0 6.06-4.93 11-11 11zm9.35-20.35C23.01 4.78 19.66 3.5 16.03 3.5 8.83 3.5 3 9.33 3 16.53c0 2.29.6 4.53 1.75 6.5L3 29l6.12-1.96c1.9 1.04 4.03 1.59 6.2 1.59 7.2 0 13.03-5.83 13.03-13.03 0-3.63-1.28-6.98-3.65-9.35z"/>
         </svg>
     </a>
 </div>
 
+<!-- PORTOFOLIO MODAL -->
+<div id="portofolioModal" class="modal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <div>
+                <h3>FDX Portofolio</h3>
+                <p>Preview PDF (no auto download)</p>
+            </div>
+            <button class="modal-close" onclick="closePortofolio()">✕</button>
+        </div>
+        <iframe class="modal-frame" src="https://drive.google.com/file/d/1kTw0O-ULGiwWByxaXEON0YkKgAp7vnGc/preview" allow="autoplay"></iframe>
+        <div class="modal-footer">
+            <a class="btn btn-outline" href="https://drive.google.com/file/d/1kTw0O-ULGiwWByxaXEON0YkKgAp7vnGc/view?usp=sharing" target="_blank">Open in Drive</a>
+            <button class="btn btn-primary" onclick="closePortofolio()">Done</button>
+        </div>
+    </div>
+</div>
+
 <script>
-/* Mobile Menu Toggle */
+/* ========== NAV SCROLL EFFECT ========== */
+const mainNav = document.getElementById("mainNav");
+window.addEventListener("scroll", () => {
+    if(window.scrollY > 50){
+        mainNav.classList.add("scrolled");
+    } else {
+        mainNav.classList.remove("scrolled");
+    }
+});
+
+/* ========== MOBILE MENU ========== */
 const menuBtn = document.getElementById("menuBtn");
 const mobileSidebar = document.getElementById("mobileSidebar");
+const sidebarOverlay = document.getElementById("sidebarOverlay");
 const sidebarClose = document.getElementById("sidebarClose");
 
 menuBtn.addEventListener("click", () => {
     mobileSidebar.classList.add("show");
+    sidebarOverlay.classList.add("show");
     document.body.style.overflow = "hidden";
 });
 
 sidebarClose.addEventListener("click", closeSidebar);
+sidebarOverlay.addEventListener("click", closeSidebar);
 
 function closeSidebar(){
     mobileSidebar.classList.remove("show");
+    sidebarOverlay.classList.remove("show");
     document.body.style.overflow = "";
 }
 
-// Close sidebar when clicking outside
-mobileSidebar.addEventListener("click", (e) => {
-    if(e.target === mobileSidebar) closeSidebar();
-});
-
-// Close with ESC
 window.addEventListener("keydown", (e) => {
     if(e.key === "Escape") closeSidebar();
 });
 
-/* DARK MODE TOGGLE */
+/* ========== DARK MODE TOGGLE ========== */
 const darkBtn = document.getElementById("darkBtn");
 darkBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
     darkBtn.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
 });
 
-/* LANGUAGE SWITCHER */
+/* ========== LANGUAGE SWITCHER ========== */
 const langBtn = document.getElementById("langBtn");
 const languages = ['ID', 'EN', 'CN'];
 let currentLangIndex = 0;
@@ -1334,14 +1910,16 @@ langBtn.addEventListener("click", () => {
 function switchLanguage(lang) {
     const translations = {
         ID: {
-            badge: "PREMIUM TALENT & INFLUENCE AGENCY",
-            h1: "Managing Influence.<br>Building Reputation.",
+            badge: "Premium Talent & Influence Agency",
+            h1: "Managing <span>Influence</span>.<br>Building <span>Reputation</span>.",
             heroP: "FDX Management adalah agensi yang mengelola KOL, Influencer, KOC, Buzzer, Penbay, serta Talent Personal Branding untuk campaign premium, terukur, dan berdampak.",
             exploreTalent: "Explore Talent",
             instagram: "Instagram",
+            aboutLabel: "Tentang Kami",
             aboutTitle: "About <span>FDX</span>",
             aboutDesc: "Influence marketing yang elegan, kredibel, dan berbasis strategi.",
             aboutText: "Kami menghubungkan brand dengan talent terbaik untuk membangun kampanye yang autentik. Dengan sistem kurasi talent, perencanaan konten, dan eksekusi yang disiplin, FDX Management fokus pada hasil: awareness, trust, dan conversion.",
+            servicesLabel: "Layanan Utama",
             servicesTitle: "Our <span>Services</span>",
             servicesDesc: "End-to-end talent management & campaign execution",
             service1: "KOL & Influencer Management",
@@ -1352,26 +1930,43 @@ function switchLanguage(lang) {
             service3Desc: "Personal branding, media handling, monetisasi, manajemen karier, dan long-term positioning.",
             service4: "Campaign Strategy & Reporting",
             service4Desc: "Konsep campaign, brief, timeline, monitoring performa, hingga report profesional untuk brand.",
+            divisionsLabel: "Divisi Layanan",
+            divisionsTitle: "FDX Management <span>Divisions</span>",
+            divisionsDesc: "7 divisi spesialis yang bekerja secara terintegrasi untuk hasil maksimal",
+            sub1: "Branding", sub1Desc: "Brand identity, visual strategy, dan brand positioning untuk talent & corporate",
+            sub2: "Creative", sub2Desc: "Content creation, creative direction, dan visual storytelling yang menarik",
+            sub3: "Digital Marketing", sub3Desc: "Social media marketing, paid ads, dan digital campaign untuk reach maksimal",
+            sub4: "SEO", sub4Desc: "Search engine optimization, content strategy, dan organic traffic growth",
+            sub5: "Talent Management", sub5Desc: "Kurasi, negosiasi, dan manajemen talent KOL, influencer, dan personal brand",
+            sub6: "Workforce Solutions", sub6Desc: "HR solutions, staffing, dan workforce management untuk kebutuhan operasional",
+            sub7: "Freelancer Network", sub7Desc: "Jaringan freelancer profesional untuk proyek kreatif dan digital skala besar",
+            sub8: "Integrated Campaign", sub8Desc: "Cross-division collaboration untuk campaign yang komprehensif dan berdampak",
+            statsLabel: "Performa",
             statsTitle: "Campaign <span>Performance</span>",
             statsDesc: "Statistik dapat kamu sesuaikan sesuai portofolio FDX.",
+            partnersLabel: "Kolaborasi",
             partnersTitle: "Trusted <span>Brand Partners</span>",
             partnersDesc: "Brands that have collaborated with FDX Management.",
+            portofolioLabel: "Portofolio",
             portofolioTitle: "FDX <span>Portofolio</span>",
             portofolioDesc: "Official deck untuk brand partnership & campaign.",
-            contactTitle: "Let’s Build <span>Influence</span>",
+            contactLabel: "Kontak",
+            contactTitle: "Let's Build <span>Influence</span>",
             contactDesc: "Untuk kerja sama brand, endorsement, atau talent representation, hubungi FDX Management melalui Instagram atau WhatsApp.",
             footerPremium: "Premium Talent & Influence Agency",
             footerCopy: "&copy; 2025 FDX Management | Member of Astria Group"
         },
         EN: {
-            badge: "PREMIUM TALENT & INFLUENCE AGENCY",
-            h1: "Managing Influence.<br>Building Reputation.",
+            badge: "Premium Talent & Influence Agency",
+            h1: "Managing <span>Influence</span>.<br>Building <span>Reputation</span>.",
             heroP: "FDX Management is an agency that manages KOL, Influencers, KOC, Buzzers, Penbay, and Talent Personal Branding for premium, measurable, and impactful campaigns.",
             exploreTalent: "Explore Talent",
             instagram: "Instagram",
+            aboutLabel: "About Us",
             aboutTitle: "About <span>FDX</span>",
             aboutDesc: "Elegant, credible, and strategy-based influence marketing.",
             aboutText: "We connect brands with the best talents to build authentic campaigns. With a disciplined talent curation system, content planning, and execution, FDX Management focuses on results: awareness, trust, and conversion.",
+            servicesLabel: "Main Services",
             servicesTitle: "Our <span>Services</span>",
             servicesDesc: "End-to-end talent management & campaign execution",
             service1: "KOL & Influencer Management",
@@ -1382,26 +1977,43 @@ function switchLanguage(lang) {
             service3Desc: "Personal branding, media handling, monetization, career management, and long-term positioning.",
             service4: "Campaign Strategy & Reporting",
             service4Desc: "Campaign concept, brief, timeline, performance monitoring, to professional reports for brands.",
+            divisionsLabel: "Service Divisions",
+            divisionsTitle: "FDX Management <span>Divisions</span>",
+            divisionsDesc: "7 specialist divisions working in integrated synergy for maximum results",
+            sub1: "Branding", sub1Desc: "Brand identity, visual strategy, and brand positioning for talent & corporate",
+            sub2: "Creative", sub2Desc: "Content creation, creative direction, and compelling visual storytelling",
+            sub3: "Digital Marketing", sub3Desc: "Social media marketing, paid ads, and digital campaigns for maximum reach",
+            sub4: "SEO", sub4Desc: "Search engine optimization, content strategy, and organic traffic growth",
+            sub5: "Talent Management", sub5Desc: "Curation, negotiation, and management of KOL, influencer, and personal brand talent",
+            sub6: "Workforce Solutions", sub6Desc: "HR solutions, staffing, and workforce management for operational needs",
+            sub7: "Freelancer Network", sub7Desc: "Professional freelancer network for large-scale creative and digital projects",
+            sub8: "Integrated Campaign", sub8Desc: "Cross-division collaboration for comprehensive and impactful campaigns",
+            statsLabel: "Performance",
             statsTitle: "Campaign <span>Performance</span>",
             statsDesc: "Statistics can be adjusted according to FDX portfolio.",
+            partnersLabel: "Collaboration",
             partnersTitle: "Trusted <span>Brand Partners</span>",
             partnersDesc: "Brands that have collaborated with FDX Management.",
-            portofolioTitle: "FDX <span>Portofolio</span>",
+            portofolioLabel: "Portfolio",
+            portofolioTitle: "FDX <span>Portfolio</span>",
             portofolioDesc: "Official deck for brand partnership & campaign.",
-            contactTitle: "Let’s Build <span>Influence</span>",
+            contactLabel: "Contact",
+            contactTitle: "Let's Build <span>Influence</span>",
             contactDesc: "For brand collaboration, endorsement, or talent representation, contact FDX Management via Instagram or WhatsApp.",
             footerPremium: "Premium Talent & Influence Agency",
             footerCopy: "&copy; 2025 FDX Management | Member of Astria Group"
         },
         CN: {
             badge: "高级人才与影响力代理",
-            h1: "管理影响力。<br>建立声誉。",
-            heroP: "FDX Management 是一家代理机构，管理 KOL、Influencer、KOC、Buzzer、Penbay 以及人才个人品牌，为高级、可衡量且有影响力的活动。",
+            h1: "管理<span>影响力</span>。<br>建立<span>声誉</span>。",
+            heroP: "FDX Management 是一家管理 KOL、Influencer、KOC、Buzzer、Penbay 以及人才个人品牌的代理机构，为高级、可衡量且有影响力的活动。",
             exploreTalent: "探索人才",
             instagram: "Instagram",
+            aboutLabel: "关于我们",
             aboutTitle: "关于 <span>FDX</span>",
             aboutDesc: "优雅、可信赖且基于策略的影响力营销。",
-            aboutText: "我们将品牌与最佳人才连接，以构建真实的活动。通过纪律性的才人才培养系统、内容规划和执行，FDX Management 专注于结果：知名度、信任和转化。",
+            aboutText: "我们将品牌与最佳人才连接，以构建真实的活动。通过纪律性的人才培养系统、内容规划和执行，FDX Management 专注于结果：知名度、信任和转化。",
+            servicesLabel: "主要服务",
             servicesTitle: "我们的 <span>服务</span>",
             servicesDesc: "端到端人才管理和活动执行",
             service1: "KOL 与 Influencer 管理",
@@ -1412,12 +2024,27 @@ function switchLanguage(lang) {
             service3Desc: "个人品牌、媒体处理、货币化、职业管理和长期定位。",
             service4: "活动策略与报告",
             service4Desc: "活动概念、简报、时间表、绩效监控，到为品牌提供的专业报告。",
+            divisionsLabel: "服务部门",
+            divisionsTitle: "FDX Management <span>部门</span>",
+            divisionsDesc: "7个专业部门协同工作，实现最大成果",
+            sub1: "品牌", sub1Desc: "品牌标识、视觉策略和人才与企业品牌定位",
+            sub2: "创意", sub2Desc: "内容创作、创意指导和引人注目的视觉叙事",
+            sub3: "数字营销", sub3Desc: "社交媒体营销、付费广告和数字活动，实现最大覆盖",
+            sub4: "SEO", sub4Desc: "搜索引擎优化、内容策略和有机流量增长",
+            sub5: "人才管理", sub5Desc: "KOL、影响者和个人品牌人才的策划、谈判和管理",
+            sub6: "劳动力解决方案", sub6Desc: "人力资源解决方案、人员配置和运营管理",
+            sub7: "自由职业者网络", sub7Desc: "大规模创意和数字项目的专业自由职业者网络",
+            sub8: "整合活动", sub8Desc: "跨部门协作，实现全面且有影响力的活动",
+            statsLabel: "绩效",
             statsTitle: "活动 <span>绩效</span>",
             statsDesc: "统计数据可根据 FDX 投资组合进行调整。",
+            partnersLabel: "合作",
             partnersTitle: "值得信赖的 <span>品牌合作伙伴</span>",
             partnersDesc: "与 FDX Management 合作的品牌。",
+            portofolioLabel: "投资组合",
             portofolioTitle: "FDX <span>投资组合</span>",
             portofolioDesc: "品牌合作与活动的官方演示。",
+            contactLabel: "联系",
             contactTitle: "让我们建立 <span>影响力</span>",
             contactDesc: "对于品牌合作、代言或人才代表，通过 Instagram 或 WhatsApp 联系 FDX Management。",
             footerPremium: "高级人才与影响力代理",
@@ -1433,10 +2060,12 @@ function switchLanguage(lang) {
     document.querySelector('.hero-actions a:first-child').innerHTML = t.exploreTalent;
     document.querySelector('.hero-actions a:last-child').innerHTML = t.instagram;
 
+    document.querySelector('#about .section-label').innerHTML = t.aboutLabel;
     document.querySelector('#about .section-title h2').innerHTML = t.aboutTitle;
     document.querySelector('#about .section-title p').innerHTML = t.aboutDesc;
     document.querySelector('#about .about').innerHTML = t.aboutText;
 
+    document.querySelector('#services .section-label').innerHTML = t.servicesLabel;
     document.querySelector('#services .section-title h2').innerHTML = t.servicesTitle;
     document.querySelector('#services .section-title p').innerHTML = t.servicesDesc;
     document.querySelector('#services .card:nth-child(1) h3').innerHTML = t.service1;
@@ -1448,74 +2077,83 @@ function switchLanguage(lang) {
     document.querySelector('#services .card:nth-child(4) h3').innerHTML = t.service4;
     document.querySelector('#services .card:nth-child(4) p').innerHTML = t.service4Desc;
 
+    document.querySelector('#sub-services .section-label').innerHTML = t.divisionsLabel;
+    document.querySelector('#sub-services .section-title h2').innerHTML = t.divisionsTitle;
+    document.querySelector('#sub-services .section-title p').innerHTML = t.divisionsDesc;
+
+    const subCards = document.querySelectorAll('.sub-service-card');
+    subCards[0].querySelector('h4').innerHTML = t.sub1;
+    subCards[0].querySelector('p').innerHTML = t.sub1Desc;
+    subCards[1].querySelector('h4').innerHTML = t.sub2;
+    subCards[1].querySelector('p').innerHTML = t.sub2Desc;
+    subCards[2].querySelector('h4').innerHTML = t.sub3;
+    subCards[2].querySelector('p').innerHTML = t.sub3Desc;
+    subCards[3].querySelector('h4').innerHTML = t.sub4;
+    subCards[3].querySelector('p').innerHTML = t.sub4Desc;
+    subCards[4].querySelector('h4').innerHTML = t.sub5;
+    subCards[4].querySelector('p').innerHTML = t.sub5Desc;
+    subCards[5].querySelector('h4').innerHTML = t.sub6;
+    subCards[5].querySelector('p').innerHTML = t.sub6Desc;
+    subCards[6].querySelector('h4').innerHTML = t.sub7;
+    subCards[6].querySelector('p').innerHTML = t.sub7Desc;
+    subCards[7].querySelector('h4').innerHTML = t.sub8;
+    subCards[7].querySelector('p').innerHTML = t.sub8Desc;
+
+    document.querySelector('#stats .section-label').innerHTML = t.statsLabel;
     document.querySelector('#stats .section-title h2').innerHTML = t.statsTitle;
     document.querySelector('#stats .section-title p').innerHTML = t.statsDesc;
 
+    document.querySelector('#brand-partners .section-label').innerHTML = t.partnersLabel;
     document.querySelector('#brand-partners .section-title h2').innerHTML = t.partnersTitle;
     document.querySelector('#brand-partners .section-title p').innerHTML = t.partnersDesc;
 
+    document.querySelector('#portofolio .section-label').innerHTML = t.portofolioLabel;
     document.querySelector('#portofolio .section-title h2').innerHTML = t.portofolioTitle;
     document.querySelector('#portofolio .section-title p').innerHTML = t.portofolioDesc;
 
+    document.querySelector('#contact .section-label').innerHTML = t.contactLabel;
     document.querySelector('#contact .section-title h2').innerHTML = t.contactTitle;
     document.querySelector('#contact .section-title p').innerHTML = t.contactDesc;
 
     document.querySelector('footer .footer-premium').innerHTML = t.footerPremium;
     document.querySelector('footer .footer-copy').innerHTML = t.footerCopy;
 }
-</script>
 
-<script>
-  function openPortofolio(){
+/* ========== PORTOFOLIO MODAL ========== */
+function openPortofolio(){
     document.getElementById("portofolioModal").classList.add("show");
     document.body.style.overflow = "hidden";
-  }
+}
 
-  function closePortofolio(){
+function closePortofolio(){
     document.getElementById("portofolioModal").classList.remove("show");
     document.body.style.overflow = "";
-  }
+}
 
-  // close when click outside box
-  document.getElementById("portofolioModal").addEventListener("click", function(e){
+document.getElementById("portofolioModal").addEventListener("click", function(e){
     if(e.target === this) closePortofolio();
-  });
+});
 
-  // close with ESC
-  window.addEventListener("keydown", function(e){
+window.addEventListener("keydown", function(e){
     if(e.key === "Escape") closePortofolio();
-  });
+});
+
+/* ========== SCROLL REVEAL ========== */
+const revealElements = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('active');
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+});
+
+revealElements.forEach(el => revealObserver.observe(el));
 </script>
 
-<div id="portofolioModal" class="modal">
-  <div class="modal-box">
-    <div class="modal-header">
-      <div>
-        <h3>FDX Portofolio</h3>
-        <p>Preview PDF (no auto download)</p>
-      </div>
-
-      <button class="modal-close" onclick="closePortofolio()">✕</button>
-    </div>
-
-    <iframe
-      class="modal-frame"
-      src="https://drive.google.com/file/d/1kTw0O-ULGiwWByxaXEON0YkKgAp7vnGc/preview"
-      allow="autoplay"
-    ></iframe>
-
-    <div class="modal-footer">
-      <a
-        class="btn btn-outline"
-        href="https://drive.google.com/file/d/1kTw0O-ULGiwWByxaXEON0YkKgAp7vnGc/view?usp=sharing"
-        target="_blank"
-      >
-        Open in Drive
-      </a>
-      <button class="btn btn-primary" onclick="closePortofolio()">Done</button>
-    </div>
-  </div>
-</div>
-    
 </body>
 </html>
