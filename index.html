@@ -3,1249 +3,157 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FDX Management | Premium Talent & Influence Agency</title>
-    
-    <!-- Favicon FDX Management -->
-    <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/jenderal45/fdx/main/logo-fdx-management.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/jenderal45/fdx/main/logo-fdx-management.png">
-    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/jenderal45/fdx/main/logo-fdx-management.png">
-    
+<title>FDX Agency | Agency Marketing Brand - Support UMKM Indonesia</title>
+<link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/jenderal45/fdx/main/logo-fdx-management.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/jenderal45/fdx/main/logo-fdx-management.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/jenderal45/fdx/main/logo-fdx-management.png">
 <style>
-/* ========== PREMIUM DESIGN SYSTEM ========== */
-:root{
-    --primary:#0a3d8c;
-    --primary-light:#1a6fc4;
-    --primary-lighter:#4db8e8;
-    --primary-glow:rgba(10,61,140,0.12);
-    --dark:#f0f4f8;
-    --dark2:#ffffff;
-    --dark3:#f8fafc;
-    --gray:#64748b;
-    --text:#0f172a;
-    --light:#f8fafc;
-    --card:#ffffff;
-    --card-hover:#f8fafc;
-    --border:rgba(10,61,140,0.12);
-    --border-hover:rgba(10,61,140,0.25);
-    --bg:var(--dark);
-    --color-text:var(--text);
-}
-
-
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
-    background:var(--bg);
-    color:var(--color-text);
-    line-height:1.6;
-    overflow-x:hidden;
-}
-
-/* ========== ANIMATED BACKGROUND ========== */
-.bg-animated{
-    position:fixed;
-    inset:0;
-    z-index:0;
-    pointer-events:none;
-    overflow:hidden;
-}
-.bg-animated::before{
-    content:'';
-    position:absolute;
-    width:600px;
-    height:600px;
-    background:radial-gradient(circle, rgba(10,61,140,0.08), transparent 70%);
-    top:-200px;
-    left:-200px;
-    animation:float 20s ease-in-out infinite;
-}
-.bg-animated::after{
-    content:'';
-    position:absolute;
-    width:500px;
-    height:500px;
-    background:radial-gradient(circle, rgba(13,110,253,0.06), transparent 70%);
-    bottom:-150px;
-    right:-150px;
-    animation:float 25s ease-in-out infinite reverse;
-}
-@keyframes float{
-    0%,100%{transform:translate(0,0) scale(1);}
-    25%{transform:translate(50px,-30px) scale(1.1);}
-    50%{transform:translate(-30px,50px) scale(0.9);}
-    75%{transform:translate(30px,30px) scale(1.05);}
-}
-
-/* ========== NAV ========== */
-nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    padding:16px 60px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:rgba(255,255,255,0.92);
-    border-bottom:1px solid rgba(10,61,140,0.15);
-    backdrop-filter:blur(20px) saturate(1.8);
-    z-index:1000;
-    transition:all 0.3s ease;
-}
-
-nav.scrolled{
-    padding:12px 60px;
-    box-shadow:0 4px 30px rgba(0,0,0,0.15);
-}
-
-nav .brand{
-    display:flex;
-    align-items:center;
-    gap:14px;
-}
-
-.logo-img{
-    width:46px;
-    height:46px;
-    object-fit:contain;
-    border-radius:14px;
-    border:1px solid rgba(10,61,140,0.15);
-    transition:all 0.3s ease;
-}
-
-.logo-img:hover{
-    transform:scale(1.05);
-    border-color:var(--primary);
-    box-shadow:0 0 20px rgba(10,61,140,0.2);
-}
-
-nav h1{
-    color:var(--text);
-    letter-spacing:3px;
-    font-size:1.1rem;
-    font-weight:700;
-    text-transform:uppercase;
-}
-
-nav .links{
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
-
-nav a{
-    color:#475569;
-    padding:8px 16px;
-    text-decoration:none;
-    font-size:0.88rem;
-    font-weight:500;
-    transition:all 0.25s ease;
-    border-radius:10px;
-    position:relative;
-}
-
-nav a:hover{
-    color:var(--primary);
-    background:rgba(10,61,140,0.08);
-}
-
-nav a::after{
-    content:'';
-    position:absolute;
-    bottom:4px;
-    left:50%;
-    width:0;
-    height:2px;
-    background:linear-gradient(90deg, var(--primary), var(--primary-light));
-    transition:all 0.3s ease;
-    transform:translateX(-50%);
-    border-radius:2px;
-}
-
-nav a:hover::after{
-    width:60%;
-}
-
-.menu-btn{
-    display:none;
-    border:1px solid rgba(10,61,140,0.15);
-    background:transparent;
-    color:#475569;
-    padding:10px 14px;
-    border-radius:12px;
-    cursor:pointer;
-    font-size:1.1rem;
-    transition:all 0.25s ease;
-}
-
-.menu-btn:hover{
-    border-color:var(--primary);
-    color:var(--primary);
-}
-
-/* ========== MOBILE SIDEBAR ========== */
-.mobile-sidebar{
-    position:fixed;
-    top:0;
-    left:-320px;
-    width:300px;
-    height:100vh;
-    background:var(--dark2);
-    border-right:1px solid rgba(10,61,140,0.15);
-    z-index:10000;
-    transition:0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow-y:auto;
-    box-shadow:20px 0 60px rgba(0,0,0,0.3);
-}
-
-.mobile-sidebar.show{
-    left:0;
-}
-
-.sidebar-overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.5);
-    backdrop-filter:blur(4px);
-    z-index:9999;
-    opacity:0;
-    visibility:hidden;
-    transition:all 0.3s ease;
-}
-
-.sidebar-overlay.show{
-    opacity:1;
-    visibility:visible;
-}
-
-.sidebar-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:24px 20px;
-    border-bottom:1px solid rgba(10,61,140,0.15);
-}
-
-.sidebar-logo{
-    width:42px;
-    height:42px;
-    object-fit:contain;
-    border-radius:10px;
-}
-
-.sidebar-close{
-    background:transparent;
-    border:1px solid rgba(10,61,140,0.15);
-    color:#475569;
-    width:40px;
-    height:40px;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:16px;
-    transition:all 0.25s ease;
-}
-
-.sidebar-close:hover{
-    border-color:var(--primary);
-    color:var(--primary);
-    transform:rotate(90deg);
-}
-
-.sidebar-links{
-    padding:20px;
-    display:flex;
-    flex-direction:column;
-    gap:4px;
-}
-
-.sidebar-links a{
-    color:#475569;
-    text-decoration:none;
-    font-size:1rem;
-    padding:14px 16px;
-    border-radius:12px;
-    transition:all 0.25s ease;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    border-bottom:1px solid rgba(10,61,140,0.06);
-}
-
-.sidebar-links a:hover{
-    color:var(--primary);
-    background:rgba(10,61,140,0.08);
-    padding-left:24px;
-}
-
-.sidebar-divider{
-    height:1px;
-    background:rgba(10,61,140,0.12);
-    margin:12px 16px;
-}
-
-.sidebar-footer{
-    padding:20px;
-    color:var(--gray);
-    font-size:0.85rem;
-    text-align:center;
-}
-
-/* ========== HERO ========== */
-header{
-    min-height:100vh;
-    background:
-        radial-gradient(circle at 25% 25%, rgba(10,61,140,0.08), transparent 50%),
-        radial-gradient(circle at 75% 15%, rgba(26,111,196,0.06), transparent 45%),
-        radial-gradient(circle at 50% 80%, rgba(77,184,232,0.05), transparent 40%),
-        linear-gradient(rgba(240,244,248,0.9), rgba(240,244,248,0.98)),
-        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=2000&q=80');
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    align-items:center;
-    padding:140px 60px 80px;
-    position:relative;
-    overflow:hidden;
-}
-
-header::before{
-    content:'';
-    position:absolute;
-    bottom:0;
-    left:0;
-    right:0;
-    height:200px;
-    background:linear-gradient(to top, var(--bg), transparent);
-    z-index:1;
-}
-
-.hero{
-    max-width:1000px;
-    animation:fadeUp 1.2s ease;
-    position:relative;
-    z-index:2;
-}
-
-.badge{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    border:1px solid rgba(10,61,140,0.2);
-    padding:10px 20px;
-    border-radius:999px;
-    color:var(--primary);
-    background:rgba(10,61,140,0.06);
-    letter-spacing:3px;
-    font-size:.75rem;
-    font-weight:600;
-    margin-bottom:24px;
-    text-transform:uppercase;
-    backdrop-filter:blur(10px);
-}
-
-.badge::before{
-    content:'';
-    width:8px;
-    height:8px;
-    background:var(--primary);
-    border-radius:50%;
-    animation:pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse{
-    0%,100%{opacity:1; transform:scale(1);}
-    50%{opacity:0.5; transform:scale(1.3);}
-}
-
-.hero h1{
-    font-size:clamp(2.8rem,5.5vw,4.8rem);
-    margin:16px 0 20px;
-    line-height:1.08;
-    font-weight:800;
-    letter-spacing:-1px;
-}
-
-.hero h1 span{
-    background:linear-gradient(135deg, var(--primary), var(--primary-light));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-}
-
-.hero p{
-    max-width:680px;
-    color:#475569;
-    font-size:1.15rem;
-    line-height:1.7;
-    margin-bottom:8px;
-}
-
-.hero-actions{
-    display:flex;
-    gap:16px;
-    flex-wrap:wrap;
-    margin-top:40px;
-}
-
-/* ========== BUTTONS ========== */
-.btn{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    padding:16px 36px;
-    border-radius:14px;
-    text-decoration:none;
-    font-weight:600;
-    letter-spacing:0.5px;
-    transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    font-size:0.95rem;
-    cursor:pointer;
-    border:none;
-    position:relative;
-    overflow:hidden;
-}
-
-.btn-primary{
-    background:linear-gradient(135deg, var(--primary), var(--primary-light));
-    color:#ffffff;
-    box-shadow:0 8px 30px rgba(10,61,140,0.3), 0 2px 8px rgba(10,61,140,0.2);
-}
-
-.btn-primary:hover{
-    transform:translateY(-3px);
-    box-shadow:0 12px 40px rgba(10,61,140,0.4), 0 4px 12px rgba(10,61,140,0.25);
-}
-
-.btn-primary::after{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent);
-    transform:translateX(-100%);
-    transition:transform 0.6s ease;
-}
-
-.btn-primary:hover::after{
-    transform:translateX(100%);
-}
-
-.btn-outline{
-    border:1.5px solid rgba(10,61,140,0.2);
-    color:#475569;
-    background:rgba(10,61,140,0.04);
-    backdrop-filter:blur(10px);
-}
-
-.btn-outline:hover{
-    border-color:var(--primary);
-    color:var(--primary);
-    background:rgba(10,61,140,0.06);
-    transform:translateY(-3px);
-}
-
-/* ========== SECTIONS ========== */
-section{
-    padding:110px 60px;
-    position:relative;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.section-title h2{
-    font-size:2.6rem;
-    font-weight:800;
-    letter-spacing:-0.5px;
-    margin-bottom:12px;
-}
-
-.section-title h2 span{
-    background:linear-gradient(135deg, var(--primary), var(--primary-light));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-}
-
-.section-title p{
-    color:var(--gray);
-    font-size:1.05rem;
-    max-width:600px;
-    margin:0 auto;
-}
-
-.section-label{
-    display:inline-block;
-    color:var(--primary);
-    font-size:0.8rem;
-    font-weight:600;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    margin-bottom:12px;
-}
-
-/* ========== ABOUT ========== */
-.about{
-    max-width:900px;
-    margin:auto;
-    text-align:center;
-    color:#475569;
-    font-size:1.1rem;
-    line-height:1.8;
-}
-
-.about-features{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:30px;
-    max-width:900px;
-    margin:50px auto 0;
-}
-
-.about-feature{
-    text-align:center;
-    padding:30px 20px;
-    border-radius:16px;
-    background:rgba(10,61,140,0.03);
-    border:1px solid rgba(10,61,140,0.1);
-    transition:all 0.3s ease;
-}
-
-.about-feature:hover{
-    transform:translateY(-6px);
-    border-color:var(--border-hover);
-    background:rgba(10,61,140,0.04);
-}
-
-.about-feature-icon{
-    width:56px;
-    height:56px;
-    border-radius:16px;
-    background:linear-gradient(135deg, rgba(10,61,140,0.15), rgba(10,61,140,0.05));
-    display:grid;
-    place-items:center;
-    margin:0 auto 16px;
-    font-size:1.4rem;
-    border:1px solid var(--border);
-}
-
-.about-feature h4{
-    font-size:1.1rem;
-    margin-bottom:8px;
-    color:var(--text);
-}
-
-.about-feature p{
-    font-size:0.9rem;
-    color:var(--gray);
-    line-height:1.6;
-}
-
-/* ========== SERVICES ========== */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:24px;
-    max-width:1200px;
-    margin:0 auto;
-}
-
-.card{
-    background:var(--card);
-    border:1px solid rgba(10,61,140,0.1);
-    border-radius:20px;
-    padding:40px 30px;
-    transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position:relative;
-    overflow:hidden;
-    cursor:pointer;
-}
-
-.card::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:linear-gradient(135deg, rgba(10,61,140,0.05), transparent 60%);
-    opacity:0;
-    transition:opacity 0.4s ease;
-}
-
-.card::after{
-    content:'';
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    height:3px;
-    background:linear-gradient(90deg, var(--primary), var(--primary-light), var(--primary));
-    background-size:200% 100%;
-    transform:scaleX(0);
-    transform-origin:left;
-    transition:transform 0.4s ease;
-    animation:shimmer 3s linear infinite;
-}
-
-@keyframes shimmer{
-    0%{background-position:200% 0;}
-    100%{background-position:-200% 0;}
-}
-
-.card:hover{
-    transform:translateY(-8px);
-    border-color:var(--border-hover);
-    box-shadow:0 20px 60px rgba(0,0,0,0.2), 0 0 40px rgba(10,61,140,0.08);
-}
-
-.card:hover::before{
-    opacity:1;
-}
-
-.card:hover::after{
-    transform:scaleX(1);
-}
-
-.card-icon{
-    width:60px;
-    height:60px;
-    border-radius:16px;
-    background:linear-gradient(135deg, rgba(10,61,140,0.12), rgba(10,61,140,0.04));
-    border:1px solid var(--border);
-    display:grid;
-    place-items:center;
-    font-size:1.6rem;
-    margin-bottom:24px;
-    position:relative;
-    z-index:1;
-    transition:all 0.3s ease;
-}
-
-.card:hover .card-icon{
-    transform:scale(1.1) rotate(-5deg);
-    border-color:var(--primary);
-    box-shadow:0 8px 25px rgba(10,61,140,0.2);
-}
-
-.card h3{
-    color:var(--primary);
-    margin-bottom:14px;
-    font-size:1.25rem;
-    position:relative;
-    z-index:1;
-}
-
-.card p{
-    color:#475569;
-    font-size:.95rem;
-    line-height:1.7;
-    position:relative;
-    z-index:1;
-}
-
-/* ========== SUB-SERVICES (FDX Management divisions) ========== */
-.sub-services-section{
-    background:var(--dark2);
-    border-top:1px solid var(--border);
-    border-bottom:1px solid rgba(10,61,140,0.15);
-}
-
-
-
-.sub-services-grid{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:20px;
-    max-width:1200px;
-    margin:0 auto;
-}
-
-.sub-service-card{
-    background:var(--card);
-    border:1px solid rgba(10,61,140,0.1);
-    border-radius:18px;
-    padding:32px 24px;
-    text-align:center;
-    transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position:relative;
-    overflow:hidden;
-    cursor:pointer;
-}
-
-.sub-service-card::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:linear-gradient(180deg, rgba(10,61,140,0.06), transparent 70%);
-    opacity:0;
-    transition:opacity 0.4s ease;
-}
-
-.sub-service-card:hover{
-    transform:translateY(-6px);
-    border-color:var(--border-hover);
-    box-shadow:0 16px 50px rgba(0,0,0,0.15);
-}
-
-.sub-service-card:hover::before{
-    opacity:1;
-}
-
-.sub-service-card .sub-icon{
-    width:52px;
-    height:52px;
-    border-radius:14px;
-    background:linear-gradient(135deg, rgba(10,61,140,0.15), rgba(10,61,140,0.05));
-    border:1px solid var(--border);
-    display:grid;
-    place-items:center;
-    font-size:1.4rem;
-    margin:0 auto 18px;
-    transition:all 0.3s ease;
-    position:relative;
-    z-index:1;
-}
-
-.sub-service-card:hover .sub-icon{
-    transform:scale(1.15);
-    border-color:var(--primary);
-    box-shadow:0 6px 20px rgba(10,61,140,0.2);
-}
-
-.sub-service-card h4{
-    font-size:1.05rem;
-    color:var(--text);
-    margin-bottom:8px;
-    position:relative;
-    z-index:1;
-}
-
-.sub-service-card p{
-    font-size:0.85rem;
-    color:var(--gray);
-    line-height:1.6;
-    position:relative;
-    z-index:1;
-}
-
-.sub-service-card .sub-tag{
-    display:inline-block;
-    margin-top:14px;
-    padding:4px 12px;
-    border-radius:999px;
-    font-size:0.75rem;
-    font-weight:600;
-    color:var(--primary);
-    background:rgba(10,61,140,0.08);
-    border:1px solid var(--border);
-    position:relative;
-    z-index:1;
-}
-
-/* ========== STATS ========== */
-.stats{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:24px;
-    max-width:1100px;
-    margin:0 auto;
-}
-
-.stat{
-    background:var(--card);
-    border:1px solid rgba(10,61,140,0.1);
-    border-radius:20px;
-    padding:40px 24px;
-    text-align:center;
-    transition:all 0.3s ease;
-    position:relative;
-    overflow:hidden;
-}
-
-.stat::before{
-    content:'';
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    height:3px;
-    background:linear-gradient(90deg, var(--primary), var(--primary-light));
-    transform:scaleX(0);
-    transition:transform 0.3s ease;
-}
-
-.stat:hover{
-    transform:translateY(-6px);
-    border-color:var(--border-hover);
-    box-shadow:0 16px 40px rgba(0,0,0,0.15);
-}
-
-.stat:hover::before{
-    transform:scaleX(1);
-}
-
-.stat-number{
-    font-size:2.8rem;
-    font-weight:800;
-    background:linear-gradient(135deg, var(--primary), var(--primary-light));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-    line-height:1;
-    margin-bottom:8px;
-}
-
-.stat p{
-    color:var(--gray);
-    font-size:0.95rem;
-    font-weight:500;
-}
-
-/* ========== PARTNERS ========== */
-.partners-grid{
-    display:grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap:24px;
-    max-width:1200px;
-    margin:0 auto;
-}
-
-.partner-item{
-    background:var(--card);
-    border:1px solid rgba(10,61,140,0.1);
-    border-radius:18px;
-    padding:28px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:all 0.4s ease;
-    position:relative;
-    overflow:hidden;
-    aspect-ratio:1.6;
-}
-
-.partner-item::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:radial-gradient(circle at center, rgba(10,61,140,0.1), transparent 70%);
-    opacity:0;
-    transition:opacity 0.4s ease;
-}
-
-.partner-item:hover{
-    transform:translateY(-6px);
-    border-color:var(--border-hover);
-    box-shadow:0 16px 40px rgba(0,0,0,0.15);
-}
-
-.partner-item:hover::before{
-    opacity:1;
-}
-
-.partner-item img{
-    max-height:55px;
-    width:auto;
-    object-fit:contain;
-    filter:grayscale(100%) brightness(0.8);
-    opacity:0.6;
-    transition:all 0.4s ease;
-    position:relative;
-    z-index:1;
-}
-
-.partner-item:hover img{
-    filter:grayscale(0%) brightness(1);
-    opacity:1;
-    transform:scale(1.1);
-}
-
-/* ========== PORTOFOLIO ========== */
-.portofolio-grid{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:24px;
-    max-width:1200px;
-    margin:0 auto;
-}
-
-.portofolio-card{
-    background:var(--card);
-    border:1px solid rgba(10,61,140,0.1);
-    border-radius:20px;
-    overflow:hidden;
-    cursor:pointer;
-    transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow:0 8px 30px rgba(0,0,0,0.12);
-}
-
-.portofolio-card:hover{
-    transform:translateY(-8px);
-    border-color:var(--border-hover);
-    box-shadow:0 20px 60px rgba(0,0,0,0.2), 0 0 40px rgba(10,61,140,0.06);
-}
-
-.portofolio-thumb{
-    height:240px;
-    position:relative;
-    background:linear-gradient(135deg, var(--dark3), var(--dark2));
-    overflow:hidden;
-}
-
-.portofolio-thumb::after{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:linear-gradient(135deg, rgba(10,61,140,0.1), transparent 60%);
-    opacity:0;
-    transition:opacity 0.4s ease;
-}
-
-.portofolio-card:hover .portofolio-thumb::after{
-    opacity:1;
-}
-
-.pdf-badge{
-    position:absolute;
-    top:16px;
-    left:16px;
-    padding:8px 14px;
-    border-radius:999px;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:1px;
-    background:rgba(10,61,140,0.15);
-    border:1px solid rgba(10,61,140,0.25);
-    color:var(--primary);
-    backdrop-filter:blur(10px);
-    z-index:2;
-}
-
-.portofolio-overlay{
-    position:absolute;
-    inset:0;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    padding:24px;
-    background:linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
-    z-index:1;
-}
-
-.overlay-title{
-    font-weight:800;
-    font-size:1.1rem;
-    color:white;
-}
-
-.overlay-sub{
-    opacity:0.8;
-    margin-top:6px;
-    font-size:0.9rem;
-    color:#e2e8f0;
-}
-
-.portofolio-info{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:16px;
-    padding:24px;
-}
-
-.portofolio-info h3{
-    margin:0;
-    font-size:1.05rem;
-    font-weight:800;
-    color:var(--text);
-}
-
-.portofolio-info p{
-    margin:8px 0 0;
-    font-size:0.9rem;
-    color:var(--gray);
-}
-
-.portofolio-info .btn{
-    padding:12px 24px;
-    font-size:0.85rem;
-    white-space:nowrap;
-}
-
-/* ========== MODAL ========== */
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.75);
-    backdrop-filter:blur(8px);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-    z-index:9999;
-    opacity:0;
-    transition:opacity 0.3s ease;
-}
-
-.modal.show{
-    display:flex;
-    opacity:1;
-}
-
-.modal-box{
-    width:min(1100px, 100%);
-    background:var(--dark2);
-    border:1px solid var(--border);
-    border-radius:24px;
-    overflow:hidden;
-    box-shadow:0 40px 100px rgba(0,0,0,0.5);
-    transform:scale(0.95);
-    transition:transform 0.3s ease;
-}
-
-.modal.show .modal-box{
-    transform:scale(1);
-}
-
-.modal-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 24px;
-    border-bottom:1px solid rgba(10,61,140,0.15);
-    background:var(--dark3);
-}
-
-.modal-header h3{
-    margin:0;
-    font-size:1.1rem;
-    font-weight:800;
-    color:var(--text);
-}
-
-.modal-header p{
-    margin:6px 0 0;
-    font-size:0.85rem;
-    color:var(--gray);
-}
-
-.modal-close{
-    background:rgba(10,61,140,0.06);
-    border:1px solid rgba(10,61,140,0.15);
-    color:var(--text);
-    width:44px;
-    height:44px;
-    border-radius:12px;
-    cursor:pointer;
-    font-size:18px;
-    transition:all 0.25s ease;
-    display:grid;
-    place-items:center;
-}
-
-.modal-close:hover{
-    background:rgba(10,61,140,0.12);
-    border-color:var(--primary);
-    color:var(--primary);
-    transform:rotate(90deg);
-}
-
-.modal-frame{
-    width:100%;
-    height:70vh;
-    border:0;
-    background:var(--dark);
-}
-
-.modal-footer{
-    display:flex;
-    justify-content:flex-end;
-    gap:12px;
-    padding:16px 24px;
-    border-top:1px solid var(--border);
-    background:var(--dark3);
-}
-
-/* ========== CTA STRIP ========== */
-.cta-strip{
-    background:linear-gradient(135deg, var(--dark2), var(--dark3));
-    border-top:1px solid var(--border);
-    border-bottom:1px solid rgba(10,61,140,0.15);
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-}
-
-.cta-strip::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:radial-gradient(circle at 50% 50%, rgba(10,61,140,0.06), transparent 60%);
-    pointer-events:none;
-}
-
-.cta-strip h2{
-    font-size:2.6rem;
-    font-weight:800;
-    position:relative;
-    z-index:1;
-}
-
-.cta-strip p{
-    max-width:700px;
-    margin:16px auto 0;
-    color:var(--gray);
-    font-size:1.05rem;
-    position:relative;
-    z-index:1;
-}
-
-.cta-buttons{
-    display:flex;
-    gap:16px;
-    justify-content:center;
-    flex-wrap:wrap;
-    margin-top:36px;
-    position:relative;
-    z-index:1;
-}
-
-/* ========== FOOTER ========== */
-footer{
-    padding:50px 20px 30px;
-    text-align:center;
-    background:var(--dark2);
-    border-top:1px solid var(--border);
-}
-
-.footer-premium{
-    color:var(--primary);
-    font-size:0.85rem;
-    font-weight:600;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    margin-bottom:12px;
-}
-
-.footer-copy{
-    color:var(--gray);
-    font-size:0.9rem;
-}
-
-.footer-link{
-    color:var(--primary);
-    text-decoration:none;
-    font-weight:600;
-    transition:all 0.25s ease;
-    position:relative;
-}
-
-.footer-link:hover{
-    text-decoration:none;
-    color:var(--primary);
-}
-
-.footer-link::after{
-    content:'';
-    position:absolute;
-    bottom:-2px;
-    left:0;
-    width:0;
-    height:1px;
-    background:var(--primary);
-    transition:width 0.3s ease;
-}
-
-.footer-link:hover::after{
-    width:100%;
-}
-
-/* ========== FLOATING BUTTONS ========== */
-.floating-tools{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    z-index:9999;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-}
-
-.floating-btn{
-    width:56px;
-    height:56px;
-    border-radius:16px;
-    display:grid;
-    place-items:center;
-    box-shadow:0 8px 30px rgba(0,0,0,0.2);
-    border:1px solid rgba(10,61,140,0.15);
-    cursor:pointer;
-    transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    background:linear-gradient(135deg,#25D366,#0ea05a);
-    position:relative;
-    overflow:hidden;
-}
-
-.floating-btn:hover{
-    transform:translateY(-4px) scale(1.05);
-    box-shadow:0 12px 40px rgba(37,211,102,0.3);
-}
-
-.floating-btn::after{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:linear-gradient(135deg, transparent, rgba(10,61,140,0.15), transparent);
-    transform:translateX(-100%);
-    transition:transform 0.6s ease;
-}
-
-.floating-btn:hover::after{
-    transform:translateX(100%);
-}
-
-.lang-btn, .dark-btn{
-    width:56px;
-    height:56px;
-    border-radius:16px;
-    font-size:0.85rem;
-    font-weight:700;
-    background:var(--card);
-    color:var(--color-text);
-    border:1px solid var(--border);
-    display:grid;
-    place-items:center;
-    cursor:pointer;
-    transition:all 0.3s ease;
-    backdrop-filter:blur(10px);
-    box-shadow:0 8px 30px rgba(0,0,0,0.15);
-}
-
-.lang-btn:hover{
-    background:var(--primary);
-    color:#ffffff;
-    border-color:var(--primary);
-    transform:translateY(-4px);
-    box-shadow:0 12px 30px rgba(10,61,140,0.25);
-}
-
-/* ========== SCROLL REVEAL ========== */
-.reveal{
-    opacity:0;
-    transform:translateY(40px);
-    transition:all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-}
-
+:root{--primary:#0a3d8c;--primary-light:#1a6fc4;--primary-lighter:#4db8e8;--dark:#f0f4f8;--dark2:#ffffff;--dark3:#f8fafc;--gray:#64748b;--text:#0f172a;--light:#f8fafc;--card:#ffffff;--border:rgba(10,61,140,0.12);--border-hover:rgba(10,61,140,0.25);--bg:var(--dark);--color-text:var(--text);}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--color-text);line-height:1.6;overflow-x:hidden;}
+.bg-animated{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.bg-animated::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle, rgba(10,61,140,0.08), transparent 70%);top:-200px;left:-200px;animation:float 20s ease-in-out infinite;}
+.bg-animated::after{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle, rgba(13,110,253,0.06), transparent 70%);bottom:-150px;right:-150px;animation:float 25s ease-in-out infinite reverse;}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1);}25%{transform:translate(50px,-30px) scale(1.1);}50%{transform:translate(-30px,50px) scale(0.9);}75%{transform:translate(30px,30px) scale(1.05);}}
+nav{position:fixed;top:0;width:100%;padding:16px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.92);border-bottom:1px solid rgba(10,61,140,0.15);backdrop-filter:blur(20px) saturate(1.8);z-index:1000;transition:all 0.3s ease;}
+nav.scrolled{padding:12px 60px;box-shadow:0 4px 30px rgba(0,0,0,0.15);}
+nav .brand{display:flex;align-items:center;gap:14px;}
+.logo-img{width:46px;height:46px;object-fit:contain;border-radius:14px;border:1px solid rgba(10,61,140,0.15);transition:all 0.3s ease;}
+.logo-img:hover{transform:scale(1.05);border-color:var(--primary);box-shadow:0 0 20px rgba(10,61,140,0.2);}
+nav h1{color:var(--text);letter-spacing:3px;font-size:1.1rem;font-weight:700;text-transform:uppercase;}
+nav .links{display:flex;align-items:center;gap:8px;}
+nav a{color:#475569;padding:8px 16px;text-decoration:none;font-size:0.88rem;font-weight:500;transition:all 0.25s ease;border-radius:10px;position:relative;}
+nav a:hover{color:var(--primary);background:rgba(10,61,140,0.08);}
+nav a::after{content:'';position:absolute;bottom:4px;left:50%;width:0;height:2px;background:linear-gradient(90deg, var(--primary), var(--primary-light));transition:all 0.3s ease;transform:translateX(-50%);border-radius:2px;}
+nav a:hover::after{width:60%;}
+.menu-btn{display:none;border:1px solid rgba(10,61,140,0.15);background:transparent;color:#475569;padding:10px 14px;border-radius:12px;cursor:pointer;font-size:1.1rem;transition:all 0.25s ease;}
+.menu-btn:hover{border-color:var(--primary);color:var(--primary);}
+.mobile-sidebar{position:fixed;top:0;left:-320px;width:300px;height:100vh;background:var(--dark2);border-right:1px solid rgba(10,61,140,0.15);z-index:10000;transition:0.4s cubic-bezier(0.4, 0, 0.2, 1);overflow-y:auto;box-shadow:20px 0 60px rgba(0,0,0,0.3);}
+.mobile-sidebar.show{left:0;}
+.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);z-index:9999;opacity:0;visibility:hidden;transition:all 0.3s ease;}
+.sidebar-overlay.show{opacity:1;visibility:visible;}
+.sidebar-header{display:flex;justify-content:space-between;align-items:center;padding:24px 20px;border-bottom:1px solid rgba(10,61,140,0.15);}
+.sidebar-logo{width:42px;height:42px;object-fit:contain;border-radius:10px;}
+.sidebar-close{background:transparent;border:1px solid rgba(10,61,140,0.15);color:#475569;width:40px;height:40px;border-radius:10px;cursor:pointer;font-size:16px;transition:all 0.25s ease;}
+.sidebar-close:hover{border-color:var(--primary);color:var(--primary);transform:rotate(90deg);}
+.sidebar-links{padding:20px;display:flex;flex-direction:column;gap:4px;}
+.sidebar-links a{color:#475569;text-decoration:none;font-size:1rem;padding:14px 16px;border-radius:12px;transition:all 0.25s ease;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(10,61,140,0.06);}
+.sidebar-links a:hover{color:var(--primary);background:rgba(10,61,140,0.08);padding-left:24px;}
+.sidebar-divider{height:1px;background:rgba(10,61,140,0.12);margin:12px 16px;}
+.sidebar-footer{padding:20px;color:var(--gray);font-size:0.85rem;text-align:center;}
+header{min-height:100vh;background:radial-gradient(circle at 25% 25%, rgba(10,61,140,0.08), transparent 50%),radial-gradient(circle at 75% 15%, rgba(26,111,196,0.06), transparent 45%),radial-gradient(circle at 50% 80%, rgba(77,184,232,0.05), transparent 40%),linear-gradient(rgba(240,244,248,0.9), rgba(240,244,248,0.98)),url('https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=2000&q=80');background-size:cover;background-position:center;display:flex;align-items:center;padding:140px 60px 80px;position:relative;overflow:hidden;}
+header::before{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top, var(--bg), transparent);z-index:1;}
+.hero{max-width:1000px;animation:fadeUp 1.2s ease;position:relative;z-index:2;}
+.badge{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(10,61,140,0.2);padding:10px 20px;border-radius:999px;color:var(--primary);background:rgba(10,61,140,0.06);letter-spacing:3px;font-size:.75rem;font-weight:600;margin-bottom:24px;text-transform:uppercase;backdrop-filter:blur(10px);}
+.badge::before{content:'';width:8px;height:8px;background:var(--primary);border-radius:50%;animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1; transform:scale(1);}50%{opacity:0.5; transform:scale(1.3);}}
+.hero h1{font-size:clamp(2.8rem,5.5vw,4.8rem);margin:16px 0 20px;line-height:1.08;font-weight:800;letter-spacing:-1px;}
+.hero h1 span{background:linear-gradient(135deg, var(--primary), var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero p{max-width:680px;color:#475569;font-size:1.15rem;line-height:1.7;margin-bottom:8px;}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px;}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:14px;text-decoration:none;font-weight:600;letter-spacing:0.5px;transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);font-size:0.95rem;cursor:pointer;border:none;position:relative;overflow:hidden;}
+.btn-primary{background:linear-gradient(135deg, var(--primary), var(--primary-light));color:#ffffff;box-shadow:0 8px 30px rgba(10,61,140,0.3), 0 2px 8px rgba(10,61,140,0.2);}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(10,61,140,0.4), 0 4px 12px rgba(10,61,140,0.25);}
+.btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent);transform:translateX(-100%);transition:transform 0.6s ease;}
+.btn-primary:hover::after{transform:translateX(100%);}
+.btn-outline{border:1.5px solid rgba(10,61,140,0.2);color:#475569;background:rgba(10,61,140,0.04);backdrop-filter:blur(10px);}
+.btn-outline:hover{border-color:var(--primary);color:var(--primary);background:rgba(10,61,140,0.06);transform:translateY(-3px);}
+section{padding:110px 60px;position:relative;}
+.section-title{text-align:center;margin-bottom:60px;}
+.section-title h2{font-size:2.6rem;font-weight:800;letter-spacing:-0.5px;margin-bottom:12px;}
+.section-title h2 span{background:linear-gradient(135deg, var(--primary), var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.section-title p{color:var(--gray);font-size:1.05rem;max-width:600px;margin:0 auto;}
+.section-label{display:inline-block;color:var(--primary);font-size:0.8rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+.about{max-width:900px;margin:auto;text-align:center;color:#475569;font-size:1.1rem;line-height:1.8;}
+.about-features{display:grid;grid-template-columns:repeat(3, 1fr);gap:30px;max-width:900px;margin:50px auto 0;}
+.about-feature{text-align:center;padding:30px 20px;border-radius:16px;background:rgba(10,61,140,0.03);border:1px solid rgba(10,61,140,0.1);transition:all 0.3s ease;}
+.about-feature:hover{transform:translateY(-6px);border-color:var(--border-hover);background:rgba(10,61,140,0.04);}
+.about-feature-icon{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg, rgba(10,61,140,0.15), rgba(10,61,140,0.05));display:grid;place-items:center;margin:0 auto 16px;font-size:1.4rem;border:1px solid var(--border);}
+.about-feature h4{font-size:1.1rem;margin-bottom:8px;color:var(--text);}
+.about-feature p{font-size:0.9rem;color:var(--gray);line-height:1.6;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1200px;margin:0 auto;}
+.card{background:var(--card);border:1px solid rgba(10,61,140,0.1);border-radius:20px;padding:40px 30px;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);position:relative;overflow:hidden;cursor:pointer;}
+.card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg, rgba(10,61,140,0.05), transparent 60%);opacity:0;transition:opacity 0.4s ease;}
+.card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg, var(--primary), var(--primary-light), var(--primary));background-size:200% 100%;transform:scaleX(0);transform-origin:left;transition:transform 0.4s ease;animation:shimmer 3s linear infinite;}
+@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+.card:hover{transform:translateY(-8px);border-color:var(--border-hover);box-shadow:0 20px 60px rgba(0,0,0,0.2), 0 0 40px rgba(10,61,140,0.08);}
+.card:hover::before{opacity:1;}
+.card:hover::after{transform:scaleX(1);}
+.card-icon{width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg, rgba(10,61,140,0.12), rgba(10,61,140,0.04));border:1px solid var(--border);display:grid;place-items:center;font-size:1.6rem;margin-bottom:24px;position:relative;z-index:1;transition:all 0.3s ease;}
+.card:hover .card-icon{transform:scale(1.1) rotate(-5deg);border-color:var(--primary);box-shadow:0 8px 25px rgba(10,61,140,0.2);}
+.card h3{color:var(--primary);margin-bottom:14px;font-size:1.25rem;position:relative;z-index:1;}
+.card p{color:#475569;font-size:.95rem;line-height:1.7;position:relative;z-index:1;}
+.sub-services-section{background:var(--dark2);border-top:1px solid var(--border);border-bottom:1px solid rgba(10,61,140,0.15);}
+.sub-services-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:20px;max-width:1200px;margin:0 auto;}
+.sub-service-card{background:var(--card);border:1px solid rgba(10,61,140,0.1);border-radius:18px;padding:32px 24px;text-align:center;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);position:relative;overflow:hidden;cursor:pointer;}
+.sub-service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,61,140,0.06), transparent 70%);opacity:0;transition:opacity 0.4s ease;}
+.sub-service-card:hover{transform:translateY(-6px);border-color:var(--border-hover);box-shadow:0 16px 50px rgba(0,0,0,0.15);}
+.sub-service-card:hover::before{opacity:1;}
+.sub-service-card .sub-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg, rgba(10,61,140,0.15), rgba(10,61,140,0.05));border:1px solid var(--border);display:grid;place-items:center;font-size:1.4rem;margin:0 auto 18px;transition:all 0.3s ease;position:relative;z-index:1;}
+.sub-service-card:hover .sub-icon{transform:scale(1.15);border-color:var(--primary);box-shadow:0 6px 20px rgba(10,61,140,0.2);}
+.sub-service-card h4{font-size:1.05rem;color:var(--text);margin-bottom:8px;position:relative;z-index:1;}
+.sub-service-card p{font-size:0.85rem;color:var(--gray);line-height:1.6;position:relative;z-index:1;}
+.sub-service-card .sub-tag{display:inline-block;margin-top:14px;padding:4px 12px;border-radius:999px;font-size:0.75rem;font-weight:600;color:var(--primary);background:rgba(10,61,140,0.08);border:1px solid var(--border);position:relative;z-index:1;}
+.stats{display:grid;grid-template-columns:repeat(4, 1fr);gap:24px;max-width:1100px;margin:0 auto;}
+.stat{background:var(--card);border:1px solid rgba(10,61,140,0.1);border-radius:20px;padding:40px 24px;text-align:center;transition:all 0.3s ease;position:relative;overflow:hidden;}
+.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg, var(--primary), var(--primary-light));transform:scaleX(0);transition:transform 0.3s ease;}
+.stat:hover{transform:translateY(-6px);border-color:var(--border-hover);box-shadow:0 16px 40px rgba(0,0,0,0.15);}
+.stat:hover::before{transform:scaleX(1);}
+.stat-number{font-size:2.8rem;font-weight:800;background:linear-gradient(135deg, var(--primary), var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:8px;}
+.stat p{color:var(--gray);font-size:0.95rem;font-weight:500;}
+.partners-grid{display:grid;grid-template-columns: repeat(5, 1fr);gap:24px;max-width:1200px;margin:0 auto;}
+.partner-item{background:var(--card);border:1px solid rgba(10,61,140,0.1);border-radius:18px;padding:28px;display:flex;align-items:center;justify-content:center;transition:all 0.4s ease;position:relative;overflow:hidden;aspect-ratio:1.6;}
+.partner-item::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center, rgba(10,61,140,0.1), transparent 70%);opacity:0;transition:opacity 0.4s ease;}
+.partner-item:hover{transform:translateY(-6px);border-color:var(--border-hover);box-shadow:0 16px 40px rgba(0,0,0,0.15);}
+.partner-item:hover::before{opacity:1;}
+.partner-item img{max-height:55px;width:auto;object-fit:contain;filter:grayscale(100%) brightness(0.8);opacity:0.6;transition:all 0.4s ease;position:relative;z-index:1;}
+.partner-item:hover img{filter:grayscale(0%) brightness(1);opacity:1;transform:scale(1.1);}
+.portofolio-grid{display:grid;grid-template-columns: repeat(3, 1fr);gap:24px;max-width:1200px;margin:0 auto;}
+.portofolio-card{background:var(--card);border:1px solid rgba(10,61,140,0.1);border-radius:20px;overflow:hidden;cursor:pointer;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 8px 30px rgba(0,0,0,0.12);}
+.portofolio-card:hover{transform:translateY(-8px);border-color:var(--border-hover);box-shadow:0 20px 60px rgba(0,0,0,0.2), 0 0 40px rgba(10,61,140,0.06);}
+.portofolio-thumb{height:240px;position:relative;background:linear-gradient(135deg, var(--dark3), var(--dark2));overflow:hidden;}
+.portofolio-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg, rgba(10,61,140,0.1), transparent 60%);opacity:0;transition:opacity 0.4s ease;}
+.portofolio-card:hover .portofolio-thumb::after{opacity:1;}
+.pdf-badge{position:absolute;top:16px;left:16px;padding:8px 14px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:1px;background:rgba(10,61,140,0.15);border:1px solid rgba(10,61,140,0.25);color:var(--primary);backdrop-filter:blur(10px);z-index:2;}
+.portofolio-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;background:linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);z-index:1;}
+.overlay-title{font-weight:800;font-size:1.1rem;color:white;}
+.overlay-sub{opacity:0.8;margin-top:6px;font-size:0.9rem;color:#e2e8f0;}
+.portofolio-info{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px;}
+.portofolio-info h3{margin:0;font-size:1.05rem;font-weight:800;color:var(--text);}
+.portofolio-info p{margin:8px 0 0;font-size:0.9rem;color:var(--gray);}
+.portofolio-info .btn{padding:12px 24px;font-size:0.85rem;white-space:nowrap;}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);display:none;justify-content:center;align-items:center;padding:20px;z-index:9999;opacity:0;transition:opacity 0.3s ease;}
+.modal.show{display:flex;opacity:1;}
+.modal-box{width:min(1100px, 100%);background:var(--dark2);border:1px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,0.5);transform:scale(0.95);transition:transform 0.3s ease;}
+.modal.show .modal-box{transform:scale(1);}
+.modal-header{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid rgba(10,61,140,0.15);background:var(--dark3);}
+.modal-header h3{margin:0;font-size:1.1rem;font-weight:800;color:var(--text);}
+.modal-header p{margin:6px 0 0;font-size:0.85rem;color:var(--gray);}
+.modal-close{background:rgba(10,61,140,0.06);border:1px solid rgba(10,61,140,0.15);color:var(--text);width:44px;height:44px;border-radius:12px;cursor:pointer;font-size:18px;transition:all 0.25s ease;display:grid;place-items:center;}
+.modal-close:hover{background:rgba(10,61,140,0.12);border-color:var(--primary);color:var(--primary);transform:rotate(90deg);}
+.modal-frame{width:100%;height:70vh;border:0;background:var(--dark);}
+.modal-footer{display:flex;justify-content:flex-end;gap:12px;padding:16px 24px;border-top:1px solid var(--border);background:var(--dark3);}
+.cta-strip{background:linear-gradient(135deg, var(--dark2), var(--dark3));border-top:1px solid var(--border);border-bottom:1px solid rgba(10,61,140,0.15);text-align:center;position:relative;overflow:hidden;}
+.cta-strip::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, rgba(10,61,140,0.06), transparent 60%);pointer-events:none;}
+.cta-strip h2{font-size:2.6rem;font-weight:800;position:relative;z-index:1;}
+.cta-strip p{max-width:700px;margin:16px auto 0;color:var(--gray);font-size:1.05rem;position:relative;z-index:1;}
+.cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:36px;position:relative;z-index:1;}
+footer{padding:50px 20px 30px;text-align:center;background:var(--dark2);border-top:1px solid var(--border);}
+.footer-premium{color:var(--primary);font-size:0.85rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+.footer-copy{color:var(--gray);font-size:0.9rem;}
+.footer-link{color:var(--primary);text-decoration:none;font-weight:600;transition:all 0.25s ease;position:relative;}
+.footer-link:hover{text-decoration:none;color:var(--primary);}
+.footer-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--primary);transition:width 0.3s ease;}
+.footer-link:hover::after{width:100%;}
+.floating-tools{position:fixed;right:20px;bottom:20px;z-index:9999;display:flex;flex-direction:column;gap:12px;}
+.floating-btn{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;box-shadow:0 8px 30px rgba(0,0,0,0.2);border:1px solid rgba(10,61,140,0.15);cursor:pointer;transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);background:linear-gradient(135deg,#25D366,#0ea05a);position:relative;overflow:hidden;}
+.floating-btn:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 40px rgba(37,211,102,0.3);}
+.floating-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg, transparent, rgba(10,61,140,0.15), transparent);transform:translateX(-100%);transition:transform 0.6s ease;}
+.floating-btn:hover::after{transform:translateX(100%);}
+.lang-btn{width:56px;height:56px;border-radius:16px;font-size:0.85rem;font-weight:700;background:var(--card);color:var(--color-text);border:1px solid var(--border);display:grid;place-items:center;cursor:pointer;transition:all 0.3s ease;backdrop-filter:blur(10px);box-shadow:0 8px 30px rgba(0,0,0,0.15);}
+.lang-btn:hover{background:var(--primary);color:#ffffff;border-color:var(--primary);transform:translateY(-4px);box-shadow:0 12px 30px rgba(10,61,140,0.25);}
+.reveal{opacity:0;transform:translateY(40px);transition:all 0.8s cubic-bezier(0.4, 0, 0.2, 1);}
+.reveal.active{opacity:1;transform:translateY(0);}
 .reveal-delay-1{transition-delay:0.1s;}
 .reveal-delay-2{transition-delay:0.2s;}
 .reveal-delay-3{transition-delay:0.3s;}
@@ -1253,142 +161,25 @@ footer{
 .reveal-delay-5{transition-delay:0.5s;}
 .reveal-delay-6{transition-delay:0.6s;}
 .reveal-delay-7{transition-delay:0.7s;}
-
-/* ========== ANIMATIONS ========== */
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(40px)}
-    to{opacity:1;transform:translateY(0)}
-}
-
-@keyframes fadeIn{
-    from{opacity:0}
-    to{opacity:1}
-}
-
-/* ========== RESPONSIVE ========== */
-@media(max-width:1024px){
-    .partners-grid{
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .sub-services-grid{
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .stats{
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .about-features{
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media(max-width:860px){
-    nav{
-        padding:14px 20px;
-    }
-    nav .links{
-        display:none;
-    }
-    .menu-btn{
-        display:block;
-    }
-    header, section{
-        padding:100px 20px 60px;
-    }
-    .floating-tools{
-        right:14px;
-        bottom:14px;
-        gap:10px;
-    }
-    .floating-btn, .lang-btn, .dark-btn{
-        width:50px;
-        height:50px;
-    }
-    .section-title h2{
-        font-size:2rem;
-    }
-    .hero h1{
-        font-size:2.4rem;
-    }
-    .sub-services-grid{
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .stats{
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media(max-width:640px){
-    .partners-grid{
-        grid-template-columns: repeat(2, 1fr);
-        gap:16px;
-    }
-    .partner-item{
-        padding:20px;
-    }
-    .partner-item img{
-        max-height:45px;
-    }
-    .portofolio-grid{
-        grid-template-columns: 1fr;
-    }
-    .portofolio-thumb{
-        height:200px;
-    }
-    .modal-frame{
-        height:62vh;
-    }
-    .portofolio-info{
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .sub-services-grid{
-        grid-template-columns: 1fr;
-    }
-    .stats{
-        grid-template-columns: 1fr;
-    }
-    .about-features{
-        grid-template-columns: 1fr;
-    }
-    .grid{
-        grid-template-columns: 1fr;
-    }
-    .cta-strip h2{
-        font-size:2rem;
-    }
-}
-
-/* ========== SCROLLBAR ========== */
-::-webkit-scrollbar{
-    width:8px;
-}
-::-webkit-scrollbar-track{
-    background:var(--dark);
-}
-::-webkit-scrollbar-thumb{
-    background:rgba(10,61,140,0.25);
-    border-radius:4px;
-}
-::-webkit-scrollbar-thumb:hover{
-    background:var(--primary);
-}
-
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@media(max-width:1024px){.partners-grid{grid-template-columns: repeat(3, 1fr);}.sub-services-grid{grid-template-columns: repeat(2, 1fr);}.stats{grid-template-columns: repeat(2, 1fr);}.about-features{grid-template-columns: repeat(2, 1fr);}}
+@media(max-width:860px){nav{padding:14px 20px;}nav .links{display:none;}.menu-btn{display:block;}header, section{padding:100px 20px 60px;}.floating-tools{right:14px;bottom:14px;gap:10px;}.floating-btn, .lang-btn{width:50px;height:50px;}.section-title h2{font-size:2rem;}.hero h1{font-size:2.4rem;}.sub-services-grid{grid-template-columns: repeat(2, 1fr);}.stats{grid-template-columns: repeat(2, 1fr);}}
+@media(max-width:640px){.partners-grid{grid-template-columns: repeat(2, 1fr);gap:16px;}.partner-item{padding:20px;}.partner-item img{max-height:45px;}.portofolio-grid{grid-template-columns: 1fr;}.portofolio-thumb{height:200px;}.modal-frame{height:62vh;}.portofolio-info{flex-direction: column;align-items: flex-start;}.sub-services-grid{grid-template-columns: 1fr;}.stats{grid-template-columns: 1fr;}.about-features{grid-template-columns: 1fr;}.grid{grid-template-columns: 1fr;}.cta-strip h2{font-size:2rem;}}
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-track{background:var(--dark);}
+::-webkit-scrollbar-thumb{background:rgba(10,61,140,0.25);border-radius:4px;}
+::-webkit-scrollbar-thumb:hover{background:var(--primary);}
 </style>
 <base target="_blank">
 </head>
-
 <body>
-
-<!-- ANIMATED BACKGROUND -->
 <div class="bg-animated"></div>
-
-<!-- NAV -->
 <nav id="mainNav">
     <div class="brand">
         <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/logo-fdx-management.png" alt="FDX Logo" class="logo-img">
-        <h1>FDX Management</h1>
+        <h1>FDX Agency</h1>
     </div>
-
     <div class="links">
         <a href="#about">About</a>
         <a href="#services">Services</a>
@@ -1397,11 +188,8 @@ footer{
         <a href="#portofolio">Portofolio</a>
         <a href="#contact">Contact</a>
     </div>
-
     <button class="menu-btn" id="menuBtn">☰</button>
 </nav>
-
-<!-- MOBILE SIDEBAR -->
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 <div class="mobile-sidebar" id="mobileSidebar">
     <div class="sidebar-header">
@@ -1417,332 +205,145 @@ footer{
         <a href="#contact" onclick="closeSidebar()">Contact</a>
     </div>
     <div class="sidebar-divider"></div>
-    <div class="sidebar-footer">
-        Premium Talent & Influence Agency
-    </div>
+    <div class="sidebar-footer">Agency Marketing Brand - Support UMKM Indonesia</div>
 </div>
-
-<!-- HERO -->
 <header>
     <div class="hero">
-        <div class="badge">Premium Talent & Influence Agency</div>
-
+        <div class="badge">Agency Marketing Brand - Support UMKM Indonesia</div>
         <h1>Managing <span>Influence</span>.<br>Building <span>Reputation</span>.</h1>
-
-        <p>
-            FDX Management adalah agensi yang mengelola KOL, Influencer, KOC, Buzzer,
-            Penbay, serta Talent Personal Branding untuk campaign premium, terukur, dan berdampak.
-        </p>
-
+        <p>FDX Agency adalah agensi yang mengelola KOL, Influencer, KOC, Buzzer, Penbay, serta Talent Personal Branding untuk campaign premium, terukur, dan berdampak. Kami juga mendukung pertumbuhan UMKM Indonesia melalui strategi digital yang efektif.</p>
         <div class="hero-actions">
             <a class="btn btn-primary" href="#services">Explore Talent</a>
-            <a class="btn btn-outline" href="https://www.instagram.com/fdx.management/" target="_blank">Instagram</a>
+            <a class="btn btn-outline" href="https://www.instagram.com/fdx.agency/" target="_blank">Instagram</a>
         </div>
     </div>
 </header>
-
-<!-- ABOUT -->
 <section id="about">
     <div class="section-title reveal">
         <div class="section-label">Tentang Kami</div>
         <h2>About <span>FDX</span></h2>
         <p>Influence marketing yang elegan, kredibel, dan berbasis strategi.</p>
     </div>
-
-    <div class="about reveal reveal-delay-1">
-        Kami menghubungkan brand dengan talent terbaik untuk membangun kampanye yang autentik.
-        Dengan sistem kurasi talent, perencanaan konten, dan eksekusi yang disiplin,
-        FDX Management fokus pada hasil: awareness, trust, dan conversion.
-    </div>
-
+    <div class="about reveal reveal-delay-1">Kami menghubungkan brand dengan talent terbaik untuk membangun kampanye yang autentik. Dengan sistem kurasi talent, perencanaan konten, dan eksekusi yang disiplin, FDX Agency fokus pada hasil: awareness, trust, dan conversion. Kami menggabungkan teknologi dan kreativitas untuk memberikan solusi terbaik bagi brand lokal maupun internasional.</div>
     <div class="about-features">
-        <div class="about-feature reveal reveal-delay-2">
-            <div class="about-feature-icon">✦</div>
-            <h4>Kurasi Premium</h4>
-            <p>Seleksi talent berkualitas dengan standar tinggi</p>
-        </div>
-        <div class="about-feature reveal reveal-delay-3">
-            <div class="about-feature-icon">◈</div>
-            <h4>Strategi Data-Driven</h4>
-            <p>Campaign berbasis analisis dan insight market</p>
-        </div>
-        <div class="about-feature reveal reveal-delay-4">
-            <div class="about-feature-icon">✧</div>
-            <h4>Eksekusi Profesional</h4>
-            <p>Tim berpengalaman dengan hasil terukur</p>
-        </div>
+        <div class="about-feature reveal reveal-delay-2"><div class="about-feature-icon">✦</div><h4>Kurasi Premium</h4><p>Seleksi talent berkualitas dengan standar tinggi</p></div>
+        <div class="about-feature reveal reveal-delay-3"><div class="about-feature-icon">◈</div><h4>Strategi Data-Driven</h4><p>Campaign berbasis analisis dan insight market</p></div>
+        <div class="about-feature reveal reveal-delay-4"><div class="about-feature-icon">✧</div><h4>Support UMKM</h4><p>Mendukung pertumbuhan bisnis lokal Indonesia</p></div>
     </div>
 </section>
-
-<!-- SERVICES -->
 <section id="services">
     <div class="section-title reveal">
         <div class="section-label">Layanan Utama</div>
         <h2>Our <span>Services</span></h2>
         <p>End-to-end talent management & campaign execution</p>
     </div>
-
     <div class="grid">
-        <div class="card reveal reveal-delay-1">
-            <div class="card-icon">👥</div>
-            <h3>KOL & Influencer Management</h3>
-            <p>
-                Pengelolaan influencer untuk brand collaboration, campaign strategy,
-                content direction, dan reputasi jangka panjang.
-            </p>
-        </div>
-
-        <div class="card reveal reveal-delay-2">
-            <div class="card-icon">📢</div>
-            <h3>KOC, Buzzer & Penbay Activation</h3>
-            <p>
-                Aktivasi mass audience dengan segmentasi yang jelas,
-                eksekusi cepat, serta kontrol kualitas dan reporting.
-            </p>
-        </div>
-
-        <div class="card reveal reveal-delay-3">
-            <div class="card-icon">⭐</div>
-            <h3>Talent & Personal Agency</h3>
-            <p>
-                Personal branding, media handling, monetisasi,
-                manajemen karier, dan long-term positioning.
-            </p>
-        </div>
-
-        <div class="card reveal reveal-delay-4">
-            <div class="card-icon">📊</div>
-            <h3>Campaign Strategy & Reporting</h3>
-            <p>
-                Konsep campaign, brief, timeline, monitoring performa,
-                hingga report profesional untuk brand.
-            </p>
-        </div>
+        <div class="card reveal reveal-delay-1"><div class="card-icon">👥</div><h3>KOL & Influencer Management</h3><p>Pengelolaan influencer untuk brand collaboration, campaign strategy, content direction, dan reputasi jangka panjang.</p></div>
+        <div class="card reveal reveal-delay-2"><div class="card-icon">📢</div><h3>KOC, Buzzer & Penbay Activation</h3><p>Aktivasi mass audience dengan segmentasi yang jelas, eksekusi cepat, serta kontrol kualitas dan reporting.</p></div>
+        <div class="card reveal reveal-delay-3"><div class="card-icon">⭐</div><h3>Talent & Personal Agency</h3><p>Personal branding, media handling, monetisasi, manajemen karier, dan long-term positioning.</p></div>
+        <div class="card reveal reveal-delay-4"><div class="card-icon">📊</div><h3>Campaign Strategy & Reporting</h3><p>Konsep campaign, brief, timeline, monitoring performa, hingga report profesional untuk brand.</p></div>
     </div>
 </section>
-
-<!-- SUB SERVICES / DIVISIONS -->
 <section id="sub-services" class="sub-services-section">
     <div class="section-title reveal">
         <div class="section-label">Divisi Layanan</div>
-        <h2>FDX Management <span>Divisions</span></h2>
-        <p>7 divisi spesialis yang bekerja secara terintegrasi untuk hasil maksimal</p>
+        <h2>FDX Agency <span>Divisions</span></h2>
+        <p>8 divisi spesialis yang bekerja secara terintegrasi untuk hasil maksimal</p>
     </div>
-
     <div class="sub-services-grid">
-        <div class="sub-service-card reveal reveal-delay-1">
-            <div class="sub-icon">🎨</div>
-            <h4>Branding</h4>
-            <p>Brand identity, visual strategy, dan brand positioning untuk talent & corporate</p>
-            <span class="sub-tag">Identity</span>
-        </div>
-
-        <div class="sub-service-card reveal reveal-delay-2">
-            <div class="sub-icon">✨</div>
-            <h4>Creative</h4>
-            <p>Content creation, creative direction, dan visual storytelling yang menarik</p>
-            <span class="sub-tag">Content</span>
-        </div>
-
-        <div class="sub-service-card reveal reveal-delay-3">
-            <div class="sub-icon">📱</div>
-            <h4>Digital Marketing</h4>
-            <p>Social media marketing, paid ads, dan digital campaign untuk reach maksimal</p>
-            <span class="sub-tag">Growth</span>
-        </div>
-
-        <div class="sub-service-card reveal reveal-delay-4">
-            <div class="sub-icon">🔍</div>
-            <h4>SEO</h4>
-            <p>Search engine optimization, content strategy, dan organic traffic growth</p>
-            <span class="sub-tag">Organic</span>
-        </div>
-
-        <div class="sub-service-card reveal reveal-delay-5">
-            <div class="sub-icon">🤝</div>
-            <h4>Talent Management</h4>
-            <p>Kurasi, negosiasi, dan manajemen talent KOL, influencer, dan personal brand</p>
-            <span class="sub-tag">Talent</span>
-        </div>
-
-        <div class="sub-service-card reveal reveal-delay-6">
-            <div class="sub-icon">🏢</div>
-            <h4>Workforce Solutions</h4>
-            <p>HR solutions, staffing, dan workforce management untuk kebutuhan operasional</p>
-            <span class="sub-tag">HR</span>
-        </div>
-
-        <div class="sub-service-card reveal reveal-delay-7">
-            <div class="sub-icon">🌐</div>
-            <h4>Freelancer Network</h4>
-            <p>Jaringan freelancer profesional untuk proyek kreatif dan digital skala besar</p>
-            <span class="sub-tag">Network</span>
-        </div>
-
-        <div class="sub-service-card reveal reveal-delay-1">
-            <div class="sub-icon">🎯</div>
-            <h4>Integrated Campaign</h4>
-            <p>Cross-division collaboration untuk campaign yang komprehensif dan berdampak</p>
-            <span class="sub-tag">All-in-One</span>
-        </div>
+        <div class="sub-service-card reveal reveal-delay-1"><div class="sub-icon">🎨</div><h4>Branding</h4><p>Brand identity, visual strategy, dan brand positioning untuk talent & corporate</p><span class="sub-tag">Identity</span></div>
+        <div class="sub-service-card reveal reveal-delay-2"><div class="sub-icon">✨</div><h4>Creative</h4><p>Content creation, creative direction, dan visual storytelling yang menarik</p><span class="sub-tag">Content</span></div>
+        <div class="sub-service-card reveal reveal-delay-3"><div class="sub-icon">📱</div><h4>Digital Marketing</h4><p>Social media marketing, paid ads, dan digital campaign untuk reach maksimal</p><span class="sub-tag">Growth</span></div>
+        <div class="sub-service-card reveal reveal-delay-4"><div class="sub-icon">🔍</div><h4>SEO</h4><p>Search engine optimization, content strategy, dan organic traffic growth</p><span class="sub-tag">Organic</span></div>
+        <div class="sub-service-card reveal reveal-delay-5"><div class="sub-icon">🤝</div><h4>Talent Management</h4><p>Kurasi, negosiasi, dan manajemen talent KOL, influencer, dan personal brand</p><span class="sub-tag">Talent</span></div>
+        <div class="sub-service-card reveal reveal-delay-6"><div class="sub-icon">🏢</div><h4>Workforce Solutions</h4><p>HR solutions, staffing, dan workforce management untuk kebutuhan operasional</p><span class="sub-tag">HR</span></div>
+        <div class="sub-service-card reveal reveal-delay-7"><div class="sub-icon">🌐</div><h4>Freelancer Network</h4><p>Jaringan freelancer profesional untuk proyek kreatif dan digital skala besar</p><span class="sub-tag">Network</span></div>
+        <div class="sub-service-card reveal reveal-delay-1"><div class="sub-icon">🎯</div><h4>Integrated Campaign</h4><p>Cross-division collaboration untuk campaign yang komprehensif dan berdampak</p><span class="sub-tag">All-in-One</span></div>
     </div>
 </section>
-
-<!-- STATS -->
 <section id="stats">
     <div class="section-title reveal">
         <div class="section-label">Performa</div>
         <h2>Campaign <span>Performance</span></h2>
-        <p>Statistik dapat kamu sesuaikan sesuai portofolio FDX.</p>
+        <p>Statistik yang mencerminkan dedikasi dan hasil kerja FDX Agency.</p>
     </div>
-
     <div class="stats">
-        <div class="stat reveal reveal-delay-1">
-            <div class="stat-number">250+</div>
-            <p>Talent & KOL Network</p>
-        </div>
-        <div class="stat reveal reveal-delay-2">
-            <div class="stat-number">120+</div>
-            <p>Campaign Executed</p>
-        </div>
-        <div class="stat reveal reveal-delay-3">
-            <div class="stat-number">30+</div>
-            <p>Brand Partners</p>
-        </div>
-        <div class="stat reveal reveal-delay-4">
-            <div class="stat-number">98%</div>
-            <p>Client Satisfaction Rate</p>
-        </div>
+        <div class="stat reveal reveal-delay-1"><div class="stat-number">250+</div><p>Talent & KOL Network</p></div>
+        <div class="stat reveal reveal-delay-2"><div class="stat-number">120+</div><p>Campaign Executed</p></div>
+        <div class="stat reveal reveal-delay-3"><div class="stat-number">30+</div><p>Brand Partners</p></div>
+        <div class="stat reveal reveal-delay-4"><div class="stat-number">98%</div><p>Client Satisfaction Rate</p></div>
     </div>
 </section>
-
-<!-- PARTNERS -->
 <section id="brand-partners" class="section">
     <div class="section-title reveal">
         <div class="section-label">Kolaborasi</div>
         <h2>Trusted <span>Brand Partners</span></h2>
-        <p>Brands that have collaborated with FDX Management.</p>
+        <p>Brands that have collaborated with FDX Agency.</p>
     </div>
-
     <div class="partners-grid">
-        <div class="partner-item reveal reveal-delay-1">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.26.jpeg" alt="Brand 1">
-        </div>
-        <div class="partner-item reveal reveal-delay-2">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.27%20(1).jpeg" alt="Brand 2">
-        </div>
-        <div class="partner-item reveal reveal-delay-3">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.27%20(2).jpeg" alt="Brand 3">
-        </div>
-        <div class="partner-item reveal reveal-delay-4">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.27.jpeg" alt="Brand 4">
-        </div>
-        <div class="partner-item reveal reveal-delay-5">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.28%20(1).jpeg" alt="Brand 5">
-        </div>
-        <div class="partner-item reveal reveal-delay-6">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.28%20(2).jpeg" alt="Brand 6">
-        </div>
-        <div class="partner-item reveal reveal-delay-1">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.28.jpeg" alt="Brand 7">
-        </div>
-        <div class="partner-item reveal reveal-delay-2">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.47.jpeg" alt="Brand 8">
-        </div>
-        <div class="partner-item reveal reveal-delay-3">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.34.11.jpeg" alt="Brand 9">
-        </div>
-        <div class="partner-item reveal reveal-delay-4">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.34.47.jpeg" alt="Brand 10">
-        </div>
-        <div class="partner-item reveal reveal-delay-5">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.35.27.jpeg" alt="Brand 11">
-        </div>
-        <div class="partner-item reveal reveal-delay-6">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.36.04.jpeg" alt="Brand 12">
-        </div>
-        <div class="partner-item reveal reveal-delay-1">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.38.24.jpeg" alt="Brand 13">
-        </div>
-        <div class="partner-item reveal reveal-delay-2">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.39.33.jpeg" alt="Brand 14">
-        </div>
-        <div class="partner-item reveal reveal-delay-3">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.40.15.jpeg" alt="Brand 15">
-        </div>
-        <div class="partner-item reveal reveal-delay-4">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.41.23.jpeg" alt="Brand 16">
-        </div>
-        <div class="partner-item reveal reveal-delay-5">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.43.38.jpeg" alt="Brand 17">
-        </div>
-        <div class="partner-item reveal reveal-delay-6">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.45.08.jpeg" alt="Brand 18">
-        </div>
-        <div class="partner-item reveal reveal-delay-1">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.45.31.jpeg" alt="Brand 19">
-        </div>
-        <div class="partner-item reveal reveal-delay-2">
-            <img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.46.45.jpeg" alt="Brand 20">
-        </div>
+        <div class="partner-item reveal reveal-delay-1"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.26.jpeg" alt="Secret Garden"></div>
+        <div class="partner-item reveal reveal-delay-2"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.27%20(1).jpeg" alt="Glow & Lovely"></div>
+        <div class="partner-item reveal reveal-delay-3"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.27%20(2).jpeg" alt="Sensodyne"></div>
+        <div class="partner-item reveal reveal-delay-4"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.27.jpeg" alt="Implora"></div>
+        <div class="partner-item reveal reveal-delay-5"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.28%20(1).jpeg" alt="M:seum"></div>
+        <div class="partner-item reveal reveal-delay-6"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.28%20(2).jpeg" alt="Brand 6"></div>
+        <div class="partner-item reveal reveal-delay-1"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.28.jpeg" alt="Brand 7"></div>
+        <div class="partner-item reveal reveal-delay-2"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.33.47.jpeg" alt="Brand 8"></div>
+        <div class="partner-item reveal reveal-delay-3"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.34.11.jpeg" alt="Brand 9"></div>
+        <div class="partner-item reveal reveal-delay-4"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.34.47.jpeg" alt="Brand 10"></div>
+        <div class="partner-item reveal reveal-delay-5"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.35.27.jpeg" alt="Brand 11"></div>
+        <div class="partner-item reveal reveal-delay-6"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.36.04.jpeg" alt="Brand 12"></div>
+        <div class="partner-item reveal reveal-delay-1"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.38.24.jpeg" alt="Brand 13"></div>
+        <div class="partner-item reveal reveal-delay-2"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.39.33.jpeg" alt="Brand 14"></div>
+        <div class="partner-item reveal reveal-delay-3"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.40.15.jpeg" alt="Brand 15"></div>
+        <div class="partner-item reveal reveal-delay-4"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.41.23.jpeg" alt="Brand 16"></div>
+        <div class="partner-item reveal reveal-delay-5"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.43.38.jpeg" alt="Brand 17"></div>
+        <div class="partner-item reveal reveal-delay-6"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.45.08.jpeg" alt="Brand 18"></div>
+        <div class="partner-item reveal reveal-delay-1"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.45.31.jpeg" alt="Brand 19"></div>
+        <div class="partner-item reveal reveal-delay-2"><img src="https://raw.githubusercontent.com/jenderal45/fdx/main/Brand%20Partners/WhatsApp%20Image%202026-02-20%20at%2000.46.45.jpeg" alt="Brand 20"></div>
+        <div class="partner-item reveal reveal-delay-3"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/OPPO_Logo.svg/1200px-OPPO_Logo.svg.png" alt="OPPO" style="max-height:45px;"></div>
     </div>
 </section>
-
-<!-- PORTOFOLIO -->
 <section id="portofolio" class="section">
     <div class="section-title reveal">
         <div class="section-label">Portofolio</div>
         <h2>FDX <span>Portofolio</span></h2>
         <p>Official deck untuk brand partnership & campaign.</p>
     </div>
-
     <div class="portofolio-grid">
         <div class="portofolio-card reveal reveal-delay-1" onclick="openPortofolio()">
             <div class="portofolio-thumb">
                 <div class="pdf-badge">PDF</div>
                 <div class="portofolio-overlay">
-                    <div class="overlay-title">FDX Management Deck</div>
+                    <div class="overlay-title">FDX Agency Deck</div>
                     <div class="overlay-sub">Klik untuk preview</div>
                 </div>
             </div>
-
             <div class="portofolio-info">
                 <div>
-                    <h3>FDX MG — Company Profile</h3>
-                    <p>Talent • Influencer • KOL Campaign</p>
+                    <h3>FDX Agency - Company Profile</h3>
+                    <p>Talent - Influencer - KOL Campaign - UMKM Support</p>
                 </div>
                 <button class="btn btn-primary" type="button">View</button>
             </div>
         </div>
     </div>
 </section>
-
-<!-- CONTACT -->
 <section class="cta-strip" id="contact">
     <div class="section-title reveal">
         <div class="section-label">Kontak</div>
         <h2>Let's Build <span>Influence</span></h2>
-        <p>
-            Untuk kerja sama brand, endorsement, atau talent representation,
-            hubungi FDX Management melalui Instagram atau WhatsApp.
-        </p>
+        <p>Untuk kerja sama brand, endorsement, talent representation, atau dukungan UMKM, hubungi FDX Agency melalui Instagram atau WhatsApp.</p>
     </div>
-
     <div class="cta-buttons reveal reveal-delay-1">
         <a class="btn btn-primary" href="https://www.instagram.com/fdx.agency/" target="_blank">Instagram</a>
         <a class="btn btn-outline" href="https://wa.me/6289513408945" target="_blank">WhatsApp</a>
     </div>
 </section>
-
-<!-- FOOTER -->
 <footer>
-    <p class="footer-premium">Premium Talent & Influence Agency</p>
-    <p class="footer-copy">
-        &copy; 2025 FDX Management
-    </p>
+    <p class="footer-premium">Agency Marketing Brand - Support UMKM Indonesia</p>
+    <p class="footer-copy">&copy; 2026 FDX Agency</p>
 </footer>
-
-<!-- FLOATING BUTTONS -->
 <div class="floating-tools">
     <a class="floating-btn" href="https://wa.me/6289513408945" target="_blank" aria-label="Chat WhatsApp">
         <svg viewBox="0 0 32 32" width="26" height="26" fill="white">
@@ -1750,8 +351,6 @@ footer{
         </svg>
     </a>
 </div>
-
-<!-- PORTOFOLIO MODAL -->
 <div id="portofolioModal" class="modal">
     <div class="modal-box">
         <div class="modal-header">
@@ -1768,79 +367,43 @@ footer{
         </div>
     </div>
 </div>
-
 <script>
-/* ========== NAV SCROLL EFFECT ========== */
 const mainNav = document.getElementById("mainNav");
 window.addEventListener("scroll", () => {
-    if(window.scrollY > 50){
-        mainNav.classList.add("scrolled");
-    } else {
-        mainNav.classList.remove("scrolled");
-    }
+    if(window.scrollY > 50){mainNav.classList.add("scrolled");} else {mainNav.classList.remove("scrolled");}
 });
-
-/* ========== MOBILE MENU ========== */
 const menuBtn = document.getElementById("menuBtn");
 const mobileSidebar = document.getElementById("mobileSidebar");
 const sidebarOverlay = document.getElementById("sidebarOverlay");
 const sidebarClose = document.getElementById("sidebarClose");
-
 menuBtn.addEventListener("click", () => {
     mobileSidebar.classList.add("show");
     sidebarOverlay.classList.add("show");
     document.body.style.overflow = "hidden";
 });
-
 sidebarClose.addEventListener("click", closeSidebar);
 sidebarOverlay.addEventListener("click", closeSidebar);
-
 function closeSidebar(){
     mobileSidebar.classList.remove("show");
     sidebarOverlay.classList.remove("show");
     document.body.style.overflow = "";
 }
-
-window.addEventListener("keydown", (e) => {
-    if(e.key === "Escape") closeSidebar();
-});
-
-/* ========== PORTOFOLIO MODAL ========== */
+window.addEventListener("keydown", (e) => {if(e.key === "Escape") closeSidebar();});
 function openPortofolio(){
     document.getElementById("portofolioModal").classList.add("show");
     document.body.style.overflow = "hidden";
 }
-
 function closePortofolio(){
     document.getElementById("portofolioModal").classList.remove("show");
     document.body.style.overflow = "";
 }
-
-document.getElementById("portofolioModal").addEventListener("click", function(e){
-    if(e.target === this) closePortofolio();
-});
-
-window.addEventListener("keydown", function(e){
-    if(e.key === "Escape") closePortofolio();
-});
-
-/* ========== SCROLL REVEAL ========== */
+document.getElementById("portofolioModal").addEventListener("click", function(e){if(e.target === this) closePortofolio();});
+window.addEventListener("keydown", function(e){if(e.key === "Escape") closePortofolio();});
 const revealElements = document.querySelectorAll('.reveal');
-
 const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('active');
-        }
-    });
-}, {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px"
-});
-
+    entries.forEach(entry => {if(entry.isIntersecting){entry.target.classList.add('active');}});
+}, {threshold: 0.1, rootMargin: "0px 0px -50px 0px"});
 revealElements.forEach(el => revealObserver.observe(el));
-
-/* ========== SMOOTH SCROLL WITH NAVBAR OFFSET ========== */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -1849,17 +412,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if(targetElement) {
             const navHeight = document.getElementById('mainNav').offsetHeight;
             const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-            // Update URL hash without jumping
+            window.scrollTo({top: targetPosition, behavior: 'smooth'});
             history.pushState(null, null, targetId);
         }
     });
 });
-
 </script>
-
 </body>
 </html>
